@@ -15,3 +15,14 @@ In the “How valuable would each feature be to you?” section, responses showe
 
 ## Team Action (if any):
 No action needed yet. The team will focus on developing and refining the most valued features first. Specifically, the automatic grocery list generator, ingredient-aware substitution system, and portioning planner will have a higher focus to ensure they are highly functional and intuitive.
+
+## Observation (Maria)
+**Observation Statement:**  
+Many users expressed frustration with not having appropriate ingredient substitutions when cooking international recipes.
+
+**Supporting Data:**  
+For example, 45% of respondents selected "Substitutions when I’m missing ingredients / for international dishes" among their top cooking pain points. In an open-ended response, one user wrote:  
+> “I often can’t find key spices, so I have to improvise or skip the recipe.”  
+
+**Team Action (if any):**  
+We will prioritize implementing a “smart substitution” feature in which the app suggests local equivalents for missing ingredients. 
