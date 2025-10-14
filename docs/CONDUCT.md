@@ -78,3 +78,7 @@ By participating in this project, each member agrees to uphold this Code of Cond
 ---
 # Sophia Della Selva
 ![image](https://drive.google.com/uc?export=view&id=1Qsnexpz1TscNnxbB_Iq4r3rmpt3ZCJ17)
+
+## Signatures
+Alexander Hang
+![image](https://drive.google.com/uc?export=view&id=19F3AxS8J-H_dufYFBY8MRNiZO1Qn1tOF)
