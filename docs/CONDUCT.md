@@ -78,4 +78,4 @@ By participating in this project, each member agrees to uphold this Code of Cond
 ---
 
 Signatures
-![Picture of my signature - Alex](https://drive.google.com/file/d/19F3AxS8J-H_dufYFBY8MRNiZO1Qn1tOF/view?usp=drive_link)
+!(https://drive.google.com/file/d/19F3AxS8J-H_dufYFBY8MRNiZO1Qn1tOF/view?usp=drive_link)
