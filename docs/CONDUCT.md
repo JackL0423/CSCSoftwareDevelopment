@@ -76,3 +76,5 @@ We recognize that our success depends on trust, accountability, and shared respo
 By participating in this project, each member agrees to uphold this Code of Conduct and actively contribute to a respectful and effective working environment.
 
 ---
+
+!image https://drive.google.com/file/d/1Qsnexpz1TscNnxbB_Iq4r3rmpt3ZCJ17/view?usp=sharing
