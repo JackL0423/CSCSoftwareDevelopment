@@ -76,6 +76,8 @@ We recognize that our success depends on trust, accountability, and shared respo
 By participating in this project, each member agrees to uphold this Code of Conduct and actively contribute to a respectful and effective working environment.
 
 ---
+# Sophia Della Selva
+![image](https://drive.google.com/uc?export=view&id=1Qsnexpz1TscNnxbB_Iq4r3rmpt3ZCJ17)
 
 ## Signatures
 Alexander Hang
