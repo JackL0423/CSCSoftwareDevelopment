@@ -82,3 +82,6 @@ By participating in this project, each member agrees to uphold this Code of Cond
 ## Signatures
 Alexander Hang
 ![image](https://drive.google.com/uc?export=view&id=19F3AxS8J-H_dufYFBY8MRNiZO1Qn1tOF)
+
+Maria Millington
+![Signature](https://drive.google.com/uc?export=view&id=1nUHpuPecDua1EtoObFB97bKRL0fO-yfj)
