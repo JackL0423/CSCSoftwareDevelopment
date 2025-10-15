@@ -6,7 +6,7 @@ https://docs.google.com/presentation/d/1p-2E9KyCJyyXrYYOkEXYjQy3kDwluuwXIvFoiH2w
 
 ## Young College Student
 
-https://docs.google.com/presentation/d/1p-2E9KyCJyyXrYYOkEXYjQy3kDwluuwXIvFoiH2w5ZA/edit?slide=id.g3899dcdabc5_0_5#slide=id.g3899dcdabc5_0_5
+https://docs.google.com/presentation/d/1p-2E9KyCJyyXrYYOkEXYjQy3kDwluuwXIvFoiH2w5ZA/edit?slide=id.g3899dcdabc5_0_10#slide=id.g3899dcdabc5_0_10
 
 ## Highly Experienced Cook / Executive Chef
 
