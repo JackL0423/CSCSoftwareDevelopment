@@ -182,3 +182,78 @@ docs/generated/
 # CUSTOM PROJECT IGNORES
 # =============================================================================
 # Add any project-specific files to ignore here
+
+# =============================================================================
+# DEVELOPMENT / PERSONAL WORK (NEVER COMMIT TO MAIN)
+# =============================================================================
+# Development directories - personal work stays local
+dev/
+development/
+.dev/
+workspace/
+scratch/
+notes/
+brainstorm/
+WIP/
+work-in-progress/
+experiments/
+prototypes/
+
+# Personal development files - notes between you and AI assistants
+*-dev-notes.md
+*-scratch.md
+*-wip.md
+*-personal.md
+*-TODO.md
+*-todo.md
+conversation-*.md
+session-*.md
+chat-*.md
+ai-*.md
+
+# Development artifacts - drafts and backups
+*.draft
+*.rough
+*.v0
+*.backup
+*-backup.*
+*-old.*
+*-temp.*
+.local/
+
+# Large downloaded files (tooling installations)
+*.tar.gz
+*.zip
+*.tgz
+google-cloud-sdk/
+google-cloud-cli-*/
+node_modules.tar.gz
+
+# Personal IDE/editor settings (extend existing section)
+.vscode/settings.json
+.vscode/*.json
+!.vscode/extensions.json
+.idea/workspace.xml
+.idea/tasks.xml
+.cursor/
+
+# Development logs and debugging
+debug-*.log
+dev-*.log
+trace-*.log
+*.debug
+
+# Test data and mock files
+test-data/
+mock-data/
+fixtures/local/
+
+# Personal scripts (temporary automation)
+*-local.sh
+*-dev.sh
+*-personal.sh
+
+# Documentation drafts (only publish final versions)
+docs/drafts/
+docs/wip/
+*.draft.md

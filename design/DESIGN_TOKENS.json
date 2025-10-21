@@ -1,0 +1,564 @@
+{
+  "$schema": "https://tr.designtokens.org/format/w3c-format/",
+  "name": "GlobalFlavors Design Tokens",
+  "description": "Design tokens for GlobalFlavors mobile app - Material Design 3 based",
+  "version": "1.0.0",
+  "lastUpdated": "2025-10-20",
+
+  "color": {
+    "primary": {
+      "$type": "color",
+      "value": "#D81B60",
+      "description": "Primary brand color - vibrant pink (Material 3)"
+    },
+    "on-primary": {
+      "$type": "color",
+      "value": "#FFFFFF",
+      "description": "Text/icons on primary color"
+    },
+    "primary-container": {
+      "$type": "color",
+      "value": "#FFD7E5",
+      "description": "Container background using primary color (Material 3)"
+    },
+    "on-primary-container": {
+      "$type": "color",
+      "value": "#3E001D",
+      "description": "Text on primary container (Material 3)"
+    },
+
+    "secondary": {
+      "$type": "color",
+      "value": "#7B5264",
+      "description": "Secondary color - supporting brand color (Material 3)"
+    },
+    "on-secondary": {
+      "$type": "color",
+      "value": "#FFFFFF",
+      "description": "Text/icons on secondary color"
+    },
+    "secondary-container": {
+      "$type": "color",
+      "value": "#FFD9E4",
+      "description": "Container background using secondary color (Material 3)"
+    },
+    "on-secondary-container": {
+      "$type": "color",
+      "value": "#301120",
+      "description": "Text on secondary container (Material 3)"
+    },
+
+    "tertiary": {
+      "$type": "color",
+      "value": "#815343",
+      "description": "Tertiary accent color (Material 3)"
+    },
+    "on-tertiary": {
+      "$type": "color",
+      "value": "#FFFFFF",
+      "description": "Text/icons on tertiary color"
+    },
+    "tertiary-container": {
+      "$type": "color",
+      "value": "#FFDBD0",
+      "description": "Container background using tertiary color (Material 3)"
+    },
+    "on-tertiary-container": {
+      "$type": "color",
+      "value": "#321207",
+      "description": "Text on tertiary container (Material 3)"
+    },
+
+    "success": {
+      "$type": "color",
+      "value": "#4CAF50",
+      "description": "Success state color - green"
+    },
+    "warning": {
+      "$type": "color",
+      "value": "#FFC107",
+      "description": "Warning state color - amber"
+    },
+    "error": {
+      "$type": "color",
+      "value": "#BA1A1A",
+      "description": "Error state color - red (Material 3)"
+    },
+    "on-error": {
+      "$type": "color",
+      "value": "#FFFFFF",
+      "description": "Text/icons on error color"
+    },
+    "error-container": {
+      "$type": "color",
+      "value": "#FFDAD6",
+      "description": "Error container background (Material 3)"
+    },
+    "on-error-container": {
+      "$type": "color",
+      "value": "#410002",
+      "description": "Text on error container (Material 3)"
+    },
+    "info": {
+      "$type": "color",
+      "value": "#2196F3",
+      "description": "Info state color - blue"
+    },
+
+    "surface": {
+      "$type": "color",
+      "value": "#FFFBFF",
+      "description": "Default surface background (Material 3)"
+    },
+    "surface-container-lowest": {
+      "$type": "color",
+      "value": "#FFFFFF",
+      "description": "Lowest elevation surface"
+    },
+    "surface-container-low": {
+      "$type": "color",
+      "value": "#FFF4F9",
+      "description": "Low elevation surface - cards"
+    },
+    "surface-container": {
+      "$type": "color",
+      "value": "#FCEEF4",
+      "description": "Default elevation surface"
+    },
+    "surface-container-high": {
+      "$type": "color",
+      "value": "#F6E8EF",
+      "description": "High elevation surface - elevated cards"
+    },
+    "surface-container-highest": {
+      "$type": "color",
+      "value": "#F1E3E9",
+      "description": "Highest elevation surface - inputs"
+    },
+    "on-surface": {
+      "$type": "color",
+      "value": "#201A1C",
+      "description": "Text color on surface (Material 3)"
+    },
+    "on-surface-variant": {
+      "$type": "color",
+      "value": "#524347",
+      "description": "Secondary text on surface"
+    },
+    "outline": {
+      "$type": "color",
+      "value": "#857377",
+      "description": "Borders and dividers (Material 3)"
+    },
+    "outline-variant": {
+      "$type": "color",
+      "value": "#D7C2C7",
+      "description": "Secondary borders (Material 3)"
+    },
+    "surface-tint": {
+      "$type": "color",
+      "value": "#D81B60",
+      "description": "Surface tint color for elevation"
+    }
+  },
+
+  "spacing": {
+    "xs": {
+      "$type": "dimension",
+      "value": "4dp",
+      "description": "Extra small - tight spacing, icon padding"
+    },
+    "s": {
+      "$type": "dimension",
+      "value": "8dp",
+      "description": "Small - component internal spacing"
+    },
+    "m": {
+      "$type": "dimension",
+      "value": "16dp",
+      "description": "Medium - default spacing between elements"
+    },
+    "l": {
+      "$type": "dimension",
+      "value": "24dp",
+      "description": "Large - section spacing"
+    },
+    "xl": {
+      "$type": "dimension",
+      "value": "32dp",
+      "description": "Extra large - major section breaks"
+    },
+    "2xl": {
+      "$type": "dimension",
+      "value": "48dp",
+      "description": "2X large - page-level spacing"
+    }
+  },
+
+  "borderRadius": {
+    "extra-small": {
+      "$type": "dimension",
+      "value": "4dp",
+      "description": "Extra small radius - small chips (Material 3)"
+    },
+    "small": {
+      "$type": "dimension",
+      "value": "8dp",
+      "description": "Small radius - compact buttons (Material 3)"
+    },
+    "medium": {
+      "$type": "dimension",
+      "value": "12dp",
+      "description": "Medium radius - input fields (Material 3)"
+    },
+    "large": {
+      "$type": "dimension",
+      "value": "16dp",
+      "description": "Large radius - icons/avatars (Material 3)"
+    },
+    "extra-large": {
+      "$type": "dimension",
+      "value": "28dp",
+      "description": "Extra large radius - cards and containers (Material 3)"
+    },
+    "full": {
+      "$type": "dimension",
+      "value": "9999dp",
+      "description": "Full radius - pills and FABs (Material 3)"
+    }
+  },
+
+  "elevation": {
+    "level-0": {
+      "$type": "shadow",
+      "value": {
+        "offsetX": "0dp",
+        "offsetY": "0dp",
+        "blur": "0dp",
+        "spread": "0dp",
+        "color": "rgba(0, 0, 0, 0)"
+      },
+      "description": "No elevation - flat surface"
+    },
+    "level-1": {
+      "$type": "shadow",
+      "value": {
+        "offsetX": "0dp",
+        "offsetY": "1dp",
+        "blur": "3dp",
+        "spread": "0dp",
+        "color": "rgba(0, 0, 0, 0.12)"
+      },
+      "description": "Level 1 - raised cards"
+    },
+    "level-2": {
+      "$type": "shadow",
+      "value": {
+        "offsetX": "0dp",
+        "offsetY": "3dp",
+        "blur": "6dp",
+        "spread": "0dp",
+        "color": "rgba(0, 0, 0, 0.16)"
+      },
+      "description": "Level 2 - floating buttons"
+    },
+    "level-3": {
+      "$type": "shadow",
+      "value": {
+        "offsetX": "0dp",
+        "offsetY": "6dp",
+        "blur": "12dp",
+        "spread": "0dp",
+        "color": "rgba(0, 0, 0, 0.20)"
+      },
+      "description": "Level 3 - dropdowns"
+    },
+    "level-4": {
+      "$type": "shadow",
+      "value": {
+        "offsetX": "0dp",
+        "offsetY": "8dp",
+        "blur": "16dp",
+        "spread": "0dp",
+        "color": "rgba(0, 0, 0, 0.24)"
+      },
+      "description": "Level 4 - dialogs"
+    },
+    "level-5": {
+      "$type": "shadow",
+      "value": {
+        "offsetX": "0dp",
+        "offsetY": "12dp",
+        "blur": "24dp",
+        "spread": "0dp",
+        "color": "rgba(0, 0, 0, 0.28)"
+      },
+      "description": "Level 5 - navigation drawer"
+    }
+  },
+
+  "typography": {
+    "display-large": {
+      "$type": "typography",
+      "value": {
+        "fontFamily": "Roboto",
+        "fontSize": "57sp",
+        "fontWeight": "300",
+        "letterSpacing": "-0.25sp",
+        "lineHeight": "64sp"
+      },
+      "description": "Display large - hero text"
+    },
+    "display-medium": {
+      "$type": "typography",
+      "value": {
+        "fontFamily": "Roboto",
+        "fontSize": "45sp",
+        "fontWeight": "400",
+        "letterSpacing": "0sp",
+        "lineHeight": "52sp"
+      },
+      "description": "Display medium"
+    },
+    "display-small": {
+      "$type": "typography",
+      "value": {
+        "fontFamily": "Roboto",
+        "fontSize": "36sp",
+        "fontWeight": "400",
+        "letterSpacing": "0sp",
+        "lineHeight": "44sp"
+      },
+      "description": "Display small"
+    },
+    "headline-large": {
+      "$type": "typography",
+      "value": {
+        "fontFamily": "Roboto",
+        "fontSize": "32sp",
+        "fontWeight": "400",
+        "letterSpacing": "0sp",
+        "lineHeight": "40sp"
+      },
+      "description": "Headline large - page titles"
+    },
+    "headline-medium": {
+      "$type": "typography",
+      "value": {
+        "fontFamily": "Roboto",
+        "fontSize": "28sp",
+        "fontWeight": "400",
+        "letterSpacing": "0sp",
+        "lineHeight": "36sp"
+      },
+      "description": "Headline medium - section headers"
+    },
+    "headline-small": {
+      "$type": "typography",
+      "value": {
+        "fontFamily": "Roboto",
+        "fontSize": "24sp",
+        "fontWeight": "400",
+        "letterSpacing": "0sp",
+        "lineHeight": "32sp"
+      },
+      "description": "Headline small - card headers"
+    },
+    "title-large": {
+      "$type": "typography",
+      "value": {
+        "fontFamily": "Roboto",
+        "fontSize": "22sp",
+        "fontWeight": "500",
+        "letterSpacing": "0sp",
+        "lineHeight": "28sp"
+      },
+      "description": "Title large - prominent titles"
+    },
+    "title-medium": {
+      "$type": "typography",
+      "value": {
+        "fontFamily": "Roboto",
+        "fontSize": "16sp",
+        "fontWeight": "500",
+        "letterSpacing": "0.15sp",
+        "lineHeight": "24sp"
+      },
+      "description": "Title medium - list item titles"
+    },
+    "title-small": {
+      "$type": "typography",
+      "value": {
+        "fontFamily": "Roboto",
+        "fontSize": "14sp",
+        "fontWeight": "500",
+        "letterSpacing": "0.1sp",
+        "lineHeight": "20sp"
+      },
+      "description": "Title small - dense UI titles"
+    },
+    "body-large": {
+      "$type": "typography",
+      "value": {
+        "fontFamily": "Roboto",
+        "fontSize": "16sp",
+        "fontWeight": "400",
+        "letterSpacing": "0.5sp",
+        "lineHeight": "24sp"
+      },
+      "description": "Body large - primary body text"
+    },
+    "body-medium": {
+      "$type": "typography",
+      "value": {
+        "fontFamily": "Roboto",
+        "fontSize": "14sp",
+        "fontWeight": "400",
+        "letterSpacing": "0.25sp",
+        "lineHeight": "20sp"
+      },
+      "description": "Body medium - secondary body text"
+    },
+    "body-small": {
+      "$type": "typography",
+      "value": {
+        "fontFamily": "Roboto",
+        "fontSize": "12sp",
+        "fontWeight": "400",
+        "letterSpacing": "0.4sp",
+        "lineHeight": "16sp"
+      },
+      "description": "Body small - captions, helper text"
+    },
+    "label-large": {
+      "$type": "typography",
+      "value": {
+        "fontFamily": "Roboto",
+        "fontSize": "14sp",
+        "fontWeight": "500",
+        "letterSpacing": "0.1sp",
+        "lineHeight": "20sp"
+      },
+      "description": "Label large - button text"
+    },
+    "label-medium": {
+      "$type": "typography",
+      "value": {
+        "fontFamily": "Roboto",
+        "fontSize": "12sp",
+        "fontWeight": "500",
+        "letterSpacing": "0.5sp",
+        "lineHeight": "16sp"
+      },
+      "description": "Label medium - input labels"
+    },
+    "label-small": {
+      "$type": "typography",
+      "value": {
+        "fontFamily": "Roboto",
+        "fontSize": "11sp",
+        "fontWeight": "500",
+        "letterSpacing": "0.5sp",
+        "lineHeight": "16sp"
+      },
+      "description": "Label small - smallest UI text"
+    }
+  },
+
+  "size": {
+    "icon-small": {
+      "$type": "dimension",
+      "value": "16dp",
+      "description": "Small icon size"
+    },
+    "icon-medium": {
+      "$type": "dimension",
+      "value": "24dp",
+      "description": "Default icon size"
+    },
+    "icon-large": {
+      "$type": "dimension",
+      "value": "32dp",
+      "description": "Large icon size"
+    },
+    "touch-target": {
+      "$type": "dimension",
+      "value": "48dp",
+      "description": "Minimum touch target size (WCAG)"
+    },
+    "input-height": {
+      "$type": "dimension",
+      "value": "56dp",
+      "description": "Standard input field height"
+    },
+    "button-height": {
+      "$type": "dimension",
+      "value": "48dp",
+      "description": "Standard button height"
+    },
+    "top-bar-height": {
+      "$type": "dimension",
+      "value": "56dp",
+      "description": "Top app bar height"
+    },
+    "logo-size": {
+      "$type": "dimension",
+      "value": "120dp",
+      "description": "App logo size (splash screen)"
+    },
+    "illustration-size": {
+      "$type": "dimension",
+      "value": "80dp",
+      "description": "Illustration/icon size (success, email)"
+    }
+  },
+
+  "animation": {
+    "duration-short": {
+      "$type": "duration",
+      "value": "150ms",
+      "description": "Short animations - button press"
+    },
+    "duration-medium": {
+      "$type": "duration",
+      "value": "300ms",
+      "description": "Medium animations - fade, slide"
+    },
+    "duration-long": {
+      "$type": "duration",
+      "value": "500ms",
+      "description": "Long animations - page transitions"
+    },
+    "easing-standard": {
+      "$type": "cubicBezier",
+      "value": [0.4, 0.0, 0.2, 1],
+      "description": "Standard easing curve"
+    },
+    "easing-decelerate": {
+      "$type": "cubicBezier",
+      "value": [0.0, 0.0, 0.2, 1],
+      "description": "Decelerate easing - elements entering screen"
+    },
+    "easing-accelerate": {
+      "$type": "cubicBezier",
+      "value": [0.4, 0.0, 1, 1],
+      "description": "Accelerate easing - elements leaving screen"
+    }
+  },
+
+  "viewport": {
+    "mobile-portrait": {
+      "width": "360dp",
+      "height": "800dp",
+      "description": "Base mobile frame size"
+    },
+    "content-max-width": {
+      "value": "280dp",
+      "description": "Maximum content width for readability"
+    },
+    "horizontal-padding": {
+      "value": "24dp",
+      "description": "Standard horizontal page padding"
+    }
+  }
+}

@@ -1,0 +1,331 @@
+@custom-variant dark (&:is(.dark *));
+
+/* Material 3 Design System - GlobalFlavors Theme */
+:root {
+  /* Typography */
+  --font-size: 16px;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  
+  /* Material 3 - Primary Color (Vibrant Pink/Purple) */
+  --primary: #D81B60;
+  --on-primary: #FFFFFF;
+  --primary-container: #FFD7E5;
+  --on-primary-container: #3E001D;
+  
+  /* Material 3 - Secondary Color */
+  --secondary: #7B5264;
+  --on-secondary: #FFFFFF;
+  --secondary-container: #FFD9E4;
+  --on-secondary-container: #301120;
+  
+  /* Material 3 - Tertiary Color */
+  --tertiary: #815343;
+  --on-tertiary: #FFFFFF;
+  --tertiary-container: #FFDBD0;
+  --on-tertiary-container: #321207;
+  
+  /* Material 3 - Error */
+  --error: #BA1A1A;
+  --on-error: #FFFFFF;
+  --error-container: #FFDAD6;
+  --on-error-container: #410002;
+  
+  /* Material 3 - Surface & Background */
+  --surface: #FFFBFF;
+  --surface-dim: #E6E0E4;
+  --surface-bright: #FFFBFF;
+  --surface-container-lowest: #FFFFFF;
+  --surface-container-low: #FFF4F9;
+  --surface-container: #FCEEF4;
+  --surface-container-high: #F6E8EF;
+  --surface-container-highest: #F1E3E9;
+  --on-surface: #201A1C;
+  --on-surface-variant: #524347;
+  --surface-tint: #D81B60;
+  
+  /* Material 3 - Outline */
+  --outline: #857377;
+  --outline-variant: #D7C2C7;
+  
+  /* Shadows & Elevation */
+  --shadow: rgba(0, 0, 0, 0.3);
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 3px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  
+  /* Border Radius - Material 3 */
+  --radius-none: 0px;
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 28px;
+  --radius-full: 9999px;
+  
+  /* Mapped to shadcn/ui tokens */
+  --background: var(--surface);
+  --foreground: var(--on-surface);
+  --card: var(--surface-container);
+  --card-foreground: var(--on-surface);
+  --popover: var(--surface-container-high);
+  --popover-foreground: var(--on-surface);
+  --primary-foreground: var(--on-primary);
+  --secondary-foreground: var(--on-secondary);
+  --muted: var(--surface-container-highest);
+  --muted-foreground: var(--on-surface-variant);
+  --accent: var(--secondary-container);
+  --accent-foreground: var(--on-secondary-container);
+  --destructive: var(--error);
+  --destructive-foreground: var(--on-error);
+  --border: var(--outline-variant);
+  --input: var(--outline);
+  --input-background: var(--surface-container-high);
+  --switch-background: var(--outline);
+  --ring: var(--primary);
+  --radius: var(--radius-md);
+  
+  /* Charts */
+  --chart-1: #D81B60;
+  --chart-2: #7B5264;
+  --chart-3: #815343;
+  --chart-4: #AB47BC;
+  --chart-5: #FF6F00;
+  
+  /* Sidebar */
+  --sidebar: var(--surface-container);
+  --sidebar-foreground: var(--on-surface);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--on-primary);
+  --sidebar-accent: var(--surface-container-high);
+  --sidebar-accent-foreground: var(--on-surface);
+  --sidebar-border: var(--outline-variant);
+  --sidebar-ring: var(--primary);
+}
+
+.dark {
+  /* Material 3 Dark - Primary */
+  --primary: #FFB0C9;
+  --on-primary: #5E1133;
+  --primary-container: #7C2949;
+  --on-primary-container: #FFD9E4;
+  
+  /* Material 3 Dark - Secondary */
+  --secondary: #E3BDC9;
+  --on-secondary: #492534;
+  --secondary-container: #623B4B;
+  --on-secondary-container: #FFD9E4;
+  
+  /* Material 3 Dark - Tertiary */
+  --tertiary: #F5B9A5;
+  --on-tertiary: #4C2619;
+  --tertiary-container: #663C2D;
+  --on-tertiary-container: #FFDBD0;
+  
+  /* Material 3 Dark - Error */
+  --error: #FFB4AB;
+  --on-error: #690005;
+  --error-container: #93000A;
+  --on-error-container: #FFDAD6;
+  
+  /* Material 3 Dark - Surface & Background */
+  --surface: #191113;
+  --surface-dim: #191113;
+  --surface-bright: #403A3C;
+  --surface-container-lowest: #140C0F;
+  --surface-container-low: #221B1D;
+  --surface-container: #262021;
+  --surface-container-high: #312A2C;
+  --surface-container-highest: #3C3437;
+  --on-surface: #ECE0E2;
+  --on-surface-variant: #D7C2C7;
+  --surface-tint: #FFB0C9;
+  
+  /* Material 3 Dark - Outline */
+  --outline: #9F8C91;
+  --outline-variant: #524347;
+  
+  /* Mapped tokens */
+  --background: var(--surface);
+  --foreground: var(--on-surface);
+  --card: var(--surface-container);
+  --card-foreground: var(--on-surface);
+  --popover: var(--surface-container-high);
+  --popover-foreground: var(--on-surface);
+  --primary-foreground: var(--on-primary);
+  --secondary-foreground: var(--on-secondary);
+  --muted: var(--surface-container-highest);
+  --muted-foreground: var(--on-surface-variant);
+  --accent: var(--secondary-container);
+  --accent-foreground: var(--on-secondary-container);
+  --destructive: var(--error);
+  --destructive-foreground: var(--on-error);
+  --border: var(--outline-variant);
+  --input: var(--outline);
+  --ring: var(--primary);
+  
+  /* Charts Dark */
+  --chart-1: #FFB0C9;
+  --chart-2: #E3BDC9;
+  --chart-3: #F5B9A5;
+  --chart-4: #CE93D8;
+  --chart-5: #FFB74D;
+  
+  /* Sidebar Dark */
+  --sidebar: var(--surface-container);
+  --sidebar-foreground: var(--on-surface);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--on-primary);
+  --sidebar-accent: var(--surface-container-high);
+  --sidebar-accent-foreground: var(--on-surface);
+  --sidebar-border: var(--outline-variant);
+  --sidebar-ring: var(--primary);
+}
+
+@theme inline {
+  /* Material 3 Color Tokens */
+  --color-primary: var(--primary);
+  --color-on-primary: var(--on-primary);
+  --color-primary-container: var(--primary-container);
+  --color-on-primary-container: var(--on-primary-container);
+  --color-secondary: var(--secondary);
+  --color-on-secondary: var(--on-secondary);
+  --color-secondary-container: var(--secondary-container);
+  --color-on-secondary-container: var(--on-secondary-container);
+  --color-tertiary: var(--tertiary);
+  --color-on-tertiary: var(--on-tertiary);
+  --color-tertiary-container: var(--tertiary-container);
+  --color-on-tertiary-container: var(--on-tertiary-container);
+  --color-error: var(--error);
+  --color-on-error: var(--on-error);
+  --color-error-container: var(--error-container);
+  --color-on-error-container: var(--on-error-container);
+  --color-surface: var(--surface);
+  --color-surface-dim: var(--surface-dim);
+  --color-surface-bright: var(--surface-bright);
+  --color-surface-container-lowest: var(--surface-container-lowest);
+  --color-surface-container-low: var(--surface-container-low);
+  --color-surface-container: var(--surface-container);
+  --color-surface-container-high: var(--surface-container-high);
+  --color-surface-container-highest: var(--surface-container-highest);
+  --color-on-surface: var(--on-surface);
+  --color-on-surface-variant: var(--on-surface-variant);
+  --color-outline: var(--outline);
+  --color-outline-variant: var(--outline-variant);
+  --color-surface-tint: var(--surface-tint);
+  
+  /* Shadcn/UI Compatibility */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  
+  /* Sidebar */
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/**
+ * Base typography. This is not applied to elements which have an ancestor with a Tailwind text class.
+ */
+@layer base {
+  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) {
+    h1 {
+      font-size: var(--text-2xl);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h2 {
+      font-size: var(--text-xl);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h3 {
+      font-size: var(--text-lg);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h4 {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    p {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+    }
+
+    label {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    button {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    input {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+    }
+  }
+}
+
+html {
+  font-size: var(--font-size);
+}
+
+/* Material 3 Loading Animation */
+@keyframes slide {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(100%);
+  }
+}

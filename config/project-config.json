@@ -66,7 +66,8 @@
       "file_id": "TO_BE_CONFIGURED",
       "api_base_url": "https://api.figma.com/v1",
       "design_system": "Material Design 3",
-      "primary_color": "#FF4081",
+      "primary_color": "#D81B60",
+      "_note": "Primary color updated from #FF4081 to #D81B60 to match Material 3 UI kit",
       "_capabilities": {
         "available_with_personal_token": [
           "Get file metadata",
@@ -83,6 +84,17 @@
           "Publish libraries"
         ]
       }
+    },
+
+    "ui_kit_reference": {
+      "source_repository": "https://github.com/juanvallejo97/Frontendpatch",
+      "framework": "React + TypeScript",
+      "component_library": "shadcn/ui",
+      "design_system": "Material Design 3",
+      "integrated_date": "2025-10-21",
+      "location": "ui-kit-reference/",
+      "purpose": "Visual reference for FlutterFlow development",
+      "_note": "Cannot be directly imported into FlutterFlow - use as design reference"
     }
   },
 
