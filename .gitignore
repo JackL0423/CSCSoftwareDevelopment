@@ -1,0 +1,184 @@
+# GlobalFlavors - Git Ignore Configuration
+#
+# This file prevents sensitive and unnecessary files from being committed to git
+
+# =============================================================================
+# SECRETS & ENVIRONMENT FILES (CRITICAL - NEVER COMMIT)
+# =============================================================================
+.env
+.env.local
+.env.*.local
+.env.development
+.env.testing
+.env.production
+.env.staging
+
+# Secret files
+secrets/
+*.pem
+*.key
+*.p12
+*.pfx
+*-key.json
+service-account*.json
+firebase-service-account.json
+
+# Firebase config (NEVER commit service account keys!)
+config/firebase/service-account.json
+config/firebase/*-adminsdk-*.json
+
+# Temporary files with secrets
+/tmp/*
+*.tmp
+*.bak
+*_backup
+
+# =============================================================================
+# NODE / NPM
+# =============================================================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Package manager lock files (keep yarn.lock or package-lock.json but not both)
+# Uncomment one if needed:
+# package-lock.json
+# yarn.lock
+
+# =============================================================================
+# BUILD OUTPUT
+# =============================================================================
+dist/
+build/
+out/
+.next/
+.nuxt/
+.cache/
+.parcel-cache/
+.output/
+
+# =============================================================================
+# LOGS
+# =============================================================================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# =============================================================================
+# TESTING
+# =============================================================================
+coverage/
+.nyc_output/
+*.lcov
+.jest/
+
+# =============================================================================
+# IDE / EDITOR
+# =============================================================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+*~
+.DS_Store
+Thumbs.db
+
+# JetBrains IDEs
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# =============================================================================
+# PYTHON (if using Python scripts)
+# =============================================================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+ENV/
+env/
+.venv/
+
+# =============================================================================
+# MACOS
+# =============================================================================
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# =============================================================================
+# WINDOWS
+# =============================================================================
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# =============================================================================
+# LINUX
+# =============================================================================
+*~
+.directory
+.Trash-*
+
+# =============================================================================
+# FLUTTERFLOW / FLUTTER
+# =============================================================================
+.flutter/
+.dart_tool/
+.packages
+.pub-cache/
+.pub/
+*.dart.js
+*.part.dart
+
+# FlutterFlow generated files
+flutterflow_generated/
+
+# =============================================================================
+# FIREBASE
+# =============================================================================
+.firebase/
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+
+# =============================================================================
+# FIGMA
+# =============================================================================
+# Downloaded Figma assets (can be re-exported)
+figma-exports/
+*.fig
+
+# =============================================================================
+# TEMPORARY / CACHE
+# =============================================================================
+tmp/
+temp/
+*.cache
+.cache/
+.temp/
+
+# =============================================================================
+# DOCUMENTATION (Generated)
+# =============================================================================
+# Keep manually created docs, ignore auto-generated
+docs/generated/
+*.pdf
+
+# =============================================================================
+# CUSTOM PROJECT IGNORES
+# =============================================================================
+# Add any project-specific files to ignore here

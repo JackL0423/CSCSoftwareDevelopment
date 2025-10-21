@@ -1,0 +1,205 @@
+{
+  "_comment": "GlobalFlavors - Single Source of Truth Configuration",
+  "_version": "1.0.0",
+  "_last_updated": "2025-10-20",
+
+  "project": {
+    "name": "GlobalFlavors",
+    "tagline": "Discover authentic regional dishes you can cook tonight",
+    "description": "Culture-first recipe discovery app with local ingredient substitutions and one-tap grocery checkout",
+    "repository": "https://github.com/YOUR_ORG/CSCSoftwareDevelopment",
+    "documentation": "https://docs.google.com/presentation/d/1AdgIL1-TdeeoC_RMIq0idQqPlhmNeccVTQsqzTekolU"
+  },
+
+  "team": {
+    "email": "uricsc305@gmail.com",
+    "members": [
+      "john.light@uri.edu",
+      "mariamillington@uri.edu",
+      "alexander.hang@uri.edu",
+      "sophia.dellaselva@uri.edu",
+      "Juan_vallejo@uri.edu"
+    ]
+  },
+
+  "branches": {
+    "main": "main",
+    "development": "JUAN-SIDE-BRANCH",
+    "current": "JUAN-SIDE-BRANCH",
+    "_note": "FlutterFlow branches are managed in FlutterFlow UI only - no API access available. Ensure manual sync between git and FlutterFlow."
+  },
+
+  "platforms": {
+    "gcp": {
+      "project_id": "csc305project-475802",
+      "project_number": "815086348049",
+      "region": "us-central1",
+      "services": [
+        "secretmanager.googleapis.com",
+        "cloudfunctions.googleapis.com",
+        "firestore.googleapis.com"
+      ]
+    },
+
+    "firebase": {
+      "project_id": "csc-305-dev-project",
+      "service_account": "firebase-adminsdk-fbsvc@csc-305-dev-project.iam.gserviceaccount.com",
+      "service_account_key_path": "./config/firebase/service-account.json",
+      "emulator_host": "localhost:9099",
+      "services": [
+        "authentication",
+        "firestore",
+        "storage",
+        "functions"
+      ]
+    },
+
+    "flutterflow": {
+      "project_id": "c-s-c305-capstone-khj14l",
+      "project_name": "CSC305Capstone",
+      "api_base_url": "https://api.flutterflow.io/v2",
+      "branch": "JUAN-SIDE-BRANCH",
+      "_note": "FlutterFlow branch must be manually created/switched in FlutterFlow UI. API does not support branching operations."
+    },
+
+    "figma": {
+      "file_id": "TO_BE_CONFIGURED",
+      "api_base_url": "https://api.figma.com/v1",
+      "design_system": "Material Design 3",
+      "primary_color": "#FF4081",
+      "_capabilities": {
+        "available_with_personal_token": [
+          "Get file metadata",
+          "Get file nodes",
+          "Get image exports (PNG, JPG, SVG, PDF)",
+          "Get component information",
+          "Get styles (colors, text, effects, grids)",
+          "Get comments",
+          "Post comments"
+        ],
+        "requires_enterprise": [
+          "Get variables (design tokens)",
+          "Modify variables",
+          "Publish libraries"
+        ]
+      }
+    }
+  },
+
+  "secrets": {
+    "_stored_in": "Google Secret Manager",
+    "_project": "csc305project-475802",
+    "development": {
+      "FIREBASE_SERVICE_ACCOUNT_JSON": "FIREBASE_SERVICE_ACCOUNT_JSON",
+      "FIREBASE_PROJECT_ID": "FIREBASE_PROJECT_ID",
+      "FIREBASE_WEB_API_KEY": "FIREBASE_WEB_API_KEY",
+      "FLUTTERFLOW_API_TOKEN": "FLUTTERFLOW_API_TOKEN",
+      "FLUTTERFLOW_PROJECT_ID": "FLUTTERFLOW_PROJECT_ID",
+      "FIGMA_API_KEY": "FIGMA_API_KEY",
+      "FIGMA_FILE_ID": "FIGMA_FILE_ID"
+    },
+    "testing": {
+      "_suffix": "_TESTING",
+      "_note": "All testing secrets use _TESTING suffix"
+    },
+    "production": {
+      "_suffix": "_PROD",
+      "_note": "All production secrets use _PROD suffix"
+    }
+  },
+
+  "environments": {
+    "local": {
+      "NODE_ENV": "development",
+      "ENVIRONMENT": "local",
+      "DEBUG": true,
+      "LOG_LEVEL": "debug",
+      "FIREBASE_EMULATOR": true,
+      "API_PORT": 3000
+    },
+    "testing": {
+      "NODE_ENV": "testing",
+      "ENVIRONMENT": "staging",
+      "DEBUG": true,
+      "LOG_LEVEL": "info",
+      "FIREBASE_EMULATOR": false
+    },
+    "production": {
+      "NODE_ENV": "production",
+      "ENVIRONMENT": "production",
+      "DEBUG": false,
+      "LOG_LEVEL": "error",
+      "FIREBASE_EMULATOR": false
+    }
+  },
+
+  "integrations": {
+    "grocery_affiliates": {
+      "instacart": {
+        "api_base_url": "https://api.instacart.com",
+        "affiliate_program": true
+      },
+      "walmart": {
+        "api_base_url": "https://api.walmart.com",
+        "affiliate_program": true
+      },
+      "amazon_fresh": {
+        "api_base_url": "https://api.amazon.com",
+        "affiliate_program": true
+      }
+    }
+  },
+
+  "development": {
+    "ui_phases": {
+      "phase_1_auth_flow": {
+        "status": "in_progress",
+        "pages": [
+          "Splash Screen - 2s delay, fade to login",
+          "Login Page - Email/password + social login",
+          "Sign Up Page - Registration with password strength meter",
+          "Forgot Password - Reset flow with success state",
+          "Email Verification - Countdown timer + resend button"
+        ]
+      },
+      "phase_2_discovery": {
+        "status": "planned",
+        "pages": [
+          "Home/Discovery - Region-first browsing",
+          "Region Detail - Country/region exploration",
+          "Dish Detail - Recipe + ingredients",
+          "Grocery List - One-tap cart generation"
+        ]
+      },
+      "phase_3_cook_mode": {
+        "status": "planned",
+        "pages": [
+          "Guided Cook Mode - Step-by-step with timers",
+          "Pantry Management - Track staples",
+          "Social Features - Save, share, remix"
+        ]
+      }
+    }
+  },
+
+  "security": {
+    "exposed_keys_requiring_rotation": [
+      {
+        "type": "FlutterFlow API Token",
+        "value": "9dc3d62e-****-****-****-********7c0",
+        "exposed_date": "2025-10-20",
+        "action_required": "Generate new token in FlutterFlow → Account Settings → API",
+        "priority": "HIGH",
+        "status": "PENDING_ROTATION"
+      },
+      {
+        "type": "Figma API Key",
+        "value": "figd_****************************CwuI",
+        "exposed_date": "2025-10-20",
+        "action_required": "Revoke in Figma → Settings → Personal Access Tokens",
+        "priority": "HIGH",
+        "status": "PENDING_ROTATION"
+      }
+    ]
+  }
+}
