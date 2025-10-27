@@ -6,6 +6,6 @@ We can track this by tracking the first time the user scrolls all the way to the
 Metric 2: Recipe Search Engagement
 We will log a custom Firebase Analytics event `recipe_search` every time a user performs a search in the app. This measures how actively users explore new recipes and cuisines. Implement via FlutterFlow’s “Log Firebase Event” action.
 
-Sophia
+(Sophia)
 Metric 3: Ingredient Substitution Help 
 We will track if a user sees the pop-up and if they tap the “Helpful” button using Firebase Analytics events. We will also compare recipe completion rates to see if the pop-up helps users finish recipes when an ingredient substitution is needed.
