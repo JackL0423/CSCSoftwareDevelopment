@@ -67,3 +67,42 @@ Some users do not progress into the Golden Path after landing on the home screen
   - Page load → `search_view`
   - Tap/submit search → `recipe_search`
 - Use DebugView for validation before experiment launch
+
+**A/B Test Name:** Ingredient Substitution Pop-Up Help  
+**User Story Number:** US4 – Golden Path
+
+### Metrics
+- Number of users tapping “Helpful” on the pop-up (`substitution_helpful`)
+- Increase in recipe completion (`recipe_completed`)
+- Decrease in recipe confusion or shopping issues (`grocery_sync_error`)
+
+### Hypothesis
+If users get a quick explanation for an ingredient substitution, they will feel less confused and will be more likely to finish cooking the recipe.
+
+### Problem & Impact
+Some users stop cooking when they can’t find or recognize certain ingredients. This hurts engagement and the main experience of our app which is helping users cook global meals easily. Explaining substitutions improves confidence and keeps users progressing through the recipe.
+
+### Experiment
+- Use Firebase Remote Config to show a pop-up message explaining ingredient substitutions:
+  - `show_substitution_popup = true` → sees pop-up
+  - `show_substitution_popup = false` → no pop-up
+- Audience: Users who view recipes with substituted ingredients
+- Split: 50% control / 50% variant
+
+**Events Tracked**
+- `substitution_popup_view`
+- `substitution_helpful`
+- `recipe_completed`
+- `grocery_sync_error`
+
+**Primary success metric:** More recipe completions  
+**Secondary success metric:** More “Helpful” button taps
+
+### Variations
+- **Control (A):** Substitution only shown as regular text on recipe page
+- **Variant (B):** Pop-up with a short explanation and two buttons:
+  - “Helpful”
+  - “Skip”
+
+### Implementation Notes
+Tracking done using Firebase Analytics events. Pop-up display controlled by Remote Config.
