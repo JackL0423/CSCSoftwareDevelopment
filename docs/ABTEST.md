@@ -68,7 +68,10 @@ Some users do not progress into the Golden Path after landing on the home screen
   - Tap/submit search → `recipe_search`
 - Use DebugView for validation before experiment launch
 
+##  A/B Test – Ingredient Substitution Pop-Up Help  
+
 **A/B Test Name:** Ingredient Substitution Pop-Up Help  
+
 **User Story Number:** US4 – Golden Path
 
 ### Metrics
