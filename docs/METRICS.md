@@ -8,3 +8,6 @@ We will log a custom Firebase Analytics event `recipe_search` every time a user 
 
 **Metric 3: Ingredient Substitution Help**<br><br>
 We will track if a user sees the pop-up and if they tap the “Helpful” button using Firebase Analytics events. We will also compare recipe completion rates to see if the pop-up helps users finish recipes when an ingredient substitution is needed.
+
+**Metric 4: User Search Efficiency**
+We will record how many recipes/searches it takes for a user to add a recipe to their cart. It will measure how effective our search is. Lower searches means more effient search algo, more searches means tweaking needs to be done to our prompt. 
