@@ -109,3 +109,25 @@ Some users stop cooking when they can’t find or recognize certain ingredients.
 
 ### Implementation Notes
 Tracking done using Firebase Analytics events. Pop-up display controlled by Remote Config.
+
+## Searches to Recipe
+
+### Hypothesis
+Users who are shown variant B will require fewer search actions to reach their desired recipe than users in variant A.
+
+### Primary Metric 
+Number of search actions performed by user in a session before selecting/viewing the desired recipe.
+
+### Experiment 
+- Use Firebase to collect the time from first search to recipe view
+- percent of sessions where user gives up without finding a recipe
+- Engagement: number of interactions from recipe (saving, sharing)
+
+### Variations
+- **Control (A):** Current search flow as implemented (existing UI / search bar behavior).
+- **Variant (B):** Modified search flow, show suggested auto-filters after first search or reorder search results
+
+### Implementation
+- Use custom variable `searchCountSession` to track each time user hits search.
+- `search_path_completed` to track if the user successfully found what they were looking for.
+- `search_path_giveup` to track whether a user never clicked on a recipe, represents a failed user story.
