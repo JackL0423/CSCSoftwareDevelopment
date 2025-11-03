@@ -12,7 +12,20 @@
           "package_name": "com.mycompany.csc305capstone"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "54503053415-oslpp6lokelijif7igbjqd01hhkmpnr9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mycompany.csc305capstone",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "54503053415-6qo9ohlmhmu5dp850h2u2k9va605hju8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDIeFZhyBJN-PildZVsza0QUZsx1DS8X7U"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "54503053415-6qo9ohlmhmu5dp850h2u2k9va605hju8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "54503053415-2bij8qso8b9unsit74shcktiali135cd.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mycompany.csc305capstone"
+              }
+            }
+          ]
         }
       }
     }
