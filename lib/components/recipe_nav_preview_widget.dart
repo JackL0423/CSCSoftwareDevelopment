@@ -241,6 +241,10 @@ class _RecipeNavPreviewWidgetState extends State<RecipeNavPreviewWidget> {
                     ),
                     FFButtonWidget(
                       onPressed: () async {
+                        logFirebaseEvent(
+                            'RECIPE_NAV_PREVIEW_VIEW_RECIPE_BTN_ON_TA');
+                        logFirebaseEvent('Button_navigate_to');
+
                         context.pushNamed(RecipeViewPageWidget.routeName);
                       },
                       text: 'View Recipe',

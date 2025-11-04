@@ -33,6 +33,7 @@ class _GoldenPathWidgetState extends State<GoldenPathWidget> {
     super.initState();
     _model = createModel(context, () => GoldenPathModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'GoldenPath'});
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
 
@@ -124,6 +125,10 @@ class _GoldenPathWidgetState extends State<GoldenPathWidget> {
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
+                            logFirebaseEvent(
+                                'GOLDEN_PATH_Container_vd4kbg6p_ON_TAP');
+                            logFirebaseEvent('Container_navigate_to');
+
                             context.pushNamed(ProfileWidget.routeName);
                           },
                           child: Container(
@@ -211,6 +216,10 @@ class _GoldenPathWidgetState extends State<GoldenPathWidget> {
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
+                            logFirebaseEvent(
+                                'GOLDEN_PATH_Container_3u6x57jj_ON_TAP');
+                            logFirebaseEvent('Container_navigate_to');
+
                             context.pushNamed(HomePageWidget.routeName);
                           },
                           child: Container(
@@ -298,6 +307,10 @@ class _GoldenPathWidgetState extends State<GoldenPathWidget> {
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
+                            logFirebaseEvent(
+                                'GOLDEN_PATH_Container_or2uh8pc_ON_TAP');
+                            logFirebaseEvent('Container_navigate_to');
+
                             context.pushNamed(GoldenPathWidget.routeName);
                           },
                           child: Container(
@@ -470,6 +483,9 @@ class _GoldenPathWidgetState extends State<GoldenPathWidget> {
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
+                            logFirebaseEvent(
+                                'GOLDEN_PATH_Container_fyijx4cf_ON_TAP');
+                            logFirebaseEvent('Container_auth');
                             GoRouter.of(context).prepareAuthEvent();
                             await authManager.signOut();
                             GoRouter.of(context).clearRedirectLocation();
@@ -633,6 +649,9 @@ class _GoldenPathWidgetState extends State<GoldenPathWidget> {
                         size: 24.0,
                       ),
                       onPressed: () async {
+                        logFirebaseEvent(
+                            'GOLDEN_PATH_PAGE_menu_rounded_ICN_ON_TAP');
+                        logFirebaseEvent('IconButton_drawer');
                         scaffoldKey.currentState!.openDrawer();
                       },
                     ),
@@ -643,7 +662,7 @@ class _GoldenPathWidgetState extends State<GoldenPathWidget> {
               expandedTitleScale: 1.0,
               titlePadding: EdgeInsetsDirectional.fromSTEB(1.0, 5.0, 0.0, 10.0),
             ),
-            toolbarHeight: 40.0,
+            toolbarHeight: 50.0,
             elevation: 0.0,
           ),
         ),
@@ -661,10 +680,22 @@ class _GoldenPathWidgetState extends State<GoldenPathWidget> {
                   child: TextFormField(
                     controller: _model.textController,
                     focusNode: _model.textFieldFocusNode,
+                    onFieldSubmitted: (_) async {
+                      logFirebaseEvent(
+                          'GOLDEN_PATH_TextField_pj8jztjz_ON_TEXTFI');
+                      logFirebaseEvent('TextField_google_analytics_event');
+                      logFirebaseEvent(
+                        'RecipeSearch',
+                        parameters: {
+                          'querySearch': _model.textController.text,
+                          'Country': _model.dropDownValue,
+                        },
+                      );
+                    },
                     autofocus: false,
                     obscureText: false,
                     decoration: InputDecoration(
-                      hintText: 'Search for recipes...',
+                      hintText: getRemoteConfigString('SearchTextfield'),
                       hintStyle:
                           FlutterFlowTheme.of(context).bodyMedium.override(
                                 font: GoogleFonts.spaceGrotesk(

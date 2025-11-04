@@ -9,7 +9,7 @@ class ProfileModel extends FlutterFlowModel<ProfileWidget> {
 
   bool isDataUploading_profilePic = false;
   FFUploadedFile uploadedLocalFile_profilePic =
-      FFUploadedFile(bytes: Uint8List.fromList([]));
+      FFUploadedFile(bytes: Uint8List.fromList([]), originalFilename: '');
   String uploadedFileUrl_profilePic = '';
 
   // State field(s) for emailField widget.

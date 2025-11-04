@@ -27,6 +27,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     super.initState();
     _model = createModel(context, () => HomePageModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'HomePage'});
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -200,6 +201,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           ),
                           FFButtonWidget(
                             onPressed: () async {
+                              logFirebaseEvent(
+                                  'HOME_PAGE_PAGE_START_COOKING_BTN_ON_TAP');
+                              logFirebaseEvent('Button_navigate_to');
+
                               context.pushNamed(GoldenPathWidget.routeName);
                             },
                             text: 'Start Cooking',
@@ -616,6 +621,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               Expanded(
                                 child: FFButtonWidget(
                                   onPressed: () async {
+                                    logFirebaseEvent(
+                                        'HOME_PAGE_PAGE_RECIPES_BTN_ON_TAP');
+                                    logFirebaseEvent('Button_navigate_to');
+
                                     context
                                         .pushNamed(GoldenPathWidget.routeName);
                                   },
