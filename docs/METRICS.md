@@ -1,5 +1,9 @@
 https://docs.google.com/presentation/d/1v-aC7fV9JYPXmm0UWb9eIlruzgUbsn-iV_jjc4utHhI/edit?slide=id.gc8216bd24_20_0#slide=id.gc8216bd24_20_0
 
+**Happiness Metric: Net Promoter Score (NPS)**<br><br>
+
+We will track user responses to the in-app NPS survey using Firebase Analytics events. Each submission logs a score from 0–10 under the nps_score event. We will use these values to calculate the average NPS and measure how satisfied and inspired users feel when cooking authentic regional meals. This metric aligns with the Happiness category of our HEART framework, focused on user delight and confidence.
+
 Metric 1: How many users complete their first recipe / any given recipe <br>
 We can track this by tracking the first time the user scrolls all the way to the bottom of a recipe's page. We could also create a dedicated "Recipe complete" button for users to press when finishing a recipe.
 
