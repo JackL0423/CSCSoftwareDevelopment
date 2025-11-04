@@ -4,7 +4,6 @@ import '/recipe_view_folder/recipe_info_card_prep/recipe_info_card_prep_widget.d
 import '/recipe_view_folder/recipe_view_cooking_steps/recipe_view_cooking_steps_widget.dart';
 import '/recipe_view_folder/recipe_view_ingridients/recipe_view_ingridients_widget.dart';
 import '/recipe_view_folder/recipe_view_review/recipe_view_review_widget.dart';
-import '/index.dart';
 import 'recipe_view_page_widget.dart' show RecipeViewPageWidget;
 import 'package:flutter/material.dart';
 

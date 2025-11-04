@@ -44,8 +44,8 @@ class _AddNewTagPrefWidgetState extends State<AddNewTagPrefWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
-      height: double.infinity,
+      width: 300.0,
+      height: 450.0,
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).secondaryBackground,
         borderRadius: BorderRadius.only(
@@ -74,6 +74,8 @@ class _AddNewTagPrefWidgetState extends State<AddNewTagPrefWidget> {
                     size: 24.0,
                   ),
                   onPressed: () async {
+                    logFirebaseEvent('ADD_NEW_TAG_PREF_arrow_back_ICN_ON_TAP');
+                    logFirebaseEvent('IconButton_bottom_sheet');
                     Navigator.pop(context);
                   },
                 ),
@@ -190,8 +192,11 @@ class _AddNewTagPrefWidgetState extends State<AddNewTagPrefWidget> {
           ),
           FFButtonWidget(
             onPressed: () async {
+              logFirebaseEvent('ADD_NEW_TAG_PREF_COMP_confirm_ON_TAP');
+              logFirebaseEvent('confirm_update_app_state');
               FFAppState().addToUserTags(_model.newTagFieldTextController.text);
               safeSetState(() {});
+              logFirebaseEvent('confirm_bottom_sheet');
               Navigator.pop(context);
             },
             text: 'Add tag',

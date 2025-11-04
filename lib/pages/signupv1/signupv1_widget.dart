@@ -63,6 +63,7 @@ class _Signupv1WidgetState extends State<Signupv1Widget> {
     super.initState();
     _model = createModel(context, () => Signupv1Model());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'SIGNUPV1'});
     _model.emailTextController ??= TextEditingController();
     _model.textFieldFocusNode1 ??= FocusNode();
 
@@ -567,6 +568,9 @@ class _Signupv1WidgetState extends State<Signupv1Widget> {
                   ),
                   FFButtonWidget(
                     onPressed: () async {
+                      logFirebaseEvent(
+                          'SIGNUPV1_PAGE_CREATE_ACCOUNT_BTN_ON_TAP');
+                      logFirebaseEvent('Button_validate_form');
                       if (_model.formKey.currentState == null ||
                           !_model.formKey.currentState!.validate()) {
                         return;
@@ -575,6 +579,7 @@ class _Signupv1WidgetState extends State<Signupv1Widget> {
                           FFAppState().confirmEmailField) {
                         if (FFAppState().passwordField ==
                             FFAppState().confirmPassword) {
+                          logFirebaseEvent('Button_auth');
                           GoRouter.of(context).prepareAuthEvent();
                           if (_model.passwordTextController.text !=
                               _model.confirmPasswordTextController.text) {
@@ -608,6 +613,7 @@ class _Signupv1WidgetState extends State<Signupv1Widget> {
                             ),
                           });
 
+                          logFirebaseEvent('Button_auth');
                           if (_model.emailTextController.text.isEmpty) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
@@ -625,12 +631,15 @@ class _Signupv1WidgetState extends State<Signupv1Widget> {
                           );
                           safeSetState(() {});
 
+                          logFirebaseEvent('Button_update_app_state');
                           FFAppState().emailField = currentUserEmail;
                           safeSetState(() {});
+                          logFirebaseEvent('Button_navigate_to');
 
                           context.pushNamedAuth(
                               ProfileWidget.routeName, context.mounted);
                         } else {
+                          logFirebaseEvent('Button_show_snack_bar');
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text(
@@ -647,6 +656,7 @@ class _Signupv1WidgetState extends State<Signupv1Widget> {
                           );
                         }
                       } else {
+                        logFirebaseEvent('Button_show_snack_bar');
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Text(
@@ -739,6 +749,8 @@ class _Signupv1WidgetState extends State<Signupv1Widget> {
                       Expanded(
                         child: FFButtonWidget(
                           onPressed: () async {
+                            logFirebaseEvent('SIGNUPV1_PAGE_GOOGLE_BTN_ON_TAP');
+                            logFirebaseEvent('Button_auth');
                             GoRouter.of(context).prepareAuthEvent();
                             final user =
                                 await authManager.signInWithGoogle(context);
@@ -791,6 +803,9 @@ class _Signupv1WidgetState extends State<Signupv1Widget> {
                           : Expanded(
                               child: FFButtonWidget(
                                 onPressed: () async {
+                                  logFirebaseEvent(
+                                      'SIGNUPV1_PAGE_APPLE_BTN_ON_TAP');
+                                  logFirebaseEvent('Button_auth');
                                   GoRouter.of(context).prepareAuthEvent();
                                   final user = await authManager
                                       .signInWithApple(context);
@@ -872,6 +887,10 @@ class _Signupv1WidgetState extends State<Signupv1Widget> {
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
+                          logFirebaseEvent(
+                              'SIGNUPV1_PAGE_Text_ia98ged6_ON_TAP');
+                          logFirebaseEvent('Text_navigate_to');
+
                           context.pushNamed(LoginWidget.routeName);
                         },
                         child: Text(

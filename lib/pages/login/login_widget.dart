@@ -47,6 +47,7 @@ class _LoginWidgetState extends State<LoginWidget> {
     super.initState();
     _model = createModel(context, () => LoginModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'login'});
     _model.textFieldEmailTextController ??= TextEditingController();
     _model.textFieldEmailFocusNode ??= FocusNode();
 
@@ -193,6 +194,10 @@ class _LoginWidgetState extends State<LoginWidget> {
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,
                               onTap: () async {
+                                logFirebaseEvent(
+                                    'LOGIN_PAGE_Text_cmtfzudv_ON_TAP');
+                                logFirebaseEvent('Text_navigate_to');
+
                                 context.pushNamed(Signupv1Widget.routeName);
                               },
                               child: Text(
@@ -461,6 +466,9 @@ class _LoginWidgetState extends State<LoginWidget> {
                                         hoverColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
+                                          logFirebaseEvent(
+                                              'LOGIN_PAGE_Text_17njhhkm_ON_TAP');
+                                          logFirebaseEvent('Text_bottom_sheet');
                                           await showModalBottomSheet(
                                             isScrollControlled: true,
                                             backgroundColor: Colors.transparent,
@@ -515,11 +523,15 @@ class _LoginWidgetState extends State<LoginWidget> {
                               ),
                               FFButtonWidget(
                                 onPressed: () async {
+                                  logFirebaseEvent(
+                                      'LOGIN_PAGE_LOG_IN_BTN_ON_TAP');
+                                  logFirebaseEvent('Button_validate_form');
                                   if (_model.formKey.currentState == null ||
                                       !_model.formKey.currentState!
                                           .validate()) {
                                     return;
                                   }
+                                  logFirebaseEvent('Button_auth');
                                   GoRouter.of(context).prepareAuthEvent();
 
                                   final user =
@@ -533,10 +545,13 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   }
 
                                   if (loggedIn) {
+                                    logFirebaseEvent('Button_navigate_to');
+
                                     context.pushNamedAuth(
                                         HomePageWidget.routeName,
                                         context.mounted);
                                   } else {
+                                    logFirebaseEvent('Button_show_snack_bar');
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
                                         content: Text(
@@ -647,6 +662,9 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   Expanded(
                                     child: FFButtonWidget(
                                       onPressed: () async {
+                                        logFirebaseEvent(
+                                            'LOGIN_PAGE_GOOGLE_BTN_ON_TAP');
+                                        logFirebaseEvent('Button_auth');
                                         GoRouter.of(context).prepareAuthEvent();
                                         final user = await authManager
                                             .signInWithGoogle(context);
@@ -704,6 +722,9 @@ class _LoginWidgetState extends State<LoginWidget> {
                                       : Expanded(
                                           child: FFButtonWidget(
                                             onPressed: () async {
+                                              logFirebaseEvent(
+                                                  'LOGIN_PAGE_APPLE_BTN_ON_TAP');
+                                              logFirebaseEvent('Button_auth');
                                               GoRouter.of(context)
                                                   .prepareAuthEvent();
                                               final user = await authManager

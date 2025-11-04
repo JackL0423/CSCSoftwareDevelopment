@@ -95,36 +95,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => AdminWidget(),
         ),
         FFRoute(
-          name: WebFallbackWidget.routeName,
-          path: WebFallbackWidget.routePath,
-          builder: (context, params) => WebFallbackWidget(),
-        ),
-        FFRoute(
-          name: EmailVerifyWidget.routeName,
-          path: EmailVerifyWidget.routePath,
-          builder: (context, params) => EmailVerifyWidget(),
-        ),
-        FFRoute(
-          name: OnboardingV1Widget.routeName,
-          path: OnboardingV1Widget.routePath,
-          builder: (context, params) => OnboardingV1Widget(),
-        ),
-        FFRoute(
-          name: OnboardingV2Widget.routeName,
-          path: OnboardingV2Widget.routePath,
-          builder: (context, params) => OnboardingV2Widget(),
-        ),
-        FFRoute(
-          name: OnboardingV3Widget.routeName,
-          path: OnboardingV3Widget.routePath,
-          builder: (context, params) => OnboardingV3Widget(),
-        ),
-        FFRoute(
-          name: OnboardingV4Widget.routeName,
-          path: OnboardingV4Widget.routePath,
-          builder: (context, params) => OnboardingV4Widget(),
-        ),
-        FFRoute(
           name: GoldenPathWidget.routeName,
           path: GoldenPathWidget.routePath,
           builder: (context, params) => GoldenPathWidget(),

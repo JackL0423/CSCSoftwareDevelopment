@@ -25,6 +25,7 @@ class _AdminWidgetState extends State<AdminWidget> {
     super.initState();
     _model = createModel(context, () => AdminModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'Admin'});
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 

@@ -38,8 +38,11 @@ class _ProfileWidgetState extends State<ProfileWidget> {
     super.initState();
     _model = createModel(context, () => ProfileModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'Profile'});
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('PROFILE_PAGE_Profile_ON_INIT_STATE');
+      logFirebaseEvent('Profile_update_app_state');
       FFAppState().emailField = currentUserEmail;
       FFAppState().userTags = (currentUserDocument?.prefTags.toList() ?? [])
           .toList()
@@ -113,6 +116,9 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                               size: 15.0,
                             ),
                             onPressed: () async {
+                              logFirebaseEvent(
+                                  'PROFILE_PAGE_arrow_back_ICN_ON_TAP');
+                              logFirebaseEvent('IconButton_navigate_back');
                               context.safePop();
                             },
                           ),
@@ -148,6 +154,8 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () async {
+                      logFirebaseEvent('PROFILE_PAGE_Stack_iqt1lwh1_ON_TAP');
+                      logFirebaseEvent('Stack_upload_media_to_firebase');
                       final selectedMedia =
                           await selectMediaWithSourceBottomSheet(
                         context: context,
@@ -169,6 +177,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                     height: m.dimensions?.height,
                                     width: m.dimensions?.width,
                                     blurHash: m.blurHash,
+                                    originalFilename: m.originalFilename,
                                   ))
                               .toList();
 
@@ -198,6 +207,8 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                           return;
                         }
                       }
+
+                      logFirebaseEvent('Stack_backend_call');
 
                       await currentUserReference!.update(createUsersRecordData(
                         photoUrl: _model.uploadedFileUrl_profilePic,
@@ -304,7 +315,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                       .labelMedium
                                       .fontStyle,
                                 ),
-                            hintText: 'Email',
+                            hintText: 'Email...',
                             hintStyle: FlutterFlowTheme.of(context)
                                 .labelMedium
                                 .override(
@@ -562,6 +573,8 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                           size: 20.0,
                         ),
                         onPressed: () async {
+                          logFirebaseEvent('PROFILE_PAGE_add_ICN_ON_TAP');
+                          logFirebaseEvent('IconButton_bottom_sheet');
                           await showModalBottomSheet(
                             isScrollControlled: true,
                             backgroundColor: Colors.transparent,
@@ -606,6 +619,9 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                           onChanged: (val) async {
                             safeSetState(() =>
                                 _model.choiceChipsValue1 = val?.firstOrNull);
+                            logFirebaseEvent(
+                                'PROFILE_ChoiceChips_sdmtyup2_ON_FORM_WID');
+                            logFirebaseEvent('ChoiceChips_update_app_state');
                             FFAppState()
                                 .removeFromUserTags(_model.choiceChipsValue1!);
                             safeSetState(() {});
@@ -720,6 +736,8 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                           size: 20.0,
                         ),
                         onPressed: () async {
+                          logFirebaseEvent('PROFILE_PAGE_add_ICN_ON_TAP');
+                          logFirebaseEvent('IconButton_bottom_sheet');
                           await showModalBottomSheet(
                             isScrollControlled: true,
                             backgroundColor: Colors.transparent,
@@ -764,6 +782,9 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                           onChanged: (val) async {
                             safeSetState(() =>
                                 _model.choiceChipsValue2 = val?.firstOrNull);
+                            logFirebaseEvent(
+                                'PROFILE_ChoiceChips_hi00zx8g_ON_FORM_WID');
+                            logFirebaseEvent('ChoiceChips_update_app_state');
                             FFAppState().removeFromDietaryTags(
                                 _model.choiceChipsValue2!);
                             safeSetState(() {});
@@ -844,6 +865,8 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                         EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                     child: FFButtonWidget(
                       onPressed: () async {
+                        logFirebaseEvent('PROFILE_PAGE_profileButton_ON_TAP');
+                        logFirebaseEvent('profileButton_auth');
                         if (_model.emailFieldTextController.text.isEmpty) {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
@@ -861,6 +884,8 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                         );
                         safeSetState(() {});
 
+                        logFirebaseEvent('profileButton_backend_call');
+
                         await currentUserReference!.update({
                           ...createUsersRecordData(
                             email: _model.emailFieldTextController.text,
@@ -873,8 +898,10 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                             },
                           ),
                         });
+                        logFirebaseEvent('profileButton_update_app_state');
                         FFAppState().emailField = currentUserEmail;
                         safeSetState(() {});
+                        logFirebaseEvent('profileButton_navigate_to');
 
                         context.pushNamed(HomePageWidget.routeName);
                       },

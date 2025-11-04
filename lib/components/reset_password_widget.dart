@@ -203,6 +203,9 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget> {
                 ),
                 FFButtonWidget(
                   onPressed: () async {
+                    logFirebaseEvent(
+                        'RESET_PASSWORD_SEND_RESET_LINK_BTN_ON_TA');
+                    logFirebaseEvent('Button_auth');
                     if (_model.textFieldEmailTextController.text.isEmpty) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
@@ -252,8 +255,10 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget> {
                   ),
                 ),
                 FFButtonWidget(
-                  onPressed: () {
-                    print('Button pressed ...');
+                  onPressed: () async {
+                    logFirebaseEvent('RESET_PASSWORD_COMP_CANCEL_BTN_ON_TAP');
+                    logFirebaseEvent('Button_navigate_back');
+                    context.safePop();
                   },
                   text: 'Cancel',
                   options: FFButtonOptions(
