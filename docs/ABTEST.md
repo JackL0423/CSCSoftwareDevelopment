@@ -1,3 +1,5 @@
+## The implemented AB Test: https://docs.google.com/document/d/1mYxsJRaap57Bm5KX9KL7GOGNd2tYSZE6wu71gtC09bw/edit?usp=sharing
+
 ## Adding a Profile Progress Bar  
 
 **User Story 3**
