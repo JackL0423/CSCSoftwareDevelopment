@@ -153,6 +153,31 @@ gcloud auth login
 flutter pub get
 ```
 
+### Flutter SDK Setup
+
+This project requires a project-level Flutter SDK for the FlutterFlow VS Code Extension to function properly.
+
+**Why Three Flutter SDKs?**
+
+1. **System Flutter** (`/home/jpv/flutter`) - For general Flutter development
+2. **Project Flutter SDK** (`flutter-sdk/`) - **REQUIRED** for VS Code Extension (IntelliSense, validation)
+3. **FlutterFlow Bundled** (`c_s_c305_capstone/ff_flutter_sdk/`) - Managed by FlutterFlow (v3.32.4)
+
+**Setup Project Flutter SDK:**
+
+```bash
+# Clone Flutter SDK to project directory (run once)
+git clone https://github.com/flutter/flutter.git flutter-sdk
+cd flutter-sdk
+git checkout stable
+./bin/flutter --version
+
+# Verify VS Code settings point to project SDK
+# Should see: flutter-sdk/ in .vscode/settings.json
+```
+
+**Note**: The `flutter-sdk/` directory is gitignored (tooling dependency, not source code).
+
 ### FlutterFlow API Access
 
 The project uses FlutterFlow Growth Plan API for programmatic YAML editing:

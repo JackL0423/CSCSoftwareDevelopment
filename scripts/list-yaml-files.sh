@@ -9,7 +9,7 @@ API_BASE="https://api.flutterflow.io/v2"
 
 # Get LEAD API token from Secret Manager
 echo "Retrieving API token from Secret Manager..."
-LEAD_TOKEN=$(gcloud secrets versions access latest --secret="FLUTTERFLOW_LEAD_API_TOKEN" 2>/dev/null)
+LEAD_TOKEN=$(gcloud secrets versions access latest --secret="FLUTTERFLOW_LEAD_API_TOKEN" --project=csc305project-475802 2>/dev/null)
 
 if [ -z "$LEAD_TOKEN" ]; then
     echo "Error: Failed to retrieve LEAD API token"

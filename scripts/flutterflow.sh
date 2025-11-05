@@ -4,7 +4,7 @@ set -euo pipefail
 
 : "${API_BASE:=https://api.flutterflow.io/v2}"
 : "${PROJECT_ID:=c-s-c305-capstone-khj14l}"
-: "${LEAD_TOKEN:?Set LEAD_TOKEN env var or use: gcloud secrets versions access latest --secret=FLUTTERFLOW_LEAD_API_TOKEN}"
+: "${LEAD_TOKEN:?Set LEAD_TOKEN env var or use: gcloud secrets versions access latest --secret=FLUTTERFLOW_LEAD_API_TOKEN --project=csc305project-475802}"
 
 cmd="${1:-}"
 file="${2:-}"
@@ -40,7 +40,7 @@ Commands:
   list                             List all available YAML files
 
 Examples:
-  export LEAD_TOKEN=\$(gcloud secrets versions access latest --secret=FLUTTERFLOW_LEAD_API_TOKEN)
+  export LEAD_TOKEN=\$(gcloud secrets versions access latest --secret=FLUTTERFLOW_LEAD_API_TOKEN --project=csc305project-475802)
   $0 list
   $0 download app-state
   $0 validate app-state flutterflow-yamls/app-state.yaml
