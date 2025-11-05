@@ -125,8 +125,8 @@ See [README_D7_RETENTION.md](README_D7_RETENTION.md) for details.
 ## Development Setup
 
 ### Prerequisites
-- Flutter SDK 3.24.5+
-- Dart SDK 3.5.4+
+- Flutter SDK 3.32.4+
+- Dart SDK 3.8.1+
 - Android SDK (API 34)
 - VS Code with FlutterFlow extension
 - Firebase CLI
