@@ -10,22 +10,67 @@
 
 ### For Immediate Deployment
 
+**Time**: 2.5-3 hours | **Status**: Ready to Deploy
+
+#### Option A: Interactive Setup (Recommended)
+
 ```bash
-# 1. Review the deployment guide
-cat docs/VSCODE_EXTENSION_DEPLOYMENT_GUIDE.md
-
-# 2. Install FlutterFlow VS Code Extension
-# (In VS Code: Install "FlutterFlow: Custom Code Editor")
-
-# 3. Deploy Firebase backend
-./scripts/deploy-d7-retention-complete.sh
-
-# 4. Follow VS Code extension guide to push custom actions
-# (30 minutes, fully automated file push)
+cd ~/Documents/School/school/CSC305PROJECT/CSCSoftwareDevelopment
+chmod +x scripts/setup-vscode-deployment.sh
+./scripts/setup-vscode-deployment.sh
 ```
 
-**Total Time**: 2.5-3 hours
-**Result**: Fully operational D7 retention tracking
+This script guides you through:
+1. FlutterFlow VS Code Extension installation
+2. API key generation
+3. Project download
+4. Custom action deployment (3 Dart files)
+5. Verification in FlutterFlow UI
+
+**Total Time**: 45-60 minutes (guided)
+
+#### Option B: Manual Deployment Steps
+
+**Phase 1: VS Code Extension Setup** (15 min)
+1. Install "FlutterFlow: Custom Code Editor" extension in VS Code
+2. Generate API key: https://app.flutterflow.io → Account → API
+3. Configure extension: Command Palette → `FlutterFlow: Configure`
+   - API Key: [your-key]
+   - Project ID: `c-s-c305-capstone-khj14l`
+   - Branch: `main`
+4. Download project: Command Palette → `FlutterFlow: Download Code`
+
+**Phase 2: Deploy Custom Actions** (30 min)
+5. Copy action files:
+   ```bash
+   cp vscode-extension-ready/lib/custom_code/actions/*.dart \
+      ~/flutterflow-globalflavors/lib/custom_code/actions/
+   ```
+6. Start editing session: Command Palette → `FlutterFlow: Start Code Editing Session`
+7. Push to FlutterFlow: Command Palette → `FlutterFlow: Push to FlutterFlow`
+8. Verify in FlutterFlow UI: Custom Code → Actions (3 actions, 0 errors)
+
+**Phase 3: Wire Actions to Pages** (90 min)
+9. Session initialization (3 locations):
+   - HomePage → OnPageLoad → `initializeUserSession`
+   - login page → After Auth Success → `initializeUserSession`
+   - GoldenPath → OnPageLoad → `initializeUserSession`
+10. Recipe tracking (RecipeViewPage OnPageLoad):
+    - Update App State: currentRecipeId, currentRecipeName, currentRecipeCuisine, currentRecipePrepTime, recipeStartTime
+11. Completion button (RecipeViewPage):
+    - Add button → OnTap → `checkAndLogRecipeCompletion`
+
+**Phase 4: Deploy Firebase Backend** (15 min)
+```bash
+./scripts/deploy-d7-retention-complete.sh
+```
+
+**Phase 5: Test End-to-End** (30 min)
+- Test session initialization, recipe tracking, completion button
+- Verify Firestore writes to user_recipe_completions
+- Test Firebase functions: `./scripts/test-retention-function.sh`
+
+**Detailed Instructions**: See `docs/D7_RETENTION_DEPLOYMENT.md`
 
 ---
 
