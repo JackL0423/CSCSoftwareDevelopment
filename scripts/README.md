@@ -197,11 +197,8 @@ sudo apt-get install -y jq curl unzip
 ### "LEAD_TOKEN: unbound variable"
 
 ```bash
-# Fetch token from Secret Manager
-export LEAD_TOKEN=$(gcloud secrets versions access latest --secret=FLUTTERFLOW_LEAD_API_TOKEN)
-
-# Or use the hardcoded token (from CLAUDE.md)
-export LEAD_TOKEN="9dc3d62e-6d19-4831-9386-02760f9fb7c0"
+# Fetch token from Secret Manager (correct method)
+export LEAD_TOKEN=$(gcloud secrets versions access latest --secret=FLUTTERFLOW_LEAD_API_TOKEN --project=csc305project-475802)
 ```
 
 ### "jq: command not found"

@@ -54,5 +54,8 @@ config/
 c_s_c305_capstone/
 flutterflow-project-yamls/
 
+# Flutter SDK (tooling dependency, not source code)
+flutter-sdk/
+
 # Firebase test scripts
 create-user-preferences-collection.js

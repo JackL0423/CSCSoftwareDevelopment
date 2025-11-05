@@ -24,8 +24,17 @@ echo ""
 
 # Configuration
 PROJECT_ID="c-s-c305-capstone-khj14l"
-LEAD_TOKEN="9dc3d62e-6d19-4831-9386-02760f9fb7c0"
 API_BASE="https://api.flutterflow.io/v2"
+
+# Get LEAD API token from Secret Manager
+echo "Retrieving API token from Secret Manager..."
+LEAD_TOKEN=$(gcloud secrets versions access latest --secret="FLUTTERFLOW_LEAD_API_TOKEN" --project=csc305project-475802 2>/dev/null)
+
+if [ -z "$LEAD_TOKEN" ]; then
+    echo "Error: Failed to retrieve LEAD API token from Secret Manager"
+    echo "Run: gcloud secrets versions access latest --secret=FLUTTERFLOW_LEAD_API_TOKEN --project=csc305project-475802"
+    exit 1
+fi
 
 echo "Project ID: $PROJECT_ID"
 echo ""
