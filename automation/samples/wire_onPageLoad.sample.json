@@ -3,7 +3,7 @@
   "_instructions": "This is a PLACEHOLDER. Actual payload structure will be discovered in Phase 1.",
 
   "_expectedFields": {
-    "projectId": "c-s-c305-capstone-khj14l",
+    "projectId": "[FLUTTERFLOW_PROJECT_ID]",
     "pageId": "Scaffold_r33su4wm",
     "triggerType": "ON_PAGE_LOAD or onPageLoad or PageLoad",
     "action": {
@@ -34,7 +34,7 @@
       "query": "mutation UpdateActionFlow($input: ActionFlowInput!) { updateActionFlow(input: $input) { success } }",
       "variables": {
         "input": {
-          "projectId": "c-s-c305-capstone-khj14l",
+          "projectId": "[FLUTTERFLOW_PROJECT_ID]",
           "pageId": "Scaffold_r33su4wm",
           "trigger": "ON_PAGE_LOAD",
           "actions": [
@@ -47,7 +47,7 @@
       }
     },
     "restAPI": {
-      "project_id": "c-s-c305-capstone-khj14l",
+      "project_id": "[FLUTTERFLOW_PROJECT_ID]",
       "page_scaffold_id": "Scaffold_r33su4wm",
       "lifecycle_event": "page_load",
       "custom_action_reference": "initializeUserSession"

@@ -25,7 +25,7 @@ source scripts/common-functions.sh
 load_flutterflow_secrets
 
 # 3. Confirm test project accessible
-TEST_PROJECT_ID=$(gcloud secrets versions access latest --secret="TEST_ID_API" --project=csc305project-475802 --account=juan_vallejo@uri.edu)
+TEST_PROJECT_ID=$(gcloud secrets versions access latest --secret="TEST_ID_API" --project=[GCP_SECRETS_PROJECT_ID] --account=[REDACTED]@example.edu)
 echo "Test Project: $TEST_PROJECT_ID"
 echo "URL: https://app.flutterflow.io/project/$TEST_PROJECT_ID"
 ```

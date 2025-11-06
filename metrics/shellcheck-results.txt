@@ -1,0 +1,284 @@
+=== scripts/testing/seed-test-data.sh ===
+=== scripts/testing/enable-analytics-debug.sh ===
+=== scripts/testing/simulate-analytics-events.sh ===
+
+In scripts/testing/simulate-analytics-events.sh line 55:
+now_ms=$(date +%s%3N)
+^----^ SC2034 (warning): now_ms appears unused. Verify use (or export if used externally).
+
+For more information:
+  https://www.shellcheck.net/wiki/SC2034 -- now_ms appears unused. Verify use...
+=== scripts/testing/run-robo-sync.sh ===
+=== scripts/testing/verify-metrics-flow.sh ===
+=== scripts/testing/verify-yaml-update.sh ===
+
+In scripts/testing/verify-yaml-update.sh line 224:
+    if [ $? -ne 0 ]; then
+         ^-- SC2181 (style): Check exit code directly with e.g. 'if ! mycmd;', not indirectly with $?.
+
+For more information:
+  https://www.shellcheck.net/wiki/SC2181 -- Check exit code directly with e.g...
+=== scripts/testing/create-test-users.sh ===
+=== scripts/testing/run-apk-local.sh ===
+=== scripts/testing/collect-testlab-results.sh ===
+=== scripts/testing/test-retention-function.sh ===
+=== scripts/testing/tail-analytics.sh ===
+=== scripts/flutterflow/update-trigger-correct.sh ===
+=== scripts/flutterflow/fetch-profile-onpageload.sh ===
+=== scripts/flutterflow/zip-update-yaml.sh ===
+=== scripts/flutterflow/launch-vscode-flutterflow.sh ===
+=== scripts/flutterflow/setup-vscode-deployment.sh ===
+
+In scripts/flutterflow/setup-vscode-deployment.sh line 31:
+    read -p "Press Enter to continue anyway, or Ctrl+C to exit..."
+    ^--^ SC2162 (info): read without -r will mangle backslashes.
+
+
+In scripts/flutterflow/setup-vscode-deployment.sh line 43:
+    ls -1 vscode-extension-ready/lib/custom_code/actions/*.dart | xargs -n1 basename
+    ^-- SC2011 (warning): Use 'find .. -print0 | xargs -0 ..' or 'find .. -exec .. +' to allow non-alphanumeric filenames.
+
+
+In scripts/flutterflow/setup-vscode-deployment.sh line 58:
+read -p "Press Enter when extension is installed..."
+^--^ SC2162 (info): read without -r will mangle backslashes.
+
+
+In scripts/flutterflow/setup-vscode-deployment.sh line 73:
+read -p "Press Enter when you have your API key ready..."
+^--^ SC2162 (info): read without -r will mangle backslashes.
+
+
+In scripts/flutterflow/setup-vscode-deployment.sh line 89:
+read -p "Press Enter when configuration is complete..."
+^--^ SC2162 (info): read without -r will mangle backslashes.
+
+
+In scripts/flutterflow/setup-vscode-deployment.sh line 103:
+read -p "Press Enter when download is complete..."
+^--^ SC2162 (info): read without -r will mangle backslashes.
+
+
+In scripts/flutterflow/setup-vscode-deployment.sh line 109:
+read -p "Workspace path: " WORKSPACE_PATH
+^--^ SC2162 (info): read without -r will mangle backslashes.
+
+
+In scripts/flutterflow/setup-vscode-deployment.sh line 136:
+ls -1 "$TARGET_DIR"/*.dart | xargs -n1 basename
+^-- SC2011 (warning): Use 'find .. -print0 | xargs -0 ..' or 'find .. -exec .. +' to allow non-alphanumeric filenames.
+
+
+In scripts/flutterflow/setup-vscode-deployment.sh line 150:
+read -p "Press Enter when session is started..."
+^--^ SC2162 (info): read without -r will mangle backslashes.
+
+
+In scripts/flutterflow/setup-vscode-deployment.sh line 166:
+read -p "Press Enter when push is complete..."
+^--^ SC2162 (info): read without -r will mangle backslashes.
+
+
+In scripts/flutterflow/setup-vscode-deployment.sh line 182:
+read -p "Press Enter when verified..."
+^--^ SC2162 (info): read without -r will mangle backslashes.
+
+For more information:
+  https://www.shellcheck.net/wiki/SC2011 -- Use 'find .. -print0 | xargs -0 ....
+  https://www.shellcheck.net/wiki/SC2162 -- read without -r will mangle backs...
+=== scripts/flutterflow/apply-all-triggers.sh ===
+
+In scripts/flutterflow/apply-all-triggers.sh line 42:
+  NON_BLOCKING=$(jq -r '.non_blocking // false' <<<"$ENTRY")
+  ^----------^ SC2034 (warning): NON_BLOCKING appears unused. Verify use (or export if used externally).
+
+For more information:
+  https://www.shellcheck.net/wiki/SC2034 -- NON_BLOCKING appears unused. Veri...
+=== scripts/flutterflow/find-action-keys.sh ===
+=== scripts/flutterflow/flutterflow.sh ===
+=== scripts/flutterflow/apply-trigger-via-api.sh ===
+
+In scripts/flutterflow/apply-trigger-via-api.sh line 62:
+  $(for v in "${VARS[@]}"; do printf -- "--var %q " "$v"; done) \
+  ^-- SC2046 (warning): Quote this to prevent word splitting.
+
+
+In scripts/flutterflow/apply-trigger-via-api.sh line 63:
+  ${PARAMS_FLAG[@]:-}
+  ^-----------------^ SC2068 (error): Double quote array expansions to avoid re-splitting elements.
+
+For more information:
+  https://www.shellcheck.net/wiki/SC2068 -- Double quote array expansions to ...
+  https://www.shellcheck.net/wiki/SC2046 -- Quote this to prevent word splitt...
+=== scripts/flutterflow/debug-get-file.sh ===
+=== scripts/flutterflow/update-yaml.sh ===
+
+In scripts/flutterflow/update-yaml.sh line 122:
+read -p "Are you sure you want to update the FlutterFlow project? (yes/no): " CONFIRM
+^--^ SC2162 (info): read without -r will mangle backslashes.
+
+For more information:
+  https://www.shellcheck.net/wiki/SC2162 -- read without -r will mangle backs...
+=== scripts/flutterflow/list-yaml-files.sh ===
+=== scripts/flutterflow/push-essential-actions-only.sh ===
+
+In scripts/flutterflow/push-essential-actions-only.sh line 60:
+FILE_MAP=$(cat .vscode/file_map.json | jq -c 'del(.["check_scroll_completion.dart"]) | with_entries(select(.value.type != "D"))')
+               ^-------------------^ SC2002 (style): Useless cat. Consider 'cmd < file | ..' or 'cmd file | ..' instead.
+
+For more information:
+  https://www.shellcheck.net/wiki/SC2002 -- Useless cat. Consider 'cmd < file...
+=== scripts/flutterflow/download-yaml.sh ===
+
+In scripts/flutterflow/download-yaml.sh line 77:
+    local tmp_json="$(mktemp)"
+          ^------^ SC2155 (warning): Declare and assign separately to avoid masking return values.
+
+For more information:
+  https://www.shellcheck.net/wiki/SC2155 -- Declare and assign separately to ...
+=== scripts/flutterflow/push-custom-actions-api.sh ===
+
+In scripts/flutterflow/push-custom-actions-api.sh line 43:
+zip -q "$TEMP_ZIP" *.dart
+                   ^-- SC2035 (info): Use ./*glob* or -- *glob* so names with dashes won't become options.
+
+
+In scripts/flutterflow/push-custom-actions-api.sh line 56:
+FILE_MAP=$(cat .vscode/file_map.json | jq -c 'with_entries(select(.value.type != "D"))')
+               ^-------------------^ SC2002 (style): Useless cat. Consider 'cmd < file | ..' or 'cmd file | ..' instead.
+
+For more information:
+  https://www.shellcheck.net/wiki/SC2035 -- Use ./*glob* or -- *glob* so name...
+  https://www.shellcheck.net/wiki/SC2002 -- Useless cat. Consider 'cmd < file...
+=== scripts/flutterflow/update-yaml-v2.sh ===
+=== scripts/flutterflow/validate-yaml.sh ===
+=== scripts/utilities/snapshot-from-manifest.sh ===
+
+In scripts/utilities/snapshot-from-manifest.sh line 39:
+  PAGE_NAME=$(jq -r ".[$i].page_name // ("entry_" + ($i|tostring))" "$MANIFEST")
+                                          ^----^ SC2140 (warning): Word is of the form "A"B"C" (B indicated). Did you mean "ABC" or "A\"B\"C"?
+
+For more information:
+  https://www.shellcheck.net/wiki/SC2140 -- Word is of the form "A"B"C" (B in...
+=== scripts/utilities/common-functions.sh ===
+
+In scripts/utilities/common-functions.sh line 159:
+  while [ $ATTEMPT -le $MAX_RETRIES ]; do
+                       ^----------^ SC2086 (info): Double quote to prevent globbing and word splitting.
+
+Did you mean:
+  while [ $ATTEMPT -le "$MAX_RETRIES" ]; do
+
+
+In scripts/utilities/common-functions.sh line 168:
+    if [ $ATTEMPT -eq $MAX_RETRIES ]; then
+                      ^----------^ SC2086 (info): Double quote to prevent globbing and word splitting.
+
+Did you mean:
+    if [ $ATTEMPT -eq "$MAX_RETRIES" ]; then
+
+
+In scripts/utilities/common-functions.sh line 176:
+    local SLEEP_SEC=$(echo "scale=3; $SLEEP_MS / 1000" | bc)
+          ^-------^ SC2155 (warning): Declare and assign separately to avoid masking return values.
+
+For more information:
+  https://www.shellcheck.net/wiki/SC2155 -- Declare and assign separately to ...
+  https://www.shellcheck.net/wiki/SC2086 -- Double quote to prevent globbing ...
+=== scripts/utilities/redact-har.sh ===
+
+In scripts/utilities/redact-har.sh line 94:
+if [ $? -eq 0 ]; then
+     ^-- SC2181 (style): Check exit code directly with e.g. 'if mycmd;', not indirectly with $?.
+
+For more information:
+  https://www.shellcheck.net/wiki/SC2181 -- Check exit code directly with e.g...
+=== scripts/utilities/analyze-har.sh ===
+
+In scripts/utilities/analyze-har.sh line 133:
+for ENDPOINT_URL in $(echo "$ENDPOINTS"); do
+                    ^------------------^ SC2116 (style): Useless echo? Instead of 'cmd $(echo foo)', just use 'cmd foo'.
+
+For more information:
+  https://www.shellcheck.net/wiki/SC2116 -- Useless echo? Instead of 'cmd $(e...
+=== scripts/utilities/setup-flutter-sdk.sh ===
+
+In scripts/utilities/setup-flutter-sdk.sh line 33:
+        rm -rf "$REPO_ROOT/$FLUTTER_SDK_DIR"
+               ^---------------------------^ SC2115 (warning): Use "${var:?}" to ensure this never expands to / .
+
+For more information:
+  https://www.shellcheck.net/wiki/SC2115 -- Use "${var:?}" to ensure this nev...
+=== scripts/utilities/diff-snapshots.sh ===
+
+In scripts/utilities/diff-snapshots.sh line 30:
+echo "\n== File lists =="
+     ^------------------^ SC2028 (info): echo may not expand escape sequences. Use printf.
+
+
+In scripts/utilities/diff-snapshots.sh line 34:
+echo "\n== Diffs (unified) =="
+     ^-----------------------^ SC2028 (info): echo may not expand escape sequences. Use printf.
+
+
+In scripts/utilities/diff-snapshots.sh line 39:
+    echo "\n--- $f ---"
+         ^------------^ SC2028 (info): echo may not expand escape sequences. Use printf.
+
+
+In scripts/utilities/diff-snapshots.sh line 40:
+    diff -u "$LEFT/$f" "$RIGHT/$f" || ret=$?
+                                      ^-^ SC2034 (warning): ret appears unused. Verify use (or export if used externally).
+
+For more information:
+  https://www.shellcheck.net/wiki/SC2034 -- ret appears unused. Verify use (o...
+  https://www.shellcheck.net/wiki/SC2028 -- echo may not expand escape sequen...
+=== scripts/utilities/load-secrets.sh ===
+
+In scripts/utilities/load-secrets.sh line 18:
+    return 1 2>/dev/null || exit 1
+                            ^----^ SC2317 (info): Command appears to be unreachable. Check usage (or ignore if invoked indirectly).
+
+
+In scripts/utilities/load-secrets.sh line 26:
+    local value=$(gcloud secrets versions access latest --secret="$secret_name" --project="$SECRETS_PROJECT" 2>/dev/null)
+          ^---^ SC2155 (warning): Declare and assign separately to avoid masking return values.
+
+For more information:
+  https://www.shellcheck.net/wiki/SC2155 -- Declare and assign separately to ...
+  https://www.shellcheck.net/wiki/SC2317 -- Command appears to be unreachable...
+=== scripts/firebase/deploy.sh ===
+=== scripts/firebase/deploy-d7-retention-complete.sh ===
+
+In scripts/firebase/deploy-d7-retention-complete.sh line 10:
+RED='\033[0;31m'
+^-^ SC2034 (warning): RED appears unused. Verify use (or export if used externally).
+
+
+In scripts/firebase/deploy-d7-retention-complete.sh line 27:
+API_BASE="https://api.flutterflow.io/v2"
+^------^ SC2034 (warning): API_BASE appears unused. Verify use (or export if used externally).
+
+
+In scripts/firebase/deploy-d7-retention-complete.sh line 61:
+read -p "Have you deployed custom actions via VS Code extension? (y/n): " actions_deployed
+^--^ SC2162 (info): read without -r will mangle backslashes.
+
+
+In scripts/firebase/deploy-d7-retention-complete.sh line 126:
+read -p "Deploy Firebase Functions now? (y/n): " deploy_functions
+^--^ SC2162 (info): read without -r will mangle backslashes.
+
+For more information:
+  https://www.shellcheck.net/wiki/SC2034 -- API_BASE appears unused. Verify u...
+  https://www.shellcheck.net/wiki/SC2162 -- read without -r will mangle backs...
+=== scripts/firebase/deploy-firebase-complete.sh ===
+=== scripts/firebase/setup-firebase-permissions.sh ===
+
+In scripts/firebase/setup-firebase-permissions.sh line 27:
+read -p "Press Enter to continue..."
+^--^ SC2162 (info): read without -r will mangle backslashes.
+
+For more information:
+  https://www.shellcheck.net/wiki/SC2162 -- read without -r will mangle backs...
+=== scripts/firebase/deploy-firebase-with-serviceaccount.sh ===

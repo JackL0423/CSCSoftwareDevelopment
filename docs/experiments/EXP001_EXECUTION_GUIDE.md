@@ -63,7 +63,7 @@ source scripts/common-functions.sh
 load_flutterflow_secrets
 
 # Save before state
-TEST_PROJECT_ID=$(gcloud secrets versions access latest --secret="TEST_ID_API" --project=csc305project-475802 --account=juan_vallejo@uri.edu)
+TEST_PROJECT_ID=$(gcloud secrets versions access latest --secret="TEST_ID_API" --project=[GCP_SECRETS_PROJECT_ID] --account=[REDACTED]@example.edu)
 
 curl -sS "https://api.flutterflow.io/v2/listPartitionedFileNames?projectId=${TEST_PROJECT_ID}" \
   -H "Authorization: Bearer ${FLUTTERFLOW_LEAD_API_TOKEN}" \

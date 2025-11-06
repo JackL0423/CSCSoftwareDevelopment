@@ -13,8 +13,8 @@
 ## Prerequisites
 
 - [ ] Chrome browser installed
-- [ ] FlutterFlow account logged in (juan_vallejo@uri.edu or project account)
-- [ ] Project ID: c-s-c305-capstone-khj14l
+- [ ] FlutterFlow account logged in ([REDACTED]@example.edu or project account)
+- [ ] Project ID: [FLUTTERFLOW_PROJECT_ID]
 - [ ] Custom action `initializeUserSession` deployed and available
 
 ---
@@ -23,7 +23,7 @@
 
 1. **Launch Chrome**
    ```bash
-   google-chrome https://app.flutterflow.io/project/c-s-c305-capstone-khj14l
+   google-chrome https://app.flutterflow.io/project/[FLUTTERFLOW_PROJECT_ID]
    ```
 
 2. **Open DevTools**
@@ -199,7 +199,7 @@ In DevTools, click the request → "Payload" tab:
 ```bash
 cat > /home/jpv/Documents/School/school/CSC305PROJECT/CSCSoftwareDevelopment/automation/samples/wire_onPageLoad.sample.json << 'EOF'
 {
-  "projectId": "c-s-c305-capstone-khj14l",
+  "projectId": "[FLUTTERFLOW_PROJECT_ID]",
   "pageId": "Scaffold_r33su4wm",
   "trigger": "ON_PAGE_LOAD",
   "action": {
@@ -444,5 +444,5 @@ EOF
 2. Share the persist call details (sanitized)
 3. Consult with Claude Code for analysis
 
-**Contact**: Juan Vallejo (juan_vallejo@uri.edu)
+**Contact**: Juan Vallejo ([REDACTED]@example.edu)
 **Project**: CSC305 GlobalFlavors - D7 Retention Metrics

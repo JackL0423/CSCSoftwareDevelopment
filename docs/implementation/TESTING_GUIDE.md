@@ -4,7 +4,7 @@ This guide shows how to seed realistic data, observe Analytics in real time, and
 
 ### Prerequisites
 
-- Firebase project: csc-305-dev-project
+- Firebase project: [FIREBASE_PROJECT_ID]
 - Service account JSON with Firebase Admin permissions
   - Export path as: `export GOOGLE_APPLICATION_CREDENTIALS=/abs/path/service-account.json`
 - Tools installed: Node 18+, npm, jq, firebase-tools, adb (for Android), curl
@@ -50,7 +50,7 @@ scripts/tail-analytics.sh
 
 Open DebugView in Firebase Console:
 
-- https://console.firebase.google.com/project/csc-305-dev-project/analytics/debugview
+- https://console.firebase.google.com/project/[FIREBASE_PROJECT_ID]/analytics/debugview
 
 Expected events: `session_start` (from initializeUserSession), `recipe_complete` (from checkAndLogRecipeCompletion).
 

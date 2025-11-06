@@ -2,7 +2,7 @@
 
 **Institution**: University of Rhode Island
 **Course**: CSC305 Software Development
-**Team Lead**: Juan Vallejo (juan_vallejo@uri.edu)
+**Team Lead**: Jack Light ([REDACTED]@example.edu)
 **Project**: FlutterFlow Mobile Application for International Cuisine Discovery
 
 ---
@@ -11,7 +11,7 @@
 
 GlobalFlavors is a mobile application built with FlutterFlow that helps users discover and explore international cuisines. The app features recipe browsing, user authentication, personalized recommendations, and comprehensive retention tracking.
 
-**FlutterFlow Project**: `c-s-c305-capstone-khj14l`
+**FlutterFlow Project**: `[FLUTTERFLOW_PROJECT_ID]`
 **Plan**: Growth Plan (API-enabled)
 **Current Branch**: `JUAN-adding-metric`
 
@@ -238,7 +238,7 @@ See [CHANGELOG.md](CHANGELOG.md) for complete commit history.
 ## Testing
 
 ### FlutterFlow Testing
-1. Open FlutterFlow project: https://app.flutterflow.io/project/c-s-c305-capstone-khj14l
+1. Open FlutterFlow project: https://app.flutterflow.io/project/[FLUTTERFLOW_PROJECT_ID]
 2. Enter Test Mode
 3. Test user flows (authentication, recipe browsing, completion tracking)
 4. Verify Firestore writes in Firebase Console
@@ -322,7 +322,7 @@ This is an academic project for CSC305. External contributions are not currently
 ## Resources
 
 ### FlutterFlow
-- **Project URL**: https://app.flutterflow.io/project/c-s-c305-capstone-khj14l
+- **Project URL**: https://app.flutterflow.io/project/[FLUTTERFLOW_PROJECT_ID]
 - **API Documentation**: https://api.flutterflow.io/v2/
 - **VS Code Extension**: Search "FlutterFlow: Custom Code Editor" in VS Code Extensions
 
@@ -340,8 +340,8 @@ This is an academic project for CSC305. External contributions are not currently
 
 ## Support
 
-**Team Lead**: Juan Vallejo
-**Email**: juan_vallejo@uri.edu (school), juan.vallejo@jpteq.com (personal)
+**Team Lead**: Jack Light
+**Email**: [REDACTED]@example.edu (school), [REDACTED]@example.com (personal)
 **Office Hours**: By appointment
 
 **Issues**: Use GitHub Issues for bug reports and feature requests

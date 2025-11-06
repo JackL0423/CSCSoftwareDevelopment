@@ -299,7 +299,7 @@ and descriptive links. Focus on execution and measurable outcomes.
 **Project Name**: GlobalFlavors
 **Course**: CSC305 Software Development Capstone
 **Institution**: University of Rhode Island
-**Team Lead**: Juan Vallejo (juan_vallejo@uri.edu)
+**Team Lead**: Jack Light ([REDACTED]@example.edu)
 
 ### Description
 
@@ -320,7 +320,7 @@ GlobalFlavors is a mobile application built with FlutterFlow that helps users di
 
 ### Project Details
 
-- **Project ID**: `c-s-c305-capstone-khj14l`
+- **Project ID**: `[FLUTTERFLOW_PROJECT_ID]`
 - **Plan**: Growth Plan (activated November 4, 2025)
 - **API Base URL**: `https://api.flutterflow.io/v2/`
 - **Total YAML Files**: 591 editable files
@@ -349,7 +349,7 @@ FlutterFlow API uses **Bearer Token authentication**. The token is stored in GCP
 
 **Retrieve Token:**
 ```bash
-gcloud secrets versions access latest --secret="FLUTTERFLOW_LEAD_API_TOKEN" --project=csc305project-475802
+gcloud secrets versions access latest --secret="FLUTTERFLOW_LEAD_API_TOKEN" --project=[GCP_SECRETS_PROJECT_ID]
 ```
 
 **Note**: Token value is stored securely in GCP Secret Manager and should never be hardcoded or documented.
@@ -364,31 +364,31 @@ gcloud secrets versions access latest --secret="FLUTTERFLOW_LEAD_API_TOKEN" --pr
 
 This project uses **two separate GCP projects** with distinct purposes:
 
-1. **Secrets Project** (`csc305project-475802`)
+1. **Secrets Project** (`[GCP_SECRETS_PROJECT_ID]`)
    - Purpose: Secure credential storage via Secret Manager
-   - Owner: juan_vallejo@uri.edu
+   - Owner: [REDACTED]@example.edu
    - Organization: uri.edu (698125975939)
    - Secret Manager: **ENABLED**
    - Used by: All scripts requiring API tokens/credentials
 
-2. **Firebase Project** (`csc-305-dev-project`)
+2. **Firebase Project** (`[FIREBASE_PROJECT_ID]`)
    - Purpose: Backend services (Cloud Functions, Firestore, Firebase)
-   - Admin: juan_vallejo@uri.edu + team
+   - Admin: [REDACTED]@example.edu + team
    - Organization: Standalone (no org parent)
    - Secret Manager: **DISABLED** (not needed)
    - Used by: Firebase CLI, deployment scripts
 
-**⚠️ IMPORTANT**: All `gcloud secrets` commands MUST specify `--project=csc305project-475802` because the default project (`csc-305-dev-project`) does not have Secret Manager enabled.
+**⚠️ IMPORTANT**: All `gcloud secrets` commands MUST specify `--project=[GCP_SECRETS_PROJECT_ID]` because the default project (`[FIREBASE_PROJECT_ID]`) does not have Secret Manager enabled.
 
 ### Multi-Account Configuration
 
 Three Google accounts are configured with different access levels:
 
-1. **Personal Account** (juan.vallejo@jpteq.com)
+1. **Personal Account** ([REDACTED]@example.com)
    - Primary development account
    - Git commits for non-school projects
 
-2. **School Account** (juan_vallejo@uri.edu)
+2. **School Account** ([REDACTED]@example.edu)
    - Used for this CSC305 project
    - Git commits configured locally for this repo only
    - GitHub authentication
@@ -416,10 +416,10 @@ Three Google accounts are configured with different access levels:
 **Access Secrets:**
 ```bash
 # List all secrets (MUST specify project)
-gcloud secrets list --project=csc305project-475802
+gcloud secrets list --project=[GCP_SECRETS_PROJECT_ID]
 
 # Get specific secret (MUST specify project)
-gcloud secrets versions access latest --secret="SECRET_NAME" --project=csc305project-475802
+gcloud secrets versions access latest --secret="SECRET_NAME" --project=[GCP_SECRETS_PROJECT_ID]
 
 # Verify active account
 gcloud auth list
@@ -499,23 +499,23 @@ export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:
 
 **Global Config** (preserved for other projects):
 ```bash
-git config --global user.email "juan.vallejo@jpteq.com"
+git config --global user.email "[REDACTED]@example.com"
 git config --global user.name "Juan Vallejo"
 ```
 
 **Local Config** (this repository only):
 ```bash
-git config user.email "juan_vallejo@uri.edu"
+git config user.email "[REDACTED]@example.edu"
 git config user.name "Juan Vallejo"
 ```
 
 **Verify Current Config:**
 ```bash
 # In this repo
-git config user.email  # Returns: juan_vallejo@uri.edu
+git config user.email  # Returns: [REDACTED]@example.edu
 
 # Global config
-git config --global user.email  # Returns: juan.vallejo@jpteq.com
+git config --global user.email  # Returns: [REDACTED]@example.com
 ```
 
 ### GitHub CLI
@@ -802,7 +802,7 @@ Validate YAML changes before applying.
 **Request Body:**
 ```json
 {
-  "projectId": "c-s-c305-capstone-khj14l",
+  "projectId": "[FLUTTERFLOW_PROJECT_ID]",
   "fileKey": "app-details",
   "projectYamlBytes": "base64-encoded-yaml"
 }
@@ -823,7 +823,7 @@ Apply YAML changes to project.
 **Request Body:**
 ```json
 {
-  "projectId": "c-s-c305-capstone-khj14l",
+  "projectId": "[FLUTTERFLOW_PROJECT_ID]",
   "fileKey": "app-details",
   "projectYamlBytes": "base64-encoded-yaml"
 }
@@ -944,7 +944,7 @@ git pull origin main
 
 **To create a FlutterFlow branch:**
 1. Go to https://app.flutterflow.io
-2. Open project: c-s-c305-capstone-khj14l
+2. Open project: [FLUTTERFLOW_PROJECT_ID]
 3. Click Branches > Create New Branch
 4. Name it (e.g., "JUAN-adding-metric")
 
@@ -992,7 +992,7 @@ D7 Retention Metrics track user engagement through the "Day 7 Repeat Recipe Rate
 
 #### Firebase Cloud Functions (4/4)
 
-All deployed to `csc-305-dev-project`:
+All deployed to `[FIREBASE_PROJECT_ID]`:
 
 1. **calculateD7Retention** (Scheduled, daily 2 AM UTC)
 2. **calculateD7RetentionManual** (Callable)
@@ -1053,24 +1053,24 @@ All deployed to `csc-305-dev-project`:
 
 ### Project Configuration
 
-**Firebase Project:** csc-305-dev-project
+**Firebase Project:** [FIREBASE_PROJECT_ID]
 **Firestore Database:** (default)
 **Region:** us-central1
-**Authentication:** Service account (firebase-adminsdk-fbsvc@csc-305-dev-project.iam.gserviceaccount.com)
+**Authentication:** Service account (firebase-adminsdk-fbsvc@[FIREBASE_PROJECT_ID].iam.gserviceaccount.com)
 
 ### Deployed Functions
 
 ```bash
 # List deployed functions
-firebase functions:list --project=csc-305-dev-project
+firebase functions:list --project=[FIREBASE_PROJECT_ID]
 
 # View function logs
-firebase functions:log --project=csc-305-dev-project
+firebase functions:log --project=[FIREBASE_PROJECT_ID]
 ```
 
 **Function URLs:**
-- getD7RetentionMetrics: https://us-central1-csc-305-dev-project.cloudfunctions.net/getD7RetentionMetrics
-- getRetentionTrend: https://us-central1-csc-305-dev-project.cloudfunctions.net/getRetentionTrend
+- getD7RetentionMetrics: https://us-central1-[FIREBASE_PROJECT_ID].cloudfunctions.net/getD7RetentionMetrics
+- getRetentionTrend: https://us-central1-[FIREBASE_PROJECT_ID].cloudfunctions.net/getRetentionTrend
 
 ### Deployment Scripts
 
@@ -1080,36 +1080,36 @@ firebase functions:log --project=csc-305-dev-project
 ./scripts/deploy-firebase-with-serviceaccount.sh
 
 # Manual deployment (requires firebase login)
-firebase deploy --only functions --project=csc-305-dev-project
+firebase deploy --only functions --project=[FIREBASE_PROJECT_ID]
 ```
 
 **Deploy Indexes:**
 ```bash
-firebase deploy --only firestore:indexes --project=csc-305-dev-project
+firebase deploy --only firestore:indexes --project=[FIREBASE_PROJECT_ID]
 ```
 
 ### IAM Permissions
 
 The following roles were granted for service account deployment:
 
-**Service Account:** `firebase-adminsdk-fbsvc@csc-305-dev-project.iam.gserviceaccount.com`
+**Service Account:** `firebase-adminsdk-fbsvc@[FIREBASE_PROJECT_ID].iam.gserviceaccount.com`
 - `roles/firebase.admin` - Firebase administration
 - `roles/cloudfunctions.developer` - Deploy Cloud Functions
 - `roles/cloudscheduler.admin` - Manage Cloud Scheduler
 - `roles/serviceusage.serviceUsageConsumer` - Enable GCP APIs
-- `roles/iam.serviceAccountUser` (on csc-305-dev-project@appspot.gserviceaccount.com)
+- `roles/iam.serviceAccountUser` (on [FIREBASE_PROJECT_ID]@appspot.gserviceaccount.com)
 - `roles/iam.serviceAccountUser` (on 54503053415-compute@developer.gserviceaccount.com)
 
 **Grant Commands:**
 ```bash
 # Grant Cloud Scheduler admin
-gcloud projects add-iam-policy-binding csc-305-dev-project \
-  --member="serviceAccount:firebase-adminsdk-fbsvc@csc-305-dev-project.iam.gserviceaccount.com" \
+gcloud projects add-iam-policy-binding [FIREBASE_PROJECT_ID] \
+  --member="serviceAccount:firebase-adminsdk-fbsvc@[FIREBASE_PROJECT_ID].iam.gserviceaccount.com" \
   --role="roles/cloudscheduler.admin"
 
 # Grant service account user roles
-gcloud iam service-accounts add-iam-policy-binding csc-305-dev-project@appspot.gserviceaccount.com \
-  --member="serviceAccount:firebase-adminsdk-fbsvc@csc-305-dev-project.iam.gserviceaccount.com" \
+gcloud iam service-accounts add-iam-policy-binding [FIREBASE_PROJECT_ID]@appspot.gserviceaccount.com \
+  --member="serviceAccount:firebase-adminsdk-fbsvc@[FIREBASE_PROJECT_ID].iam.gserviceaccount.com" \
   --role="roles/iam.serviceAccountUser"
 ```
 
@@ -1129,13 +1129,13 @@ gcloud iam service-accounts add-iam-policy-binding csc-305-dev-project@appspot.g
 
 ```bash
 # Check function logs
-firebase functions:log --project=csc-305-dev-project --limit=50
+firebase functions:log --project=[FIREBASE_PROJECT_ID] --limit=50
 
 # View Firestore data
-# Navigate to: https://console.firebase.google.com/project/csc-305-dev-project/firestore
+# Navigate to: https://console.firebase.google.com/project/[FIREBASE_PROJECT_ID]/firestore
 
 # Check Cloud Scheduler jobs
-gcloud scheduler jobs list --project=csc-305-dev-project --location=us-central1
+gcloud scheduler jobs list --project=[FIREBASE_PROJECT_ID] --location=us-central1
 ```
 
 ---
@@ -1167,7 +1167,7 @@ FlutterFlow custom actions must be wired to UI triggers to execute. This section
 **Documentation:** `docs/MANUAL_PAGE_TRIGGER_WIRING.md`
 
 **Workflow:**
-1. Open FlutterFlow UI: https://app.flutterflow.io/project/c-s-c305-capstone-khj14l
+1. Open FlutterFlow UI: https://app.flutterflow.io/project/[FLUTTERFLOW_PROJECT_ID]
 2. Navigate to target page
 3. Select Scaffold (root widget) → Actions & Logic tab
 4. Add trigger (e.g., "On Page Load")
@@ -1282,10 +1282,10 @@ git rebase --continue
 **Solutions:**
 ```bash
 # Verify local config
-git config user.email  # Should be juan_vallejo@uri.edu
+git config user.email  # Should be [REDACTED]@example.edu
 
 # Fix if wrong
-git config user.email "juan_vallejo@uri.edu"
+git config user.email "[REDACTED]@example.edu"
 
 # Amend last commit if needed
 git commit --amend --reset-author
@@ -1434,13 +1434,13 @@ flutter build web
 
 ### Team
 
-- **Lead Developer**: Juan Vallejo
-- **Email**: juan_vallejo@uri.edu (school), juan.vallejo@jpteq.com (personal)
+- **Lead Developer**: Jack Light
+- **Email**: [REDACTED]@example.edu (school), [REDACTED]@example.com (personal)
 - **GitHub**: juanvallejo-teq
 
 ### Resources
 
-- **FlutterFlow Project**: https://app.flutterflow.io/project/c-s-c305-capstone-khj14l
+- **FlutterFlow Project**: https://app.flutterflow.io/project/[FLUTTERFLOW_PROJECT_ID]
 - **FlutterFlow API Docs**: https://api.flutterflow.io
 - **GitHub Repository**: [Your GitHub URL]
 - **GCP Console**: https://console.cloud.google.com

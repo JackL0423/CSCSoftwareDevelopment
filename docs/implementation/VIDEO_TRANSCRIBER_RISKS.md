@@ -3,7 +3,7 @@
 **Date:** 2025-11-06
 **Status:** Active
 **Project:** Claude Code Skills - Video Transcriber
-**Owner:** Juan Vallejo (juan_vallejo@uri.edu)
+**Owner:** Juan Vallejo ([REDACTED]@example.edu)
 
 ---
 
@@ -325,14 +325,14 @@ API key issues prevent any transcription:
    ```bash
    gcloud secrets versions access latest \
      --secret=GEMINI_API_KEY \
-     --project=csc305project-475802
+     --project=[GCP_SECRETS_PROJECT_ID]
    ```
 2. Test API key with lightweight call before processing
 3. Clear error messages:
    ```
    Error: Cannot access GEMINI_API_KEY from Secret Manager
    Ensure: gcloud auth login completed
-   Verify: Secret exists in project csc305project-475802
+   Verify: Secret exists in project [GCP_SECRETS_PROJECT_ID]
    ```
 4. Document setup requirements
 5. Fallback to `GEMINI_API_KEY` environment variable

@@ -147,8 +147,8 @@ FlutterFlow UI has "Duplicate Page" feature. When duplicating, it must generate 
 2. Confirm HomePage has OnPageLoad trigger (created in EXP-001 or manually if needed)
 3. Download baseline file list:
    ```bash
-   curl -sS "https://api.flutterflow.io/v2/listPartitionedFileNames?projectId=$(gcloud secrets versions access latest --secret="TEST_ID_API" --project=csc305project-475802 --account=juan_vallejo@uri.edu)" \
-     -H "Authorization: Bearer $(gcloud secrets versions access latest --secret="FLUTTERFLOW_LEAD_API_TOKEN" --project=csc305project-475802 --account=juan_vallejo@uri.edu)" \
+   curl -sS "https://api.flutterflow.io/v2/listPartitionedFileNames?projectId=$(gcloud secrets versions access latest --secret="TEST_ID_API" --project=[GCP_SECRETS_PROJECT_ID] --account=[REDACTED]@example.edu)" \
+     -H "Authorization: Bearer $(gcloud secrets versions access latest --secret="FLUTTERFLOW_LEAD_API_TOKEN" --project=[GCP_SECRETS_PROJECT_ID] --account=[REDACTED]@example.edu)" \
    | jq -r '.value.file_names[]' | sort > /tmp/files_before.txt
    ```
 

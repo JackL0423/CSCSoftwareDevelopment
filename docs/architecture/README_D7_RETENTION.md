@@ -36,7 +36,7 @@ This script guides you through:
 2. Generate API key: https://app.flutterflow.io → Account → API
 3. Configure extension: Command Palette → `FlutterFlow: Configure`
    - API Key: [your-key]
-   - Project ID: `c-s-c305-capstone-khj14l`
+   - Project ID: `[FLUTTERFLOW_PROJECT_ID]`
    - Branch: `main`
 4. Download project: Command Palette → `FlutterFlow: Download Code`
 
@@ -452,8 +452,8 @@ firebase functions:list
 
 ### Contact
 
-**Project Lead**: Juan Vallejo
-**Email**: juan_vallejo@uri.edu
+**Project Lead**: Jack Light
+**Email**: [REDACTED]@example.edu
 **Course**: CSC305 Software Development Capstone
 **Institution**: University of Rhode Island
 

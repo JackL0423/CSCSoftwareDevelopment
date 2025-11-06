@@ -7,7 +7,7 @@
 # D7 Retention Metrics - Deployment Status
 
 **Last Updated:** 2025-11-05
-**Project:** GlobalFlavors (c-s-c305-capstone-khj14l)
+**Project:** GlobalFlavors ([FLUTTERFLOW_PROJECT_ID])
 **Status:** Backend Complete, UI Wiring Pending
 
 ---
@@ -36,7 +36,7 @@
 **Scripts:** `scripts/push-essential-actions-only.sh`
 
 #### 2. Firebase Cloud Functions (4/4 deployed)
-All functions deployed successfully to `csc-305-dev-project`:
+All functions deployed successfully to `[FIREBASE_PROJECT_ID]`:
 
 - **calculateD7Retention** (us-central1) ✓
   - Type: Scheduled (Cloud Scheduler)
@@ -51,13 +51,13 @@ All functions deployed successfully to `csc-305-dev-project`:
 
 - **getD7RetentionMetrics** (us-central1) ✓
   - Type: HTTPS endpoint
-  - URL: https://us-central1-csc-305-dev-project.cloudfunctions.net/getD7RetentionMetrics
+  - URL: https://us-central1-[FIREBASE_PROJECT_ID].cloudfunctions.net/getD7RetentionMetrics
   - Purpose: Query retention metrics by cohort date
   - Runtime: Node.js 20
 
 - **getRetentionTrend** (us-central1) ✓
   - Type: HTTPS endpoint
-  - URL: https://us-central1-csc-305-dev-project.cloudfunctions.net/getRetentionTrend
+  - URL: https://us-central1-[FIREBASE_PROJECT_ID].cloudfunctions.net/getRetentionTrend
   - Purpose: Get retention trend over time
   - Runtime: Node.js 20
 
@@ -135,7 +135,7 @@ All required state variables defined in FlutterFlow app-state:
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│ FlutterFlow App (c-s-c305-capstone-khj14l)                 │
+│ FlutterFlow App ([FLUTTERFLOW_PROJECT_ID])                 │
 ├─────────────────────────────────────────────────────────────┤
 │                                                             │
 │  HomePage (OnPageLoad)                                      │
@@ -162,7 +162,7 @@ All required state variables defined in FlutterFlow app-state:
                             │
                             ▼
 ┌─────────────────────────────────────────────────────────────┐
-│ Firebase Backend (csc-305-dev-project)                      │
+│ Firebase Backend ([FIREBASE_PROJECT_ID])                      │
 ├─────────────────────────────────────────────────────────────┤
 │                                                             │
 │  Cloud Scheduler (Daily 2 AM UTC)                          │
@@ -256,7 +256,7 @@ docs/
 
 The following IAM roles were granted to enable service account deployment:
 
-### Service Account: firebase-adminsdk-fbsvc@csc-305-dev-project.iam.gserviceaccount.com
+### Service Account: firebase-adminsdk-fbsvc@[FIREBASE_PROJECT_ID].iam.gserviceaccount.com
 
 | Role | Purpose | Resource |
 |------|---------|----------|
@@ -264,7 +264,7 @@ The following IAM roles were granted to enable service account deployment:
 | `roles/cloudfunctions.developer` | Deploy Cloud Functions | Project-wide |
 | `roles/cloudscheduler.admin` | Manage Cloud Scheduler jobs | Project-wide |
 | `roles/serviceusage.serviceUsageConsumer` | Enable/use GCP APIs | Project-wide |
-| `roles/iam.serviceAccountUser` | Act as service accounts | csc-305-dev-project@appspot.gserviceaccount.com |
+| `roles/iam.serviceAccountUser` | Act as service accounts | [FIREBASE_PROJECT_ID]@appspot.gserviceaccount.com |
 | `roles/iam.serviceAccountUser` | Act as Compute Engine SA | 54503053415-compute@developer.gserviceaccount.com |
 
 ### Personal Account: vallejo.juan97@gmail.com
@@ -353,8 +353,8 @@ The following IAM roles were granted to enable service account deployment:
 
 Common issues and solutions documented in:
 - `docs/MANUAL_PAGE_TRIGGER_WIRING.md` (Section: Troubleshooting)
-- Firebase Functions logs: `firebase functions:log --project csc-305-dev-project`
-- Firestore console: https://console.firebase.google.com/project/csc-305-dev-project/firestore
+- Firebase Functions logs: `firebase functions:log --project [FIREBASE_PROJECT_ID]`
+- Firestore console: https://console.firebase.google.com/project/[FIREBASE_PROJECT_ID]/firestore
 
 ---
 
@@ -412,10 +412,10 @@ Common issues and solutions documented in:
 
 ## Contacts & Resources
 
-- **FlutterFlow Project:** https://app.flutterflow.io/project/c-s-c305-capstone-khj14l
-- **Firebase Console:** https://console.firebase.google.com/project/csc-305-dev-project
+- **FlutterFlow Project:** https://app.flutterflow.io/project/[FLUTTERFLOW_PROJECT_ID]
+- **Firebase Console:** https://console.firebase.google.com/project/[FIREBASE_PROJECT_ID]
 - **GitHub Repository:** (Your GitHub URL)
-- **Team Lead:** Juan Vallejo (juan_vallejo@uri.edu)
+- **Team Lead:** Juan Vallejo ([REDACTED]@example.edu)
 - **Course:** CSC305 Software Development Capstone, URI
 
 ---

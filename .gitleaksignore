@@ -1,0 +1,21 @@
+# Gitleaks Ignore File
+# Exclude files that contain example tokens or historical records of findings
+
+# Archive directory contains example scripts with redacted tokens for documentation
+docs/archive/
+
+# Metrics directory contains gitleaks scan results (records of findings, not actual secrets)
+metrics/gitleaks-before-phase0.json
+metrics/gitleaks-after-phase2.json
+metrics/SECURITY_FINDINGS.md
+
+# FlutterFlow YAML files (should be gitignored, but adding here for safety)
+flutterflow-yamls/
+
+# Environment files (should be gitignored)
+.env
+.env.*
+*.env
+
+# Test files may contain example tokens
+test-project-yamls/

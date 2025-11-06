@@ -3,7 +3,7 @@
 **Date:** 2025-11-06
 **Version:** 1.0.0
 **Status:** Phase 2 Complete - Core Implementation Ready
-**Owner:** Juan Vallejo (juan_vallejo@uri.edu)
+**Owner:** Juan Vallejo ([REDACTED]@example.edu)
 
 ---
 

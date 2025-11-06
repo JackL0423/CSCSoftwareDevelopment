@@ -30,7 +30,7 @@
 
 **Existing Infrastructure:**
 - **Claude Code Skills System:** Located at `~/.claude/skills/`
-- **Gemini API Key:** Pre-configured in GCP Secret Manager (`GEMINI_API_KEY`, project `csc305project-475802`)
+- **Gemini API Key:** Pre-configured in GCP Secret Manager (`GEMINI_API_KEY`, project `[GCP_SECRETS_PROJECT_ID]`)
 - **Python:** v3.12.12 installed
 - **OS:** Linux 6.14.0-35-generic (Debian/Ubuntu)
 - **Available Tools:** Bash, Read, Write, Glob
@@ -206,8 +206,8 @@ Merge chunks (if chunked) → Final transcript
 # Fetch Gemini API key
 gcloud secrets versions access latest \
   --secret="GEMINI_API_KEY" \
-  --project=csc305project-475802 \
-  --account=juan_vallejo@uri.edu
+  --project=[GCP_SECRETS_PROJECT_ID] \
+  --account=[REDACTED]@example.edu
 ```
 
 **Implementation Options:**

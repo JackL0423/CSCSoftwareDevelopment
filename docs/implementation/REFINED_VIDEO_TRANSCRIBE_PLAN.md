@@ -3,7 +3,7 @@
 **Date:** 2025-11-06
 **Version:** 2.0 (Post-GPT-5 Analysis)
 **Status:** Execution-Ready
-**Owner:** Juan Vallejo (juan_vallejo@uri.edu)
+**Owner:** Juan Vallejo ([REDACTED]@example.edu)
 
 ---
 
@@ -417,7 +417,7 @@ def get_gemini_client() -> genai.Client:
         [
             "gcloud", "secrets", "versions", "access", "latest",
             "--secret=GEMINI_API_KEY",
-            "--project=csc305project-475802"
+            "--project=[GCP_SECRETS_PROJECT_ID]"
         ],
         capture_output=True,
         text=True,
