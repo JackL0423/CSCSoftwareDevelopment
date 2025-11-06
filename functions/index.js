@@ -13,14 +13,15 @@ if (!admin.apps.length) {
 
 const db = admin.firestore();
 
+
+const { onSchedule } = require("firebase-functions/v2/scheduler");
 /**
  * Scheduled function to calculate D7 Repeat Recipe Rate
  * Runs daily to process cohorts from 7 days ago
  */
-exports.calculateD7Retention = functions.pubsub
-  .schedule('0 2 * * *') // Daily at 2 AM UTC
-  .timeZone('UTC')
-  .onRun(async (context) => {
+exports.calculateD7Retention = onSchedule(
+  { schedule: "0 2 * * *", timeZone: "UTC" },
+  async () => {
     console.log('Starting D7 Retention calculation...');
 
     try {
@@ -394,12 +395,12 @@ function calculateAverage(numbers) {
 // Recipe Data Pipeline
 //==============================================
 const { setGlobalOptions } = require('firebase-functions');
-const { onSchedule } = require('firebase-functions/v2/scheduler');
 const { onRequest } = require('firebase-functions/v2/https');
 const { fetchAllRegions } = require("./api_fetcher.js");
 const { normalizeAllRegions } = require("./chatgpt_normalizer.js");
 const { uploadAllRegions } = require("./firestore_uploader.js");
 const { logInfo } = require("./logger.js");
+
 
 // Use the existing admin instance (no re-init)
 const firestore = admin.firestore();
