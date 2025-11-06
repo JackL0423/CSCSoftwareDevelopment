@@ -170,7 +170,7 @@ The `/v2/updateProjectByYaml` API endpoint accepts YAML updates and returns `{"s
 ### 4. Authorization
 **Q:** Does the LEAD token have the correct permissions for YAML uploads?
 
-**Current token:** `9dc3d62e-6d19-4831-9386-02760f9fb7c0`
+**Current token:** `[REDACTED]`
 
 **Confirmed working for:**
 - ✅ Download YAML

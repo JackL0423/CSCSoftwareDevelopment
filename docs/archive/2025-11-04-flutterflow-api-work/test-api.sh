@@ -1,5 +1,5 @@
 #!/bin/bash
-LEAD_TOKEN="9dc3d62e-6d19-4831-9386-02760f9fb7c0"
+LEAD_TOKEN="[REDACTED]"
 PROJECT_ID="c-s-c305-capstone-khj14l"
 API_BASE="https://api.flutterflow.io/v2"
 
