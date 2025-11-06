@@ -388,3 +388,8 @@ function calculateAverage(numbers) {
   const sum = numbers.reduce((a, b) => a + b, 0);
   return parseFloat((sum / numbers.length).toFixed(2));
 }
+
+
+//==============================================
+// Recipe Data Pipeline
+//==============================================
