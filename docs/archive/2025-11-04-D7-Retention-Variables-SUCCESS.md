@@ -219,7 +219,7 @@ These variables enable D7 retention tracking:
 
 ## Technical Details
 
-**Project ID:** c-s-c305-capstone-khj14l
+**Project ID:** [FLUTTERFLOW_PROJECT_ID]
 **FlutterFlow Plan:** Growth (API-enabled)
 **API Version:** v2
 **Tools Used:** curl, jq, Python 3, PyYAML, bash

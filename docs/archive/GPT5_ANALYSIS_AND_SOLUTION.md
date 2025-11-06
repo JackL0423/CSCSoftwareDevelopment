@@ -8,7 +8,7 @@
 
 ## Problem Statement
 
-**Goal**: Programmatically create and deploy 3 Custom Dart Actions to FlutterFlow project (`c-s-c305-capstone-khj14l`) for D7 retention tracking.
+**Goal**: Programmatically create and deploy 3 Custom Dart Actions to FlutterFlow project (`[FLUTTERFLOW_PROJECT_ID]`) for D7 retention tracking.
 
 **Constraint**: Avoid manual UI copy-paste; preserve repeatability for future deployments.
 

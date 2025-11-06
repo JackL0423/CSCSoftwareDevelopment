@@ -12,11 +12,11 @@ This guide documents the ONE-TIME manual steps required to wire custom actions t
 
 ## Prerequisites
 
-- FlutterFlow project: `c-s-c305-capstone-khj14l`
+- FlutterFlow project: `[FLUTTERFLOW_PROJECT_ID]`
 - Custom actions deployed:
   - `initializeUserSession`
   - `checkAndLogRecipeCompletion`
-- Project URL: https://app.flutterflow.io/project/c-s-c305-capstone-khj14l
+- Project URL: https://app.flutterflow.io/project/[FLUTTERFLOW_PROJECT_ID]
 
 ---
 
@@ -51,7 +51,7 @@ This guide documents the ONE-TIME manual steps required to wire custom actions t
 **Time:** 15-20 minutes
 
 1. **Open Project**
-   - Navigate to: https://app.flutterflow.io/project/c-s-c305-capstone-khj14l
+   - Navigate to: https://app.flutterflow.io/project/[FLUTTERFLOW_PROJECT_ID]
    - Wait for project to load (~10-15 seconds)
 
 2. **Navigate to HomePage**
@@ -387,9 +387,9 @@ This will reveal the exact YAML schema for custom action references, enabling Ph
 
 ## Reference
 
-- FlutterFlow Project: https://app.flutterflow.io/project/c-s-c305-capstone-khj14l
+- FlutterFlow Project: https://app.flutterflow.io/project/[FLUTTERFLOW_PROJECT_ID]
 - Custom Actions Source: `/home/jpv/Documents/School/school/CSC305PROJECT/CSCSoftwareDevelopment/c_s_c305_capstone/lib/custom_code/actions/`
-- Firebase Console: https://console.firebase.google.com/project/csc-305-dev-project
+- Firebase Console: https://console.firebase.google.com/project/[FIREBASE_PROJECT_ID]
 - D7 Retention Guide: `docs/D7_RETENTION_METRICS_GUIDE.md`
 
 ---

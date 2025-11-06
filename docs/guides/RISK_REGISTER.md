@@ -161,7 +161,7 @@
 
 | Role | Name | Contact | Escalation Hours |
 |------|------|---------|------------------|
-| Automation Lead | Juan Vallejo | juan_vallejo@uri.edu | Mon-Fri 09:00-18:00 EST |
+| Automation Lead | Juan Vallejo | [REDACTED]@example.edu | Mon-Fri 09:00-18:00 EST |
 | CI Maintainer | TBD | TBD | TBD |
 | DevOps | TBD | TBD | TBD |
 | Project Lead | TBD | TBD | Emergency: 24/7 |

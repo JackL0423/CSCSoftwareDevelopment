@@ -27,7 +27,7 @@ This guide uses the **official FlutterFlow VS Code Extension** to programmatical
 
 ### Required
 - VS Code installed
-- FlutterFlow project: `c-s-c305-capstone-khj14l`
+- FlutterFlow project: `[FLUTTERFLOW_PROJECT_ID]`
 - FlutterFlow Growth Plan (for API access)
 - Git repository with custom action Dart files
 
@@ -71,7 +71,7 @@ LEAD_TOKEN="9dc3d62e-6d19-4831-9386-02760f9fb7c0"
 2. Type: **"FlutterFlow: Configure"**
 3. Enter when prompted:
    - **API Key**: [paste your generated key]
-   - **Project ID**: `c-s-c305-capstone-khj14l`
+   - **Project ID**: `[FLUTTERFLOW_PROJECT_ID]`
    - **Branch**: `main`
 
 4. Extension will save configuration
@@ -238,7 +238,7 @@ dependencies:
 
 ### Step 3.1: Check Custom Code Panel
 
-1. Open FlutterFlow: https://app.flutterflow.io/project/c-s-c305-capstone-khj14l
+1. Open FlutterFlow: https://app.flutterflow.io/project/[FLUTTERFLOW_PROJECT_ID]
 2. Navigate to: **Custom Code** (left sidebar)
 3. Click: **Actions** tab
 

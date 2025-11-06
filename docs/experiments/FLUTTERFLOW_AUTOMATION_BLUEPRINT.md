@@ -11,7 +11,7 @@
 
 **Objective:** Achieve 100% programmatic control of FlutterFlow project configuration, eliminating manual UI interaction for trigger/action wiring.
 
-**Current State:** 95% automation achieved (n=42 operations, 2025-11-03 10:00 to 2025-11-05 18:00, project c-s-c305-capstone-khj14l, branch main). Deployment time reduced from 90-130 minutes to 15-20 minutes (75-85% reduction, p95=18 min across last 12 deployments).
+**Current State:** 95% automation achieved (n=42 operations, 2025-11-03 10:00 to 2025-11-05 18:00, project [FLUTTERFLOW_PROJECT_ID], branch main). Deployment time reduced from 90-130 minutes to 15-20 minutes (75-85% reduction, p95=18 min across last 12 deployments).
 
 **Primary Blocker:** Cannot create new trigger/action file keys via API. File keys must be seeded via FlutterFlow UI (5-10 minutes per page, one-time). This represents 90% of the remaining 5% gap.
 
@@ -669,7 +669,7 @@ Validation (Deprecated):
 **Request:**
 
 ```http
-GET /v2/projectYamls?projectId=c-s-c305-capstone-khj14l&fileName=app-state HTTP/1.1
+GET /v2/projectYamls?projectId=[FLUTTERFLOW_PROJECT_ID]&fileName=app-state HTTP/1.1
 Host: api.flutterflow.io
 Authorization: Bearer <REDACTED>
 Accept: application/json
@@ -719,7 +719,7 @@ unzip -l app-state.zip
 ```bash
 #!/bin/bash
 # Attempting to create new file key
-PROJECT_ID="c-s-c305-capstone-khj14l"
+PROJECT_ID="[FLUTTERFLOW_PROJECT_ID]"
 TOKEN="<REDACTED>"
 NEW_FILE_KEY="page/id-Scaffold_NEWPAGE/trigger_actions/id-ON_INIT_STATE/action/id-test123"
 YAML_CONTENT="kind: action\nversion: 1\naction:\n  customAction: {}"

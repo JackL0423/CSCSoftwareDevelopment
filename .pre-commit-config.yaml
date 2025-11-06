@@ -1,17 +1,59 @@
+# Pre-commit hooks for GlobalFlavors project
+# Prevents secrets, large files, and common issues from being committed
+#
+# Install: pip install pre-commit && pre-commit install
+# Run manually: pre-commit run --all-files
+
 repos:
+  # General file checks
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.6.0
     hooks:
       - id: check-added-large-files
-        args: ['--maxkb=10240']  # Block files >10MB
-      - id: end-of-file-fixer
-      - id: trailing-whitespace
-      - id: check-yaml
-      - id: check-json
-      - id: check-merge-conflict
-      - id: detect-private-key
+        args: ['--maxkb=10240']  # 10 MB limit
+        name: Check for large files (>10MB)
 
+      - id: end-of-file-fixer
+        name: Fix end of files
+        exclude: '\.har$'
+
+      - id: trailing-whitespace
+        name: Trim trailing whitespace
+        exclude: '\.har$'
+
+      - id: check-yaml
+        name: Check YAML syntax
+        exclude: 'flutterflow-yamls/.*'
+
+      - id: check-json
+        name: Check JSON syntax
+
+      - id: check-merge-conflict
+        name: Check for merge conflicts
+
+      - id: detect-private-key
+        name: Detect private keys
+
+  # Secret detection with gitleaks
   - repo: https://github.com/gitleaks/gitleaks
     rev: v8.18.2
     hooks:
       - id: gitleaks
+        name: Detect secrets with gitleaks
+        entry: gitleaks protect --staged --redact --verbose
+
+  # Shell script linting
+  - repo: https://github.com/koalaman/shellcheck-precommit
+    rev: v0.10.0
+    hooks:
+      - id: shellcheck
+        name: Lint shell scripts with ShellCheck
+        args: [--severity=warning]
+
+# Configuration
+default_language_version:
+  python: python3
+
+# Faster hook execution
+default_stages: [commit]
+fail_fast: false

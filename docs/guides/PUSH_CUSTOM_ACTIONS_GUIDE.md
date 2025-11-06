@@ -49,7 +49,7 @@
    - Watch for success notification
 
 5. **Verify in FlutterFlow UI**
-   - Open: https://app.flutterflow.io/project/c-s-c305-capstone-khj14l
+   - Open: https://app.flutterflow.io/project/[FLUTTERFLOW_PROJECT_ID]
    - Navigate to: **Custom Code → Actions** (left sidebar)
    - Confirm 3 actions appear with 0 compile errors:
      - `initializeUserSession`
@@ -125,7 +125,7 @@ Should show 4 files:
 cat ~/.config/Code/User/settings.json | grep flutterflow.projectId
 ```
 
-Should see: `"flutterflow.projectId": "c-s-c305-capstone-khj14l"`
+Should see: `"flutterflow.projectId": "[FLUTTERFLOW_PROJECT_ID]"`
 
 ### Extension not responding
 
@@ -151,7 +151,7 @@ After pushing, verify the following:
 
 - [ ] **VS Code showed success notification**
 - [ ] **FlutterFlow UI shows 3 custom actions**
-  - Open: https://app.flutterflow.io/project/c-s-c305-capstone-khj14l
+  - Open: https://app.flutterflow.io/project/[FLUTTERFLOW_PROJECT_ID]
   - Navigate: Custom Code → Actions
 - [ ] **Each action shows 0 compile errors**
 - [ ] **Action signatures match:**
@@ -204,11 +204,11 @@ If the VS Code Extension doesn't work, custom actions can be created directly in
 **Issues?**
 - Check VS Code Output panel for FlutterFlow extension logs
 - Verify API token is correct in settings
-- Ensure project ID matches: `c-s-c305-capstone-khj14l`
+- Ensure project ID matches: `[FLUTTERFLOW_PROJECT_ID]`
 - Restart VS Code if extension not responding
 
 **Contact:**
-- juan_vallejo@uri.edu
+- [REDACTED]@example.edu
 
 ---
 

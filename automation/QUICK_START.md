@@ -41,10 +41,10 @@ cat automation/research/NETWORK_CAPTURE_GUIDE.md | less
 
 ```bash
 # Open FlutterFlow project
-google-chrome https://app.flutterflow.io/project/c-s-c305-capstone-khj14l &
+google-chrome https://app.flutterflow.io/project/[FLUTTERFLOW_PROJECT_ID] &
 
 # Wait for project to load
-# Login if needed (juan_vallejo@uri.edu or project account)
+# Login if needed ([REDACTED]@example.edu or project account)
 ```
 
 ### 3. Open Chrome DevTools (1 min)
@@ -344,7 +344,7 @@ After finishing, verify:
 2. `automation/README.md` (context and overview)
 3. ChatGPT analysis screenshots (reference implementation)
 
-**Questions**: Consult Claude Code or contact juan_vallejo@uri.edu
+**Questions**: Consult Claude Code or contact [REDACTED]@example.edu
 
 ---
 

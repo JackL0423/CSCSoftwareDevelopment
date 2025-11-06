@@ -47,6 +47,6 @@ Status: Backend ready; UI triggers wired via API; Test Lab run passed
 
 ## Questions?
 
-- FlutterFlow project: https://app.flutterflow.io/project/c-s-c305-capstone-khj14l
-- Firebase Console: https://console.firebase.google.com/project/csc-305-dev-project
-- Contact: juan_vallejo@uri.edu
+- FlutterFlow project: https://app.flutterflow.io/project/[FLUTTERFLOW_PROJECT_ID]
+- Firebase Console: https://console.firebase.google.com/project/[FIREBASE_PROJECT_ID]
+- Contact: [REDACTED]@example.edu

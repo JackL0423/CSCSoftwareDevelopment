@@ -1096,8 +1096,8 @@ Comparison platforms:
 **Working Download:**
 ```bash
 #!/bin/bash
-PROJECT_ID="c-s-c305-capstone-khj14l"
-TOKEN=$(gcloud secrets versions access latest --secret="FLUTTERFLOW_LEAD_API_TOKEN" --project=csc305project-475802 --account=juan_vallejo@uri.edu)
+PROJECT_ID="[FLUTTERFLOW_PROJECT_ID]"
+TOKEN=$(gcloud secrets versions access latest --secret="FLUTTERFLOW_LEAD_API_TOKEN" --project=[GCP_SECRETS_PROJECT_ID] --account=[REDACTED]@example.edu)
 
 curl -s "https://api.flutterflow.io/v2/projectYamls?projectId=${PROJECT_ID}&fileName=app-state" \
   -H "Authorization: Bearer ${TOKEN}" \
@@ -1282,21 +1282,21 @@ curl -X POST "https://api.flutterflow.io/v2/updateProjectByYaml" \
 
 ### Project Identifiers
 
-- **Production Project ID:** `c-s-c305-capstone-khj14l`
+- **Production Project ID:** `[FLUTTERFLOW_PROJECT_ID]`
 - **Test Project ID:** `project-test-n8qaal` (stored in GCP secret `TEST_ID_API`)
-- **GCP Project:** `csc305project-475802`
-- **Firebase Project:** `csc-305-dev-project`
+- **GCP Project:** `[GCP_SECRETS_PROJECT_ID]`
+- **Firebase Project:** `[FIREBASE_PROJECT_ID]`
 - **API Base URL:** `https://api.flutterflow.io/v2/`
 
 ### Authentication
 
 ```bash
 # Retrieve project IDs
-PROD_ID=$(gcloud secrets versions access latest --secret="FLUTTERFLOW_PROJECT_ID" --project=csc305project-475802 --account=juan_vallejo@uri.edu)
-TEST_ID=$(gcloud secrets versions access latest --secret="TEST_ID_API" --project=csc305project-475802 --account=juan_vallejo@uri.edu)
+PROD_ID=$(gcloud secrets versions access latest --secret="FLUTTERFLOW_PROJECT_ID" --project=[GCP_SECRETS_PROJECT_ID] --account=[REDACTED]@example.edu)
+TEST_ID=$(gcloud secrets versions access latest --secret="TEST_ID_API" --project=[GCP_SECRETS_PROJECT_ID] --account=[REDACTED]@example.edu)
 
 # Retrieve API token
-TOKEN=$(gcloud secrets versions access latest --secret="FLUTTERFLOW_LEAD_API_TOKEN" --project=csc305project-475802 --account=juan_vallejo@uri.edu)
+TOKEN=$(gcloud secrets versions access latest --secret="FLUTTERFLOW_LEAD_API_TOKEN" --project=[GCP_SECRETS_PROJECT_ID] --account=[REDACTED]@example.edu)
 ```
 
 ### Test Commands

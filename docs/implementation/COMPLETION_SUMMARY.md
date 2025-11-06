@@ -114,7 +114,7 @@ CSCSoftwareDevelopment/
 │   ├── backups-2025-11-06/
 │   └── development-artifacts-2025-11-06.tar.gz
 │
-├── .firebaserc                            ✓ csc-305-dev-project
+├── .firebaserc                            ✓ [FIREBASE_PROJECT_ID]
 ├── firebase.json                          ✓ Firestore indexes
 ├── firestore.indexes.json                 ✓ 2 indexes
 └── .gitignore                             ✓ Updated
@@ -177,8 +177,8 @@ CSCSoftwareDevelopment/
 ### Resources
 - **Classmate Summary:** README_Juan_2025-11-05.md
 - **Deployment Status:** DEPLOYMENT_STATUS.md
-- **FlutterFlow:** https://app.flutterflow.io/project/c-s-c305-capstone-khj14l
-- **Firebase:** https://console.firebase.google.com/project/csc-305-dev-project
+- **FlutterFlow:** https://app.flutterflow.io/project/[FLUTTERFLOW_PROJECT_ID]
+- **Firebase:** https://console.firebase.google.com/project/[FIREBASE_PROJECT_ID]
 
 ---
 

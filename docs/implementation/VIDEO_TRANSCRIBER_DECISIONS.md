@@ -3,7 +3,7 @@
 **Date:** 2025-11-06
 **Status:** Execution-Ready
 **Project:** Claude Code Skills - Video Transcriber
-**Owner:** Juan Vallejo (juan_vallejo@uri.edu)
+**Owner:** Juan Vallejo ([REDACTED]@example.edu)
 
 ---
 
@@ -476,7 +476,7 @@ Run with --verbose for detailed diagnostics
 ```bash
 gcloud secrets versions access latest \
   --secret=GEMINI_API_KEY \
-  --project=csc305project-475802
+  --project=[GCP_SECRETS_PROJECT_ID]
 ```
 
 **Fallback:** Check `GEMINI_API_KEY` environment variable if gcloud unavailable

@@ -248,7 +248,7 @@ flutterflow-yamls/
 - Implementation Guide: `docs/RETENTION_IMPLEMENTATION_GUIDE.md`
 - Technical Summary: `docs/RETENTION_LOGIC_COMPLETION_SUMMARY.md`
 - FlutterFlow API: `scripts/FLUTTERFLOW_API_GUIDE.md`
-- Team Lead: Juan Vallejo (juan_vallejo@uri.edu)
+- Team Lead: Jack Light ([REDACTED]@example.edu)
 
 ---
 

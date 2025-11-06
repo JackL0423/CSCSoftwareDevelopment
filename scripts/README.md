@@ -108,7 +108,7 @@ nano flutterflow-yamls/app-state.yaml
 ./scripts/flutterflow.sh upload app-state
 
 # 6. Verify in FlutterFlow UI
-# Open: https://app.flutterflow.io/project/c-s-c305-capstone-khj14l
+# Open: https://app.flutterflow.io/project/[FLUTTERFLOW_PROJECT_ID]
 ```
 
 **Time**: 10-15 minutes per update
@@ -158,7 +158,7 @@ export LEAD_TOKEN=$(gcloud secrets versions access latest --secret=FLUTTERFLOW_L
 | Variable | Default | Purpose |
 |----------|---------|---------|
 | `API_BASE` | `https://api.flutterflow.io/v2` | FlutterFlow API base URL |
-| `PROJECT_ID` | `c-s-c305-capstone-khj14l` | FlutterFlow project ID |
+| `PROJECT_ID` | `[FLUTTERFLOW_PROJECT_ID]` | FlutterFlow project ID |
 
 ---
 
@@ -198,7 +198,7 @@ sudo apt-get install -y jq curl unzip
 
 ```bash
 # Fetch token from Secret Manager (correct method)
-export LEAD_TOKEN=$(gcloud secrets versions access latest --secret=FLUTTERFLOW_LEAD_API_TOKEN --project=csc305project-475802)
+export LEAD_TOKEN=$(gcloud secrets versions access latest --secret=FLUTTERFLOW_LEAD_API_TOKEN --project=[GCP_SECRETS_PROJECT_ID])
 ```
 
 ### "jq: command not found"
@@ -281,6 +281,6 @@ Development/investigation scripts have been moved to `private-dev-docs/`:
 
 ---
 
-**Maintained by**: Juan Vallejo (juan_vallejo@uri.edu)
+**Maintained by**: Juan Vallejo ([REDACTED]@example.edu)
 **Last Updated**: 2025-11-05
 **Branch**: JUAN-adding-metric

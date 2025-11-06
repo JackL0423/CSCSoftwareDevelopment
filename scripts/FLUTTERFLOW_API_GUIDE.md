@@ -9,7 +9,7 @@ This guide shows you how to programmatically download and upload FlutterFlow pro
 ## Prerequisites
 
 - FlutterFlow Growth Plan (required for API access)
-- Project ID: `c-s-c305-capstone-khj14l`
+- Project ID: `[FLUTTERFLOW_PROJECT_ID]`
 - LEAD API Token: (stored in GCP Secret Manager as `FLUTTERFLOW_LEAD_API_TOKEN`)
 - Tools: `curl`, `jq`, `base64`, `unzip`
 
@@ -42,7 +42,7 @@ This guide shows you how to programmatically download and upload FlutterFlow pro
 
 ```bash
 TOKEN="your-lead-api-token"
-PROJECT_ID="c-s-c305-capstone-khj14l"
+PROJECT_ID="[FLUTTERFLOW_PROJECT_ID]"
 
 curl -sS "https://api.flutterflow.io/v2/projectYamls?projectId=${PROJECT_ID}&fileName=app-state" \
   -H "Authorization: Bearer ${TOKEN}" \
@@ -83,7 +83,7 @@ This script will:
 
 ```bash
 TOKEN="your-lead-api-token"
-PROJECT_ID="c-s-c305-capstone-khj14l"
+PROJECT_ID="[FLUTTERFLOW_PROJECT_ID]"
 
 # Step 1: Convert YAML to JSON string
 YAML_STRING=$(jq -Rs . app-state.yaml)
@@ -244,16 +244,16 @@ YAML_STRING=$(jq -Rs . flutterflow-yamls/app-state.yaml)
 curl -sS -X POST "https://api.flutterflow.io/v2/validateProjectYaml" \
   -H "Authorization: Bearer $TOKEN" \
   -H "Content-Type: application/json" \
-  -d "{\"projectId\":\"c-s-c305-capstone-khj14l\",\"fileKey\":\"app-state\",\"fileContent\":${YAML_STRING}}"
+  -d "{\"projectId\":\"[FLUTTERFLOW_PROJECT_ID]\",\"fileKey\":\"app-state\",\"fileContent\":${YAML_STRING}}"
 
 # 4. Upload (if validation passed)
 curl -sS -X POST "https://api.flutterflow.io/v2/updateProjectByYaml" \
   -H "Authorization: Bearer $TOKEN" \
   -H "Content-Type: application/json" \
-  -d "{\"projectId\":\"c-s-c305-capstone-khj14l\",\"fileKeyToContent\":{\"app-state\":${YAML_STRING}}}"
+  -d "{\"projectId\":\"[FLUTTERFLOW_PROJECT_ID]\",\"fileKeyToContent\":{\"app-state\":${YAML_STRING}}}"
 
 # 5. Verify in FlutterFlow UI
-# Open https://app.flutterflow.io/project/c-s-c305-capstone-khj14l
+# Open https://app.flutterflow.io/project/[FLUTTERFLOW_PROJECT_ID]
 # Go to App State → Check for your variable
 ```
 
@@ -271,7 +271,7 @@ curl -sS -X POST "https://api.flutterflow.io/v2/updateProjectByYaml" \
 ## Getting Help
 
 - FlutterFlow API Docs: https://api.flutterflow.io
-- Team Lead: Juan Vallejo (juan_vallejo@uri.edu)
+- Team Lead: Jack Light ([REDACTED]@example.edu)
 - FlutterFlow Support: support@flutterflow.io
 
 ---
