@@ -328,7 +328,7 @@ curl 'https://[ENDPOINT]' \
 
 ## Contact & Support
 
-**Operator**: Juan Vallejo (juan_vallejo@uri.edu)
+**Operator**: Juan Vallejo ([REDACTED]@example.edu)
 **Project**: CSC305 GlobalFlavors - D7 Retention Metrics
 **Documentation**: `/CSCSoftwareDevelopment/automation/README.md`
 

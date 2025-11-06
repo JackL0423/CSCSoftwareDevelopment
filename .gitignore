@@ -41,9 +41,12 @@ dist/
 *.log
 logs/
 
+# Security scan reports (contain secrets by nature)
+metrics/gitleaks*.json
+gitleaks*.json
+
 # Private development documentation
 private-dev-docs/
-CLAUDE.md
 
 # Backups and configs with credentials
 .backups/
@@ -63,5 +66,43 @@ flutterflow-project-yamls/
 # Flutter SDK (tooling dependency, not source code)
 flutter-sdk/
 
-# Firebase test scripts
-create-user-preferences-collection.js
+# Node modules
+node_modules/
+**/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv
+
+# Dart & Flutter
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+pubspec.lock
+
+# FlutterFlow generated (regenerable from FlutterFlow)
+c_s_c305_capstone/
+
+# Snapshots (temporary, regenerable)
+snapshots/
+
+# Test project working directory and downloaded YAML files
+test-project-yamls/
+
+# Empty placeholder directories (removed during reorganization)
+src/
+.build/
+.config/
+.gitleaks-baseline.json

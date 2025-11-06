@@ -1,7 +1,7 @@
 # FlutterFlow API Upload Issue Report
 
 **Date:** November 4, 2025
-**Project ID:** c-s-c305-capstone-khj14l
+**Project ID:** [FLUTTERFLOW_PROJECT_ID]
 **Plan:** Growth Plan (API access enabled)
 **Issue:** updateProjectByYaml endpoint returns success but doesn't persist changes
 
@@ -44,7 +44,7 @@ The `/v2/updateProjectByYaml` API endpoint accepts YAML updates and returns `{"s
 **Request:**
 ```json
 {
-  "projectId": "c-s-c305-capstone-khj14l",
+  "projectId": "[FLUTTERFLOW_PROJECT_ID]",
   "fileName": "app-state",
   "fileContent": "<base64-encoded-zip>"
 }
@@ -70,7 +70,7 @@ The `/v2/updateProjectByYaml` API endpoint accepts YAML updates and returns `{"s
 **Request:**
 ```json
 {
-  "projectId": "c-s-c305-capstone-khj14l",
+  "projectId": "[FLUTTERFLOW_PROJECT_ID]",
   "fileName": "app-state",
   "fileContent": "<base64-encoded-zip>"
 }
@@ -91,7 +91,7 @@ The `/v2/updateProjectByYaml` API endpoint accepts YAML updates and returns `{"s
 
 ### 3. Download (WORKS)
 
-**Endpoint:** `GET /v2/projectYamls?projectId=c-s-c305-capstone-khj14l&fileName=app-state`
+**Endpoint:** `GET /v2/projectYamls?projectId=[FLUTTERFLOW_PROJECT_ID]&fileName=app-state`
 
 **Response:**
 ```json
@@ -147,7 +147,7 @@ The `/v2/updateProjectByYaml` API endpoint accepts YAML updates and returns `{"s
 **Tried:**
 ```json
 {
-  "projectId": "c-s-c305-capstone-khj14l",
+  "projectId": "[FLUTTERFLOW_PROJECT_ID]",
   "fileName": "app-state",
   "fileContent": "<base64>"
 }
@@ -170,7 +170,7 @@ The `/v2/updateProjectByYaml` API endpoint accepts YAML updates and returns `{"s
 ### 4. Authorization
 **Q:** Does the LEAD token have the correct permissions for YAML uploads?
 
-**Current token:** `9dc3d62e-6d19-4831-9386-02760f9fb7c0`
+**Current token:** `[REDACTED]`
 
 **Confirmed working for:**
 - ✅ Download YAML
@@ -287,7 +287,7 @@ We have a working download + validation pipeline but cannot complete the workflo
 ## Technical Environment
 
 - **FlutterFlow Plan:** Growth (paid, API-enabled)
-- **Project ID:** c-s-c305-capstone-khj14l
+- **Project ID:** [FLUTTERFLOW_PROJECT_ID]
 - **Auth Method:** Bearer token (LEAD API token)
 - **Tools:** curl, jq, Python 3, PyYAML
 - **Verified:** All request/response JSON is valid

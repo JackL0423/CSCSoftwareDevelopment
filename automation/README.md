@@ -55,7 +55,7 @@ automation/
 
 2. **Open Chrome and FlutterFlow**:
    ```bash
-   google-chrome https://app.flutterflow.io/project/c-s-c305-capstone-khj14l
+   google-chrome https://app.flutterflow.io/project/[FLUTTERFLOW_PROJECT_ID]
    ```
 
 3. **Complete all 10 steps** in NETWORK_CAPTURE_GUIDE.md
@@ -216,6 +216,6 @@ Already solved via scripts:
 1. Review `research/NETWORK_CAPTURE_GUIDE.md`
 2. Check `research/network-capture-analysis.md` for decisions
 3. Consult with Claude Code
-4. Contact: juan_vallejo@uri.edu
+4. Contact: [REDACTED]@example.edu
 
 **Last Updated**: 2025-11-05
