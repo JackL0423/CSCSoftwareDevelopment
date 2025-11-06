@@ -105,3 +105,4 @@ test-project-yamls/
 src/
 .build/
 .config/
+.gitleaks-baseline.json
