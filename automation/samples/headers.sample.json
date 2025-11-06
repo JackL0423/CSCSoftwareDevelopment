@@ -9,7 +9,7 @@
   "Accept": "application/json, text/plain, */*",
   "Accept-Language": "en-US,en;q=0.9",
   "Origin": "https://app.flutterflow.io",
-  "Referer": "https://app.flutterflow.io/project/c-s-c305-capstone-khj14l",
+  "Referer": "https://app.flutterflow.io/project/[FLUTTERFLOW_PROJECT_ID]",
 
   "_customHeaders": {
     "x-csrf-token": "<REDACTED_IF_PRESENT>",

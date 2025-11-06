@@ -30,7 +30,7 @@ Deploy 3 custom Dart actions to FlutterFlow that handle session tracking and rec
 
 1. **Open FlutterFlow Project**
    - Navigate to https://app.flutterflow.io
-   - Open project: `c-s-c305-capstone-khj14l` (GlobalFlavors)
+   - Open project: `[FLUTTERFLOW_PROJECT_ID]` (GlobalFlavors)
 
 2. **Create Custom Action**
    - Click **Custom Code** in left sidebar

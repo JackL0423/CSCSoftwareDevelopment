@@ -1,0 +1,44 @@
+# Gitleaks Ignore File
+# Exclude files that contain example tokens or historical records of findings
+
+# Archive directory contains example scripts with redacted tokens for documentation
+docs/archive/
+
+# Metrics directory contains gitleaks scan results (records of findings, not actual secrets)
+metrics/gitleaks-before-phase0.json
+metrics/gitleaks-after-phase2.json
+metrics/SECURITY_FINDINGS.md
+
+# FlutterFlow YAML files (should be gitignored, but adding here for safety)
+flutterflow-yamls/
+
+# Environment files (should be gitignored)
+.env
+.env.*
+*.env
+
+# Test files may contain example tokens
+test-project-yamls/
+
+# Historical files (deleted from working tree but exist in git history)
+# These findings are acceptable as files have been removed from active codebase
+# Total: 19 findings in deleted files (documented 2025-11-06)
+android/app/google-services.json
+docs/SECRET_SETUP_INSTRUCTIONS.md
+docs/VSCODE_EXTENSION_DEPLOYMENT_GUIDE.md
+lib/backend/firebase/firebase_config.dart
+lib/backend/gemini/gemini.dart
+PROJECT_STATUS.md
+PUSH_CUSTOM_ACTIONS_GUIDE.md
+scripts/add-app-state-variables.sh
+scripts/create-custom-actions-api.sh
+scripts/deploy-d7-retention-complete.sh
+scripts/download-custom-files.sh
+scripts/explore-custom-code-api.sh
+scripts/identify-pages.sh
+scripts/inspect-custom-code.sh
+scripts/list-all-pages.sh
+scripts/test-single-upload.sh
+scripts/upload-app-state.sh
+scripts/upload-custom-actions.sh
+scripts/validate-app-state.sh
