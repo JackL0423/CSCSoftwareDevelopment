@@ -393,3 +393,62 @@ function calculateAverage(numbers) {
 //==============================================
 // Recipe Data Pipeline
 //==============================================
+const { setGlobalOptions } = require('firebase-functions');
+const { onSchedule } = require('firebase-functions/v2/scheduler');
+const { onRequest } = require('firebase-functions/v2/https');
+const { fetchAllRegions } = require("./api_fetcher.js");
+const { normalizeAllRegions } = require("./chatgpt_normalizer.js");
+const { uploadAllRegions } = require("./firestore_uploader.js");
+const { logInfo } = require("./logger.js");
+
+// Use the existing admin instance (no re-init)
+const firestore = admin.firestore();
+
+setGlobalOptions({
+  maxInstances: 10,
+  region: "us-central1",
+  memory: "512MiB",
+  timeoutSeconds: 540,
+});
+
+/** Shared pipeline logic */
+async function runRecipePipeline() {
+  logInfo("🚀 Starting GlobalFlavors ingestion pipeline...");
+  const regions = ["Canadian", "Italian", "Indian", "Swedish", "Japanese"];
+
+  const rawData = await fetchAllRegions(regions);
+  logInfo(`✅ Pulled data for ${rawData.length} regions.`);
+
+  const normalized = await normalizeAllRegions(rawData);
+  logInfo(`✅ Normalized ${normalized.length} region datasets.`);
+
+  const uploadResults = await uploadAllRegions(firestore, normalized);
+  logInfo("✅ Upload complete.");
+  return uploadResults;
+}
+
+/** Scheduled daily trigger */
+exports.dailyRecipeUpdate = onSchedule(
+  { schedule: "every 24 hours", timeZone: "America/New_York" },
+  async () => {
+    try {
+      const results = await runRecipePipeline();
+      logInfo("🎉 Daily recipe update successful.");
+      return results;
+    } catch (err) {
+      console.error("❌ Error in dailyRecipeUpdate:", err);
+      throw err;
+    }
+  }
+);
+
+/** Manual HTTP trigger */
+exports.runNow = onRequest(async (req, res) => {
+  try {
+    const results = await runRecipePipeline();
+    res.status(200).json({ message: "Manual run complete ✅", results });
+  } catch (err) {
+    console.error("❌ Manual run failed:", err);
+    res.status(500).json({ error: err.message });
+  }
+});
