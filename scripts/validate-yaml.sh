@@ -2,6 +2,35 @@
 # Validate YAML changes before applying to FlutterFlow project
 
 set -e
+# Respectful backoff timings
+MAX_RETRIES=8
+BASE_SLEEP=2
+
+http_post_json() {
+    local url="$1"
+    local payload="$2"
+    local out_path="$3"
+    local attempt=0
+    local code=0
+
+    while true; do
+        attempt=$((attempt+1))
+        code=$(curl -sS -w "%{http_code}" -H "Authorization: Bearer ${LEAD_TOKEN}" -H "Content-Type: application/json" -o "$out_path" -X POST "$url" -d "$payload" || echo 000)
+        if [ "$code" = "200" ]; then
+            echo "$code"
+            return 0
+        fi
+        if [ $attempt -ge $MAX_RETRIES ]; then
+            echo "$code"
+            return 1
+        fi
+        sleep_sec=$(( BASE_SLEEP * (2 ** (attempt-1)) ))
+        jitter=$(( RANDOM % 1000 ))
+        sleep_time=$(awk -v s="$sleep_sec" -v j="$jitter" 'BEGIN { printf "%.3f", s + (j/1000.0) }')
+        echo "  HTTP $code from $url. Retrying in ${sleep_time}s (attempt ${attempt}/${MAX_RETRIES})..."
+        sleep "$sleep_time"
+    done
+}
 
 # Load project configuration
 PROJECT_ID="c-s-c305-capstone-khj14l"
@@ -92,22 +121,28 @@ fi
 
 # Validate YAML
 echo "Calling validation API..."
-RESPONSE=$(curl -s -X POST "${API_BASE}/validateProjectYaml" \
-    -H "Authorization: Bearer ${LEAD_TOKEN}" \
-    -H "Content-Type: application/json" \
-    -d "$PAYLOAD")
+TMP_RESP="$(mktemp)"
+code=$(http_post_json "${API_BASE}/validateProjectYaml" "$PAYLOAD" "$TMP_RESP") || true
 
-# Check response
-if echo "$RESPONSE" | grep -q '"success":true'; then
+if [ "$code" != "200" ]; then
+    echo "❌ Validation failed (HTTP $code)"
+    head -c 160 "$TMP_RESP" 2>/dev/null | sed 's/.*/  >> &/'
+    rm -f "$TMP_RESP"
+    exit 1
+fi
+
+if jq -e '.success == true' "$TMP_RESP" >/dev/null 2>&1; then
     echo "✅ Validation successful!"
     echo ""
     echo "Response:"
-    echo "$RESPONSE" | jq '.'
+    jq '.' "$TMP_RESP"
+    rm -f "$TMP_RESP"
     exit 0
 else
     echo "❌ Validation failed!"
     echo ""
     echo "Error details:"
-    echo "$RESPONSE" | jq '.'
+    jq '.' "$TMP_RESP" 2>/dev/null || head -c 160 "$TMP_RESP"
+    rm -f "$TMP_RESP"
     exit 1
 fi

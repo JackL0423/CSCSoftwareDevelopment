@@ -35,24 +35,76 @@ fi
 # Create output directory
 mkdir -p "$OUTPUT_DIR"
 
+# Respectful backoff timings
+MAX_RETRIES=8
+BASE_SLEEP=2
+
+# Function: HTTP GET JSON with retry/backoff. Writes body to path given as $2 and echoes HTTP code.
+http_get_json() {
+    local url="$1"
+    local out_path="$2"
+    local attempt=0
+    local code=0
+
+    while true; do
+        attempt=$((attempt+1))
+        code=$(curl -sS -w "%{http_code}" -H "Authorization: Bearer ${LEAD_TOKEN}" -o "$out_path" "$url" || echo 000)
+
+        if [ "$code" = "200" ]; then
+            echo "$code"
+            return 0
+        fi
+
+        if [ $attempt -ge $MAX_RETRIES ]; then
+            echo "$code"
+            return 1
+        fi
+
+        # Exponential backoff with jitter
+        sleep_sec=$(( BASE_SLEEP * (2 ** (attempt-1)) ))
+        jitter=$(( RANDOM % 1000 ))
+        sleep_time=$(awk -v s="$sleep_sec" -v j="$jitter" 'BEGIN { printf "%.3f", s + (j/1000.0) }')
+        echo "  HTTP $code. Retrying in ${sleep_time}s (attempt ${attempt}/${MAX_RETRIES})..."
+        sleep "$sleep_time"
+    done
+}
+
 # Function to download and decode a single YAML file
 download_yaml() {
     local file_key="$1"
     local output_path="${OUTPUT_DIR}/${file_key}.yaml"
     local zip_path="${OUTPUT_DIR}/${file_key}.zip"
+    local tmp_json="$(mktemp)"
 
     # Create subdirectories if needed
     mkdir -p "$(dirname "$output_path")"
 
     echo "Downloading: $file_key..."
 
-    # Download and decode directly (no command substitution)
-    # Defensive: support both projectYamlBytes (docs) and project_yaml_bytes (actual)
-    curl -sS -X GET "${API_BASE}/projectYamls?projectId=${PROJECT_ID}&fileName=${file_key}" \
-        -H "Authorization: Bearer ${LEAD_TOKEN}" \
-    | jq -r '.value.projectYamlBytes // .value.project_yaml_bytes' \
-    | tr -d '\n' \
-    | base64 --decode > "$zip_path"
+    # URL-encode file key to be safe in query param
+    local encoded_key
+    encoded_key=$(printf '%s' "$file_key" | jq -sRr @uri)
+    # Download JSON with retry/backoff
+    local url="${API_BASE}/projectYamls?projectId=${PROJECT_ID}&fileName=${encoded_key}"
+    local code
+    code=$(http_get_json "$url" "$tmp_json") || true
+
+    if [ "$code" != "200" ]; then
+        echo "  Error: Failed to download JSON for $file_key (HTTP $code)"
+        rm -f "$tmp_json"
+        return 1
+    fi
+
+    # Extract base64 zip bytes (support both fields)
+    if ! jq -er '.value.projectYamlBytes // .value.project_yaml_bytes' "$tmp_json" \
+        | tr -d '\n' \
+        | base64 --decode > "$zip_path" 2>/dev/null; then
+        echo "  Error: Response did not contain valid base64 zip bytes"
+        head -c 120 "$tmp_json" 2>/dev/null | sed 's/.*/  >> &/'
+        rm -f "$tmp_json"
+        return 1
+    fi
+    rm -f "$tmp_json"
 
     # Check if we got a valid ZIP file
     if ! file -b --mime-type "$zip_path" | grep -q 'application/zip'; then
@@ -70,6 +122,8 @@ download_yaml() {
     rm -f "$zip_path"
 
     echo "  Saved to: $output_path ($(wc -l < "$output_path") lines)"
+    # Gentle pacing to avoid rate limits
+    sleep 0.2
 }
 
 # Download specific file or all files
@@ -77,8 +131,18 @@ if [ -n "$SPECIFIC_FILE" ]; then
     download_yaml "$SPECIFIC_FILE"
 else
     echo "Fetching file list..."
-    FILE_LIST=$(curl -s -X GET "${API_BASE}/listPartitionedFileNames?projectId=${PROJECT_ID}" \
-        -H "Authorization: Bearer ${LEAD_TOKEN}" | jq -r '.value.fileNames[]')
+    TMP_LIST_JSON="$(mktemp)"
+    LIST_URL="${API_BASE}/listPartitionedFileNames?projectId=${PROJECT_ID}"
+    code=$(http_get_json "$LIST_URL" "$TMP_LIST_JSON") || true
+
+    if [ "$code" != "200" ]; then
+        echo "Error: Failed to retrieve file list (HTTP $code)"
+        rm -f "$TMP_LIST_JSON"
+        exit 1
+    fi
+
+    FILE_LIST=$(jq -r '.value.file_names[]' "$TMP_LIST_JSON" 2>/dev/null || true)
+    rm -f "$TMP_LIST_JSON"
 
     if [ -z "$FILE_LIST" ]; then
         echo "Error: Failed to retrieve file list"
