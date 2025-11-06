@@ -1,0 +1,15 @@
+## Template: On Page Load → Custom Action
+# Placeholders:
+#   ${ACTION_NAME}  e.g., initializeUserSession
+#   ${CUSTOM_ACTION_KEY}  e.g., vpyil (FlutterFlow custom action key)
+#   ${NON_BLOCKING}  true|false (default false)
+
+kind: action
+version: 1
+action:
+  customAction:
+    customActionIdentifier:
+      name: ${ACTION_NAME}
+      key: ${CUSTOM_ACTION_KEY}
+    argumentValues: {}
+  nonBlocking: ${NON_BLOCKING}

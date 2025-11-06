@@ -10,58 +10,58 @@ This directory contains production-ready scripts for deploying the D7 Retention 
 
 ### Deploy D7 Retention System
 
-```bash
-# Complete end-to-end deployment (recommended)
-./scripts/deploy.sh full
+# Scripts Overview
 
-# VS Code extension setup only (for Custom Actions)
-./scripts/deploy.sh vscode
+This repository includes automation to wire FlutterFlow triggers via the official Project YAML API and to verify app behavior in Firebase Test Lab.
 
-# Firebase backend only (Cloud Functions + Firestore indexes)
-./scripts/deploy.sh firebase
-```
+Date: 2025-11-05
+Owner: Juan Vallejo
 
-### FlutterFlow API Operations
+## Categories (logical; paths left unchanged to avoid breaking references)
 
-```bash
-# Set API token (required)
-export LEAD_TOKEN=$(gcloud secrets versions access latest --secret=FLUTTERFLOW_LEAD_API_TOKEN)
+- YAML API (FlutterFlow)
+	- scripts/download-yaml.sh — fetch YAML by file key
+	- scripts/validate-yaml.sh — validate zip body (intermittent)
+	- scripts/update-yaml-v2.sh — update via JSON/ZIP (ZIP recommended)
+	- scripts/list-yaml-files.sh — list available file keys
+- Automation (trigger wiring)
+	- scripts/apply-trigger-via-api.sh — render a template and push to a file key
+	- scripts/apply-all-triggers.sh — apply a manifest of trigger wirings
+	- automation/wiring-manifest.json — manifest for known pages
+	- automation/templates/*.yaml — reusable action templates
+- Verification (snapshots and diffs)
+	- scripts/snapshot-from-manifest.sh — download YAMLs to snapshots/<timestamp>/
+	- scripts/diff-snapshots.sh — compare two snapshot directories
+- Test Lab (Android)
+	- scripts/run-robo-sync.sh — submit synchronous Robo test and wait for result
+	- scripts/collect-testlab-results.sh — summarize artifacts from GCS results dir
 
-# List all available YAML files
-./scripts/flutterflow.sh list
+Note: We did not move files into subfolders to preserve existing paths. Use this README as the authoritative index.
 
-# Download specific YAML file
-./scripts/flutterflow.sh download app-state
+## Usage Examples
 
-# Validate YAML changes before upload
-./scripts/flutterflow.sh validate app-state flutterflow-yamls/app-state.yaml
+- Apply all wiring from a manifest:
+	./scripts/apply-all-triggers.sh automation/wiring-manifest.json
 
-# Upload YAML to FlutterFlow
-./scripts/flutterflow.sh upload app-state flutterflow-yamls/app-state.yaml
-```
+- Snapshot and diff before/after:
+	./scripts/snapshot-from-manifest.sh automation/wiring-manifest.json
+	./scripts/diff-snapshots.sh snapshots/<before-ts> snapshots/<after-ts>
 
----
+- Submit Robo test and summarize:
+	./scripts/run-robo-sync.sh c_s_c305_capstone/build/app/outputs/flutter-apk/app-debug.apk gs://test-lab-54503053415/csc305capstone-latest
 
-## Script Index
+- Summarize latest results:
+	./scripts/collect-testlab-results.sh gs://test-lab-54503053415/csc305capstone-latest
 
-### Wrapper Scripts (User-Facing)
+## Troubleshooting
 
-| Script | Purpose | Usage |
-|--------|---------|-------|
-| **deploy.sh** | Master deployment wrapper | `./scripts/deploy.sh [vscode\|firebase\|full]` |
-| **flutterflow.sh** | FlutterFlow API wrapper | `./scripts/flutterflow.sh [download\|validate\|upload\|list] <file-key>` |
-
-### Core Deployment Scripts
-
-| Script | Purpose | Time | Usage |
-|--------|---------|------|-------|
-| **setup-vscode-deployment.sh** | Interactive VS Code extension setup wizard | 45-60 min | `./scripts/setup-vscode-deployment.sh` |
-| **deploy-d7-retention-complete.sh** | Complete D7 retention deployment (Firebase + guides) | 2.5-3 hrs | `./scripts/deploy-d7-retention-complete.sh` |
-| **test-retention-function.sh** | Deploy and test Firebase Cloud Functions | 15 min | `./scripts/test-retention-function.sh` |
-
-### FlutterFlow API Scripts
-
-| Script | Purpose | Usage |
+- projectYamls returns empty bytes:
+	- Re-run snapshot after 10–30 min; UI often updates sooner than the read API.
+	- Confirm the file key exists (seeded by the FlutterFlow UI).
+- validate endpoint failures:
+	- Proceed with ZIP update and verify in the UI; validation can be flaky.
+- gcloud missing matrices describe:
+	- Use run-robo-sync.sh (synchronous) or the GCS collector to summarize results.
 |--------|---------|-------|
 | **list-yaml-files.sh** | List all 591 YAML files in FlutterFlow project | `./scripts/list-yaml-files.sh` |
 | **download-yaml.sh** | Download specific YAML file (base64 ZIP → extracted YAML) | `./scripts/download-yaml.sh --file <file-key>` |

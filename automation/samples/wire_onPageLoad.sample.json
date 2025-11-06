@@ -1,0 +1,66 @@
+{
+  "_comment": "Template for page-level trigger wiring payload - Replace with actual structure from network capture",
+  "_instructions": "This is a PLACEHOLDER. Actual payload structure will be discovered in Phase 1.",
+
+  "_expectedFields": {
+    "projectId": "c-s-c305-capstone-khj14l",
+    "pageId": "Scaffold_r33su4wm",
+    "triggerType": "ON_PAGE_LOAD or onPageLoad or PageLoad",
+    "action": {
+      "type": "customAction",
+      "id": "auto-generated or provided",
+      "name": "initializeUserSession",
+      "parameters": {}
+    }
+  },
+
+  "_substitutionPoints": [
+    "pageId - will vary per page (Scaffold_r33su4wm, Scaffold_cc3wywo1, etc.)",
+    "triggerType - ON_PAGE_LOAD, ON_AUTH_SUCCESS, etc.",
+    "action.name - initializeUserSession, checkAndLogRecipeCompletion, etc.",
+    "action.parameters - {} for initializeUserSession, {...} for checkAndLogRecipeCompletion"
+  ],
+
+  "_discoveryNotes": [
+    "Actual payload structure unknown until network capture",
+    "FlutterFlow may use GraphQL mutation instead of REST",
+    "May require action graph read before write",
+    "May use different field names than expected",
+    "Document EXACTLY what you see in Chrome DevTools"
+  ],
+
+  "_exampleAlternatives": {
+    "graphQLMutation": {
+      "query": "mutation UpdateActionFlow($input: ActionFlowInput!) { updateActionFlow(input: $input) { success } }",
+      "variables": {
+        "input": {
+          "projectId": "c-s-c305-capstone-khj14l",
+          "pageId": "Scaffold_r33su4wm",
+          "trigger": "ON_PAGE_LOAD",
+          "actions": [
+            {
+              "type": "CUSTOM_ACTION",
+              "actionName": "initializeUserSession"
+            }
+          ]
+        }
+      }
+    },
+    "restAPI": {
+      "project_id": "c-s-c305-capstone-khj14l",
+      "page_scaffold_id": "Scaffold_r33su4wm",
+      "lifecycle_event": "page_load",
+      "custom_action_reference": "initializeUserSession"
+    }
+  },
+
+  "_captureInstructions": [
+    "1. Open Chrome DevTools → Network tab",
+    "2. Wire HomePage OnPageLoad trigger in FlutterFlow UI",
+    "3. Find POST/PUT request in Network tab",
+    "4. Copy Payload tab content",
+    "5. Replace this file with actual payload structure",
+    "6. Document field names and data types",
+    "7. Identify which fields need parameterization"
+  ]
+}
