@@ -106,3 +106,59 @@ src/
 .build/
 .config/
 .gitleaks-baseline.json
+
+# Personal development files (added 2025-11-06)
+# Database files (SQLite, etc.)
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+
+# Personal notes and scratch files
+notes/
+scratch/
+personal/
+*.notes
+*.scratch
+todo.txt
+TODO.md
+NOTES.md
+
+# Draft and WIP files
+*-draft.*
+*-wip.*
+*-WIP.*
+DRAFT-*
+WIP-*
+draft-*
+wip-*
+
+# Debug artifacts
+debug/
+debug-*
+*-debug.log
+*.debug
+
+# Uploaded file backups (from ffdbg tool)
+*.uploaded
+*.yaml.uploaded
+*.json.uploaded
+
+# Personal test scripts (root level only)
+my-*
+test-*
+scratch-*
+
+# Editor backup files
+*.bak
+*.backup
+*~
+.*.swp
+.*.swo
+
+# Local environment overrides
+.env.local
+.env.*.local
+
+# Personal VS Code settings (workspace-level .vscode/ already excluded)
+.vscode/*.local.json
