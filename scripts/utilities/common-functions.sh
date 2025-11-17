@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # common-functions.sh
 # Shared functions for FlutterFlow automation scripts
 #
@@ -80,61 +80,49 @@ verify_tool_versions() {
 
 # Load FlutterFlow secrets from GCP Secret Manager
 # Sets environment variables:
-#   FLUTTERFLOW_PROJECT_ID
-#   FLUTTERFLOW_LEAD_API_TOKEN
-#   TEST_PROJECT_ID (if available)
+#   FLUTTERFLOW_API_TOKEN (and LEAD_TOKEN alias)
+#   FIREBASE_PROJECT_ID
+#   GEMINI_API_KEY
+#
+# This function uses the optimized load-secrets.sh script with:
+# - Parallel loading for best performance
+# - Retry logic with exponential backoff
+# - Strict error handling
 load_flutterflow_secrets() {
-  local GCP_PROJECT="csc305project-475802"
-  local GCP_ACCOUNT="juan_vallejo@uri.edu"
+  # Determine script directory
+  local SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+  local SECRETS_SCRIPT="$SCRIPT_DIR/load-secrets.sh"
 
-  echo "[INFO] Loading FlutterFlow secrets from GCP..."
-
-  # Production project ID
-  if [ -z "$FLUTTERFLOW_PROJECT_ID" ]; then
-    FLUTTERFLOW_PROJECT_ID=$(gcloud secrets versions access latest \
-      --secret="FLUTTERFLOW_PROJECT_ID" \
-      --project="$GCP_PROJECT" \
-      --account="$GCP_ACCOUNT" 2>/dev/null)
-
-    if [ -z "$FLUTTERFLOW_PROJECT_ID" ]; then
-      echo "[ERROR] Failed to load FLUTTERFLOW_PROJECT_ID from GCP"
-      return 1
-    fi
-    export FLUTTERFLOW_PROJECT_ID
+  if [ ! -f "$SECRETS_SCRIPT" ]; then
+    echo "[ERROR] load-secrets.sh not found at: $SECRETS_SCRIPT"
+    return 1
   fi
 
-  # API token
-  if [ -z "$FLUTTERFLOW_LEAD_API_TOKEN" ]; then
-    FLUTTERFLOW_LEAD_API_TOKEN=$(gcloud secrets versions access latest \
-      --secret="FLUTTERFLOW_LEAD_API_TOKEN" \
-      --project="$GCP_PROJECT" \
-      --account="$GCP_ACCOUNT" 2>/dev/null)
+  # Source the optimized secrets loader
+  # shellcheck disable=SC1090
+  source "$SECRETS_SCRIPT"
 
-    if [ -z "$FLUTTERFLOW_LEAD_API_TOKEN" ]; then
-      echo "[ERROR] Failed to load FLUTTERFLOW_LEAD_API_TOKEN from GCP"
-      return 1
-    fi
-    export FLUTTERFLOW_LEAD_API_TOKEN
+  # Verify critical secrets loaded
+  if [ -z "${FLUTTERFLOW_API_TOKEN:-}" ]; then
+    echo "[ERROR] FLUTTERFLOW_API_TOKEN not loaded"
+    return 1
   fi
 
-  # Test project ID (optional)
-  if [ -z "$TEST_PROJECT_ID" ]; then
-    TEST_PROJECT_ID=$(gcloud secrets versions access latest \
-      --secret="TEST_ID_API" \
-      --project="$GCP_PROJECT" \
-      --account="$GCP_ACCOUNT" 2>/dev/null)
-
-    if [ -n "$TEST_PROJECT_ID" ]; then
-      export TEST_PROJECT_ID
-    fi
+  if [ -z "${FIREBASE_PROJECT_ID:-}" ]; then
+    echo "[ERROR] FIREBASE_PROJECT_ID not loaded"
+    return 1
   fi
 
-  echo "[INFO] Secrets loaded successfully"
-  echo "[INFO] Production Project: $FLUTTERFLOW_PROJECT_ID"
-  if [ -n "$TEST_PROJECT_ID" ]; then
-    echo "[INFO] Test Project: $TEST_PROJECT_ID"
+  # Legacy compatibility: Set FLUTTERFLOW_PROJECT_ID as alias for FIREBASE_PROJECT_ID
+  if [ -n "${FIREBASE_PROJECT_ID:-}" ]; then
+    export FLUTTERFLOW_PROJECT_ID="$FIREBASE_PROJECT_ID"
   fi
-  echo ""
+
+  # Legacy compatibility: Set FLUTTERFLOW_LEAD_API_TOKEN as alias for FLUTTERFLOW_API_TOKEN
+  if [ -n "${FLUTTERFLOW_API_TOKEN:-}" ]; then
+    export FLUTTERFLOW_LEAD_API_TOKEN="$FLUTTERFLOW_API_TOKEN"
+  fi
+
   return 0
 }
 
@@ -186,12 +174,35 @@ retry_with_backoff() {
   return 1
 }
 
+# Calculate jittered exponential backoff delay
+# Arguments:
+#   $1 - Attempt number (1-based)
+#   $2 - Base delay in seconds (default: 1)
+#   $3 - Max delay in seconds (default: 32)
+#
+# Returns:
+#   Delay in seconds with jitter
+calc_backoff() {
+  local attempt=$1
+  local base_delay=${2:-1}
+  local max_delay=${3:-32}
+
+  local delay=$((base_delay * (2 ** (attempt - 1))))
+  if [ $delay -gt $max_delay ]; then
+    delay=$max_delay
+  fi
+
+  local jitter=$((RANDOM % (delay / 4 + 1)))
+  echo $((delay + jitter))
+}
+
 # Export functions for use in other scripts
 export -f print_script_header
 export -f print_tool_versions
 export -f verify_tool_versions
 export -f load_flutterflow_secrets
 export -f retry_with_backoff
+export -f calc_backoff
 
 # If script is executed directly (not sourced), display info
 if [ "${BASH_SOURCE[0]}" = "${0}" ]; then

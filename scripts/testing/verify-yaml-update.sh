@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # verify-yaml-update.sh
 # Post-condition verification for YAML update operations
 # Addresses Risk R1: Silent success (API returns success but no changes persist)
