@@ -45,7 +45,8 @@ firestore.indexes.json @JackL0423
 /CONTRIBUTING.md @JackL0423
 /CODE_OF_CONDUCT.md @JackL0423
 /SECURITY.md @JackL0423
-/CHANGELOG.md @JackL0423
+/docs/CHANGELOG.md @JackL0423
+/docs/CLAUDE.md @JackL0423
 
 # ===================================================================
 # Testing & CI/CD

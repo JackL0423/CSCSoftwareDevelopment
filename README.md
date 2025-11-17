@@ -72,8 +72,9 @@ CSCSoftwareDevelopment/
 
 ### Essential Docs
 - [Detailed Setup Guide](docs/guides/DETAILED_SETUP.md) - Complete setup instructions
-- [CLAUDE.md](CLAUDE.md) - AI assistant context and standards
+- [CLAUDE.md](docs/CLAUDE.md) - AI assistant context and standards
 - [CONTRIBUTING.md](CONTRIBUTING.md) - Team communication standards
+- [CHANGELOG.md](docs/CHANGELOG.md) - Version history and changes
 - [docs/README.md](docs/README.md) - Complete documentation index
 
 ### Key Guides
