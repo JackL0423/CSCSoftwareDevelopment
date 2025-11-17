@@ -2,7 +2,9 @@
 
 **Date**: November 4, 2025
 **Status**: ✅ **LOGIC COMPLETE - Ready for Deployment**
-**Author**: Juan Vallejo (with Claude Code assistance)
+**Team**: GlobalFlavors CSC305 Development Team
+**Contributors**: Juan, Jack, Sophia, Maria, Alex
+**AI-Assisted**: Claude Code (Anthropic)
 
 ---
 
@@ -774,4 +776,3 @@ Co-Authored-By: Claude <noreply@anthropic.com>
 **Document Version**: 1.0
 **Date**: November 4, 2025
 **Status**: ✅ Complete - Ready for Commit
-**Author**: Juan Vallejo (with Claude Code)

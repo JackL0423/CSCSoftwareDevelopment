@@ -6,6 +6,12 @@ Last Updated: 2025-11-17
 
 This directory contains all project documentation organized by category.
 
+### Root Documentation
+
+Essential project-wide documentation files:
+- **CHANGELOG.md** - Complete version history and changes
+- **CLAUDE.md** - AI assistant context, standards, and project configuration
+
 ## Structure
 
 ### docs/project/
@@ -48,12 +54,27 @@ Implementation notes and completion summaries:
 - implementation-notes-2025-11-05.md - Implementation notes (Juan)
 
 ### docs/archive/
-Historical documentation and previous versions
+Historical documentation and previous versions:
+- RETENTION_IMPLEMENTATION_GUIDE.md - Previous retention implementation guide (superseded)
+- GPT5_ANALYSIS_AND_SOLUTION.md - GPT-5 analysis for FlutterFlow automation
+- DEPLOYMENT_STATUS.md - Historical deployment status
+- 2025-11-04-D7-Retention-Variables-SUCCESS.md - D7 retention variable configuration success
+- 2025-11-04-flutterflow-api-work/ - FlutterFlow API investigation and troubleshooting
 
 ## Archive
 
-Experimental documentation moved to:
-`../archive/2025-11-17-personal-dev/experimental-docs/`
+**Location**: `../archive/` and `./archive/`
+
+**Contents**:
+- **Experimental Documentation**: Moved to `../archive/2025-11-17-personal-dev/experimental-docs/`
+- **Historical Implementations**: Previous versions of guides and deployment docs
+- **Research & Analysis**: GPT-5 analysis, API investigation results
+- **Superseded Guides**: Earlier versions of current documentation
+
+**When to Archive**:
+- Documentation replaced by newer versions
+- Experimental work that didn't make it to production
+- Historical context that's no longer current but useful for reference
 
 ## Maintenance
 

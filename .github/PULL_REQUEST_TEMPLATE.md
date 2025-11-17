@@ -42,7 +42,7 @@
 - [ ] I have updated the documentation (if needed)
 - [ ] I have run pre-commit hooks (`pre-commit run --all-files`)
 - [ ] No secrets committed (verified with gitleaks)
-- [ ] I have updated CHANGELOG.md (for significant changes)
+- [ ] I have updated docs/CHANGELOG.md (for significant changes)
 - [ ] I have tested my changes locally
 - [ ] My commit messages follow the [Conventional Commits](https://www.conventionalcommits.org/) format
 

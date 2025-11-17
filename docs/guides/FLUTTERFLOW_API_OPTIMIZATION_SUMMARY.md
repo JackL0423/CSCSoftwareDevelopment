@@ -461,5 +461,6 @@ metrics/
 **End of Report**
 
 *Generated: 2025-11-06*
-*Author: Claude (AI Assistant)*
+*AI-Assisted: Claude Code (Anthropic)*
 *Project: CSC305 GlobalFlavors - FlutterFlow API Optimization*
+*Team: GlobalFlavors CSC305 Development Team*
