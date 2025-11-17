@@ -14,7 +14,7 @@ Business and planning documents for the CSC305 capstone project:
 - PERSONAS.md - User personas
 - METRICS.md - Success metrics definition
 - ABTEST.md - A/B testing strategies
-- UserResarch.md - User research findings
+- UserResearch.md - User research findings
 - CONDUCT.md - Team code of conduct
 
 ### docs/architecture/
@@ -25,6 +25,7 @@ Technical architecture and deployment documentation:
 - GCP_SECRETS.md - GCP Secret Manager reference
 - MANUAL_PAGE_TRIGGER_WIRING.md - FlutterFlow page trigger guide
 - README_D7_RETENTION.md - D7 retention feature overview
+- MIGRATION_NOTES_2025-11-17.md - Repository reorganization notes
 
 ### docs/guides/
 How-to guides and development templates:
@@ -32,6 +33,9 @@ How-to guides and development templates:
 - TEMPLATES.md - Communication templates (commits, PRs, meetings)
 - PUSH_CUSTOM_ACTIONS_GUIDE.md - FlutterFlow custom actions guide
 - RISK_REGISTER.md - Project risk management
+- FLUTTERFLOW_API_OPTIMIZATION_SUMMARY.md - Performance benchmarks and optimization results
+- FLUTTERFLOW_SKILL_IMPLEMENTATION.md - FlutterFlow automation skill documentation
+- DETAILED_SETUP.md - Detailed development environment setup
 
 ### docs/implementation/
 Implementation notes and completion summaries:
