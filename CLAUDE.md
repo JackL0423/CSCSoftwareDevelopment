@@ -101,7 +101,7 @@ scripts/testing/verify-metrics-flow.sh
 - [CHANGELOG.md](CHANGELOG.md) - Version history
 - [CONTRIBUTING.md](CONTRIBUTING.md) - Communication standards, team processes
 - [SECURITY.md](SECURITY.md) - Security policy
-- [FLUTTERFLOW_API_OPTIMIZATION_SUMMARY.md](FLUTTERFLOW_API_OPTIMIZATION_SUMMARY.md) - Performance benchmarks
+- [FLUTTERFLOW_API_OPTIMIZATION_SUMMARY.md](docs/guides/FLUTTERFLOW_API_OPTIMIZATION_SUMMARY.md) - Performance benchmarks
 
 ---
 
@@ -132,7 +132,7 @@ scripts/testing/verify-metrics-flow.sh
 | Templates (commits, PRs, etc.) | [docs/guides/TEMPLATES.md](docs/guides/TEMPLATES.md) |
 | YAML editing workflows | [docs/guides/YAML_EDITING_GUIDE.md](docs/guides/YAML_EDITING_GUIDE.md) |
 | FlutterFlow API reference | [scripts/FLUTTERFLOW_API_GUIDE.md](scripts/FLUTTERFLOW_API_GUIDE.md) |
-| Performance benchmarks | [FLUTTERFLOW_API_OPTIMIZATION_SUMMARY.md](FLUTTERFLOW_API_OPTIMIZATION_SUMMARY.md) |
+| Performance benchmarks | [FLUTTERFLOW_API_OPTIMIZATION_SUMMARY.md](docs/guides/FLUTTERFLOW_API_OPTIMIZATION_SUMMARY.md) |
 | GCP secrets management | [docs/architecture/GCP_SECRETS.md](docs/architecture/GCP_SECRETS.md) |
 | Architecture decisions | [docs/architecture/](docs/architecture/) |
 | Historical changes | [CHANGELOG.md](CHANGELOG.md) |
@@ -179,7 +179,7 @@ The sections below provide essential context that doesn't fit in external docs.
 ### FlutterFlow Automation Skills
 
 **Status**: Phase 2 In Progress (Schema Learning)
-**Documentation**: [docs/FLUTTERFLOW_SKILL_IMPLEMENTATION.md](docs/FLUTTERFLOW_SKILL_IMPLEMENTATION.md)
+**Documentation**: [docs/guides/FLUTTERFLOW_SKILL_IMPLEMENTATION.md](docs/guides/FLUTTERFLOW_SKILL_IMPLEMENTATION.md)
 
 **Key Components:**
 1. **SQLite State Database** (`~/.flutterflow-skill/state.db`) - 8 tables for file tracking
@@ -187,7 +187,7 @@ The sections below provide essential context that doesn't fit in external docs.
 3. **Pattern Learning** - JSON Schema extraction from YAML examples
 4. **Button Wiring Automation** - 30 min manual → 2 commands
 
-**Performance**: See [FLUTTERFLOW_API_OPTIMIZATION_SUMMARY.md](FLUTTERFLOW_API_OPTIMIZATION_SUMMARY.md)
+**Performance**: See [FLUTTERFLOW_API_OPTIMIZATION_SUMMARY.md](docs/guides/FLUTTERFLOW_API_OPTIMIZATION_SUMMARY.md)
 
 ---
 
