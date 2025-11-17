@@ -15,6 +15,8 @@ Business and planning documents for the CSC305 capstone project:
 - METRICS.md - Success metrics definition
 - ABTEST.md - A/B testing strategies
 - UserResearch.md - User research findings
+- user-research-2025-10-14.csv - User research data (October 2025)
+- ANNOUNCE.txt - Project announcements
 - CONDUCT.md - Team code of conduct
 
 ### docs/architecture/
@@ -24,12 +26,13 @@ Technical architecture and deployment documentation:
 - DEPLOYMENT_STATUS.md - Current deployment status
 - GCP_SECRETS.md - GCP Secret Manager reference
 - MANUAL_PAGE_TRIGGER_WIRING.md - FlutterFlow page trigger guide
-- README_D7_RETENTION.md - D7 retention feature overview
+- d7-retention-overview.md - D7 retention feature overview
 - MIGRATION_NOTES_2025-11-17.md - Repository reorganization notes
 
 ### docs/guides/
 How-to guides and development templates:
 - YAML_EDITING_GUIDE.md - FlutterFlow YAML editing workflows
+- FLUTTERFLOW_API_GUIDE.md - Comprehensive FlutterFlow API reference and workflows
 - TEMPLATES.md - Communication templates (commits, PRs, meetings)
 - PUSH_CUSTOM_ACTIONS_GUIDE.md - FlutterFlow custom actions guide
 - RISK_REGISTER.md - Project risk management
@@ -42,7 +45,7 @@ Implementation notes and completion summaries:
 - IMPLEMENTATION_SUMMARY.md - Overall implementation summary
 - COMPLETION_SUMMARY.md - Feature completion tracking
 - TESTING_GUIDE.md - Testing procedures
-- README_Juan_2025-11-05.md - Implementation notes
+- implementation-notes-2025-11-05.md - Implementation notes (Juan)
 
 ### docs/archive/
 Historical documentation and previous versions

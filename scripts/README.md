@@ -96,7 +96,7 @@ When adding new scripts:
 ## Additional Resources
 
 ### FlutterFlow API Guide
-See [FLUTTERFLOW_API_GUIDE.md](FLUTTERFLOW_API_GUIDE.md) for comprehensive FlutterFlow API documentation including:
+See [FLUTTERFLOW_API_GUIDE.md](../docs/guides/FLUTTERFLOW_API_GUIDE.md) for comprehensive FlutterFlow API documentation including:
 - API endpoints and authentication
 - YAML workflow best practices
 - Format requirements (ZIP vs plain YAML)
