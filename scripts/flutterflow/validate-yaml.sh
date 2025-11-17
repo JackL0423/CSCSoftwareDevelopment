@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Validate YAML changes before applying to FlutterFlow project
 
 set -e

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Complete D7 Retention System Deployment
 # Automates what can be done via API, provides instructions for manual steps
 

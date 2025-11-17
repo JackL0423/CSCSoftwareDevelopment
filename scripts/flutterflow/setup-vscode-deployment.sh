@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Setup script for FlutterFlow VS Code Extension deployment
 # This script prepares everything needed for custom action deployment
 

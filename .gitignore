@@ -162,3 +162,16 @@ scratch-*
 
 # Personal VS Code settings (workspace-level .vscode/ already excluded)
 .vscode/*.local.json
+
+# Prevent backup accumulation (added 2025-11-17)
+*.backup
+*.old
+*.pre-optimization
+.DS_Store
+*.tmp
+*.swp
+
+# Keep working artifacts out (added 2025-11-17)
+logs/
+tmp/
+snapshots/

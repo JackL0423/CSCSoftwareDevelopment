@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Update FlutterFlow project with modified YAML files
 
 set -e
@@ -11,6 +11,7 @@ BRANCH="JUAN-adding metric"  # Branch name
 # Parse command line arguments
 SKIP_VALIDATION=false
 USE_MAIN=false
+NO_CONFIRM=false
 
 while [[ $# -gt 0 ]]; do
     case $1 in
@@ -20,6 +21,10 @@ while [[ $# -gt 0 ]]; do
             ;;
         --main)
             USE_MAIN=true
+            shift
+            ;;
+        --no-confirm)
+            NO_CONFIRM=true
             shift
             ;;
         *)
@@ -34,13 +39,14 @@ while [[ $# -gt 0 ]]; do
 done
 
 if [ -z "$FILE_KEY" ] || [ -z "$YAML_FILE" ]; then
-    echo "Usage: $0 [--skip-validation] [--main] <file-key> <yaml-file-path>"
+    echo "Usage: $0 [--skip-validation] [--main] [--no-confirm] <file-key> <yaml-file-path>"
     echo ""
     echo "Example: $0 app-details ./flutterflow-yamls/app-details.yaml"
     echo ""
     echo "Options:"
     echo "  --skip-validation  Skip validation step (not recommended)"
     echo "  --main            Update main branch instead of JUAN-adding metric"
+    echo "  --no-confirm      Skip confirmation prompt (for automation)"
     exit 1
 fi
 
@@ -119,11 +125,15 @@ echo "File key: $FILE_KEY"
 echo "YAML file: $YAML_FILE"
 echo ""
 
-read -p "Are you sure you want to update the FlutterFlow project? (yes/no): " CONFIRM
+if [ "$NO_CONFIRM" = false ]; then
+    read -p "Are you sure you want to update the FlutterFlow project? (yes/no): " CONFIRM
 
-if [ "$CONFIRM" != "yes" ]; then
-    echo "Update cancelled."
-    exit 0
+    if [ "$CONFIRM" != "yes" ]; then
+        echo "Update cancelled."
+        exit 0
+    fi
+else
+    echo "Auto-confirming update (--no-confirm flag set)..."
 fi
 
 echo "Applying update..."
