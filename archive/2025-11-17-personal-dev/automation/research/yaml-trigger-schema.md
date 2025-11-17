@@ -52,4 +52,3 @@ Example fields used in templates:
 4. Push via the ZIP API path with retries.
 5. Verify in the UI and/or run-time logs.
 6. Optionally snapshot YAML with `scripts/snapshot-from-manifest.sh` for audit.
-

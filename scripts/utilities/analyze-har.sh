@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # analyze-har.sh
 # Analyze HAR (HTTP Archive) files for FlutterFlow API endpoints
 #

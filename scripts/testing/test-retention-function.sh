@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Test D7 Retention Cloud Function
 # This script tests the calculateD7RetentionManual callable function
 

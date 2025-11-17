@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # List all editable YAML files in the FlutterFlow project
 
 set -e
