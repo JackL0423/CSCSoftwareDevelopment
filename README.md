@@ -31,7 +31,7 @@ scripts/flutterflow/list-yaml-files.sh
 scripts/flutterflow/download-yaml.sh --file app-state
 
 # Upload changes
-scripts/flutterflow/upload-yaml.sh app-state flutterflow-yamls/app-state.yaml
+scripts/flutterflow/update-yaml.sh app-state flutterflow-yamls/app-state.yaml
 ```
 
 ### 3. Deploy Firebase Functions
