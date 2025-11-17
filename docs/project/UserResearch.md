@@ -1,6 +1,14 @@
-# User Cooking Experience (Jack)
+# User Research Findings
 
-## Observation
+**Data Source**: [user-research-2025-10-14.csv](user-research-2025-10-14.csv)
+**Date**: October 14, 2025
+**Participants**: Survey respondents for CSC305 Capstone project
+
+---
+
+## User Cooking Experience (Jack)
+
+### Observation
 45% percent of users described their cooking experience as intermediate which we defined as cooking weekly, and comfortable making substitutions to the recipe. 18% said they would describe themselves as confident cooks who frequently cook.
 
 ## Changes to App

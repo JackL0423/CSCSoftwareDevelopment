@@ -1,0 +1,73 @@
+# GlobalFlavors Code Owners
+# This file defines who owns different parts of the codebase
+# These owners will be automatically requested for review when PRs are opened
+#
+# Format: path/to/file @github-username
+# More info: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Default owner for everything (team lead)
+* @JackL0423
+
+# ===================================================================
+# FlutterFlow & Mobile App
+# ===================================================================
+
+# Custom Dart actions and widgets
+/lib/custom_code/ @JackL0423
+
+# FlutterFlow scripts and automation
+/scripts/flutterflow/ @JackL0423
+
+# ===================================================================
+# Firebase Backend
+# ===================================================================
+
+# Cloud Functions
+/functions/ @JackL0423
+
+# Firebase deployment scripts
+/scripts/firebase/ @JackL0423
+
+# Firebase configuration files
+firebase.json @JackL0423
+firestore.indexes.json @JackL0423
+.firebaserc @JackL0423
+
+# ===================================================================
+# Documentation
+# ===================================================================
+
+# All documentation files
+/docs/ @JackL0423
+
+# Project governance files
+/README.md @JackL0423
+/CONTRIBUTING.md @JackL0423
+/CODE_OF_CONDUCT.md @JackL0423
+/SECURITY.md @JackL0423
+/CHANGELOG.md @JackL0423
+
+# ===================================================================
+# Testing & CI/CD
+# ===================================================================
+
+# Testing scripts
+/scripts/testing/ @JackL0423
+
+# GitHub workflows (if added in future)
+/.github/ @JackL0423
+
+# Pre-commit configuration
+/.pre-commit-config.yaml @JackL0423
+
+# ===================================================================
+# Configuration & Security
+# ===================================================================
+
+# Git configuration
+/.gitignore @JackL0423
+/.gitattributes @JackL0423
+/.gitleaksignore @JackL0423
+
+# Environment templates
+/.env.template @JackL0423
