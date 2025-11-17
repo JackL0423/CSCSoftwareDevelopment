@@ -1,5 +1,7 @@
 # Communication Templates
 
+[Home](../../README.md) > [Docs](../README.md) > [Guides](./README.md) > Templates
+
 > **Ready-to-use templates for commits, PRs, documentation, and team communication**
 
 **Last Updated**: November 17, 2025
@@ -362,6 +364,65 @@ results, cite evidence, and list assumptions with verification steps. Use
 ISO 8601 dates, SI units, and descriptive links. Focus on execution and
 measurable outcomes.
 ```
+
+---
+
+## Documentation Template
+
+Use this template for new documentation files:
+
+```markdown
+# Document Title
+
+[Home](../../README.md) > [Docs](../README.md) > [Category](./README.md) > Document Title
+
+> **Brief description of what this document covers**
+
+**Team**: GlobalFlavors CSC305 Development Team
+**Contributors**: Juan, Jack, Sophia, Maria, Alex
+**AI-Assisted**: [Claude Code/GPT-5/None]
+**Last Updated**: YYYY-MM-DD
+**Status**: [Draft/Ready/Archived]
+
+---
+
+## Overview
+
+Brief introduction to the topic (2-3 sentences).
+
+## [Main Section 1]
+
+Content here...
+
+## [Main Section 2]
+
+Content here...
+
+## Related Documentation
+
+- [Related Doc 1](../path/to/doc.md) - Description
+- [Related Doc 2](../path/to/doc.md) - Description
+- [Related Doc 3](../path/to/doc.md) - Description
+
+---
+
+**Last Updated**: YYYY-MM-DD
+**Maintainer**: GlobalFlavors Team
+**Questions?**: See [CONTRIBUTING.md](../../CONTRIBUTING.md)
+```
+
+**Key Elements**:
+- ✅ Breadcrumb navigation (Home > Docs > Category > Current)
+- ✅ Team attribution (not individual authors)
+- ✅ AI assistance disclosure (if applicable)
+- ✅ Related Documentation section (for cross-linking)
+- ✅ Last updated date
+- ✅ Clear structure with headings
+
+**File Naming**:
+- Use UPPERCASE_SNAKE_CASE for major guides: `YAML_EDITING_GUIDE.md`
+- Use lowercase-kebab-case for specific docs: `d7-retention-overview.md`
+- Use descriptive names that match content
 
 ---
 

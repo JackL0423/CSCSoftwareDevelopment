@@ -1,9 +1,11 @@
 # D7 Retention Metrics — Implementation Update
 
-Date: 2025-11-05 21:58 UTC
-Author: Juan Vallejo
-Project: GlobalFlavors CSC305 Capstone
-Status: Backend ready; UI triggers wired via API; Test Lab run passed
+**Date**: 2025-11-05 21:58 UTC
+**Team**: GlobalFlavors CSC305 Development Team
+**Contributors**: Juan, Jack, Sophia, Maria, Alex
+**AI-Assisted**: Claude Code (Anthropic)
+**Project**: GlobalFlavors CSC305 Capstone
+**Status**: Backend ready; UI triggers wired via API; Test Lab run passed
 
 ## What got done today
 

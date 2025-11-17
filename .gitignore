@@ -48,13 +48,13 @@ gitleaks*.json
 # Private development documentation
 private-dev-docs/
 
-# Backups and configs with credentials
+# Backups
 .backups/
-config/
 
-# Environment files (even if just references)
-.env.production
-.env.testing
+# Config directory structure is allowed (templates/references only)
+# Actual secrets are protected via .env (gitignored above)
+# config/environments/*.env files are TEMPLATES that reference Secret Manager
+# !config/  # Allow config directory and its contents
 
 # Test scripts (development only)
 /*.py

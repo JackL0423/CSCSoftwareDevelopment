@@ -98,7 +98,7 @@ scripts/testing/verify-metrics-flow.sh
 **Full index**: [docs/README.md](docs/README.md)
 
 ### Key Files
-- [CHANGELOG.md](CHANGELOG.md) - Version history
+- [CHANGELOG.md](./CHANGELOG.md) - Version history
 - [CONTRIBUTING.md](CONTRIBUTING.md) - Communication standards, team processes
 - [SECURITY.md](SECURITY.md) - Security policy
 - [FLUTTERFLOW_API_OPTIMIZATION_SUMMARY.md](docs/guides/FLUTTERFLOW_API_OPTIMIZATION_SUMMARY.md) - Performance benchmarks
@@ -135,7 +135,7 @@ scripts/testing/verify-metrics-flow.sh
 | Performance benchmarks | [FLUTTERFLOW_API_OPTIMIZATION_SUMMARY.md](docs/guides/FLUTTERFLOW_API_OPTIMIZATION_SUMMARY.md) |
 | GCP secrets management | [docs/architecture/GCP_SECRETS.md](docs/architecture/GCP_SECRETS.md) |
 | Architecture decisions | [docs/architecture/](docs/architecture/) |
-| Historical changes | [CHANGELOG.md](CHANGELOG.md) |
+| Historical changes | [CHANGELOG.md](./CHANGELOG.md) |
 | Team processes | [CONTRIBUTING.md](CONTRIBUTING.md) |
 | Security policy | [SECURITY.md](SECURITY.md) |
 
@@ -346,7 +346,7 @@ scripts/firebase/deploy-firebase-with-serviceaccount.sh
 - [SECURITY.md](SECURITY.md) - Security policy
 - [CONTRIBUTING.md](CONTRIBUTING.md) - Contribution guidelines
 - [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) - Community standards
-- [CHANGELOG.md](CHANGELOG.md) - Version history
+- [CHANGELOG.md](./CHANGELOG.md) - Version history
 
 ---
 
@@ -432,7 +432,7 @@ gh pr list
 
 ## Version History
 
-See [CHANGELOG.md](CHANGELOG.md) for complete history.
+See [CHANGELOG.md](./CHANGELOG.md) for complete history.
 
 **Recent versions**:
 - v3.0 (2025-11-17): Repository reorganization, optimization
