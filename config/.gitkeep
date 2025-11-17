@@ -1,0 +1,15 @@
+# Configuration Directory
+
+This directory is reserved for future configuration files.
+
+**Purpose**: Hold application-specific config files beyond .env files
+
+**Current Status**: Empty (as of 2025-11-17)
+
+**Intended Use**:
+- FlutterFlow configuration files
+- Firebase configuration overrides
+- Team-shared settings
+- Environment-specific configurations
+
+This .gitkeep file ensures the directory structure is preserved in version control.

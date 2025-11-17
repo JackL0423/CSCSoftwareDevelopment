@@ -1,5 +1,7 @@
 # FlutterFlow YAML Editing Guide
 
+[Home](../../README.md) > [Docs](../README.md) > [Guides](./README.md) > YAML Editing Guide
+
 > **Complete reference for editing FlutterFlow project YAML files via API**
 
 **Last Updated**: November 17, 2025

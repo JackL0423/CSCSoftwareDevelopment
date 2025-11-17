@@ -1,5 +1,7 @@
 # GCP Secret Management
 
+[Home](../../README.md) > [Docs](../README.md) > [Architecture](./README.md) > GCP Secrets
+
 > **Complete reference for Google Cloud Platform secrets and authentication**
 
 **Last Updated**: November 17, 2025

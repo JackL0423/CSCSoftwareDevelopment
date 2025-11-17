@@ -58,7 +58,7 @@ gcloud auth activate-service-account \
     --project="$PROJECT_ID"
 
 # Deploy with the service account active
-firebase deploy --only functions --project="$PROJECT_ID"
+firebase deploy --only functions --project="$PROJECT_ID" --config="../config/firebase/firebase.json"
 
 DEPLOY_STATUS=$?
 
@@ -72,7 +72,7 @@ if [ $DEPLOY_STATUS -eq 0 ]; then
     echo "════════════════════════════════════════════════════════════"
     echo ""
     echo "Deployed functions:"
-    firebase functions:list --project="$PROJECT_ID"
+    firebase functions:list --project="$PROJECT_ID" --config="../config/firebase/firebase.json"
 else
     echo ""
     echo "════════════════════════════════════════════════════════════"

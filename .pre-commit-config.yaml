@@ -50,6 +50,16 @@ repos:
         name: Lint shell scripts with ShellCheck
         args: [--severity=warning]
 
+  # Local repository hooks
+  - repo: local
+    hooks:
+      - id: check-author-attribution
+        name: Check for individual author attribution in docs
+        entry: bash -c 'if grep -r "^[*]*Author[*]*" docs/ 2>/dev/null | grep -v "archive/"; then echo "❌ Found individual Author attribution in docs/. Use team attribution instead. See CONTRIBUTING.md"; exit 1; fi'
+        language: system
+        pass_filenames: false
+        files: 'docs/.*\.md$'
+
 # Configuration
 default_language_version:
   python: python3

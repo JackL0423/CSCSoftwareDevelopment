@@ -1,5 +1,7 @@
 # GlobalFlavors - CSC305 Software Development Capstone
 
+[Home](../../README.md) > [Docs](../README.md) > [Guides](./README.md) > Detailed Setup
+
 **Institution**: University of Rhode Island
 **Course**: CSC305 Software Development
 **Team Lead**: Jack Light ([REDACTED]@example.edu)
@@ -88,8 +90,8 @@ CSCSoftwareDevelopment/
 - **FlutterFlow API Guide**: [private-dev-docs/FLUTTERFLOW_API_GUIDE.md](private-dev-docs/FLUTTERFLOW_API_GUIDE.md)
 
 ### Process Documentation
-- **Changelog**: [CHANGELOG.md](CHANGELOG.md) - Complete project history
-- **CLAUDE.md**: [CLAUDE.md](CLAUDE.md) - AI assistant context and communication standards
+- **Changelog**: [CHANGELOG.md](../CHANGELOG.md) - Complete project history
+- **CLAUDE.md**: [CLAUDE.md](../CLAUDE.md) - AI assistant context and communication standards
 
 ---
 
@@ -199,7 +201,7 @@ gcloud secrets versions access latest --secret="FLUTTERFLOW_LEAD_API_TOKEN"
 ./scripts/update-yaml.sh app-state flutterflow-yamls/app-state.yaml
 ```
 
-See [CLAUDE.md](CLAUDE.md) for complete API documentation.
+See [CLAUDE.md](../CLAUDE.md) for complete API documentation.
 
 ---
 
@@ -211,7 +213,7 @@ See [CLAUDE.md](CLAUDE.md) for complete API documentation.
 
 ### Commit Standards
 
-All commits follow Communication Standards from [CLAUDE.md](CLAUDE.md):
+All commits follow Communication Standards from [CLAUDE.md](../CLAUDE.md):
 
 ```
 <type>(<scope>): <imperative summary>
@@ -231,7 +233,7 @@ Refs: #<issue> SHA:<short>
 
 **Types**: `feat`, `fix`, `docs`, `refactor`, `test`, `chore`
 
-See [CHANGELOG.md](CHANGELOG.md) for complete commit history.
+See [CHANGELOG.md](../CHANGELOG.md) for complete commit history.
 
 ---
 
@@ -283,7 +285,7 @@ firebase functions:list
 
 ## Team Communication Standards
 
-All project communication follows standards defined in [CLAUDE.md](CLAUDE.md):
+All project communication follows standards defined in [CLAUDE.md](../CLAUDE.md):
 
 **Core Principles**:
 - Professional but approachable tone
@@ -306,7 +308,7 @@ See [CLAUDE.md](CLAUDE.md#communication-style--standards) for complete standards
 
 ### For Team Members
 
-1. **Read Communication Standards**: [CLAUDE.md](CLAUDE.md)
+1. **Read Communication Standards**: [CLAUDE.md](../CLAUDE.md)
 2. **Create Feature Branch**: `git checkout -b YOUR-feature-name`
 3. **Follow Commit Format**: See Git Workflow section above
 4. **Update CHANGELOG.md**: Document all changes
@@ -356,7 +358,7 @@ This project is part of academic coursework at the University of Rhode Island. A
 
 ## Changelog
 
-See [CHANGELOG.md](CHANGELOG.md) for complete project history.
+See [CHANGELOG.md](../CHANGELOG.md) for complete project history.
 
 **Last Updated**: 2025-11-05
 **Version**: In Development (JUAN-adding-metric branch)

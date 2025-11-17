@@ -1,5 +1,7 @@
 # FlutterFlow VS Code Extension - D7 Retention Deployment Guide
 
+[Home](../../README.md) > [Docs](../README.md) > [Architecture](./README.md) > D7 Retention Deployment
+
 **Date**: November 5, 2025
 **Method**: Official FlutterFlow VS Code Extension (Path A1 - Recommended)
 **Status**: Ready for Deployment
@@ -713,6 +715,18 @@ jobs:
 
 ---
 
+## Related Documentation
+
+- [D7 Retention Technical Details](./D7_RETENTION_TECHNICAL.md) - Complete implementation logic
+- [Data Contracts](./DATA_CONTRACTS.md) - Firestore schema documentation
+- [GCP Secrets Management](./GCP_SECRETS.md) - Secrets configuration
+- [Manual Page Trigger Wiring](./MANUAL_PAGE_TRIGGER_WIRING.md) - UI trigger setup
+- [Firebase Deployment Scripts](../../scripts/firebase/) - Automation tools
+
+---
+
 **Version**: 1.0
-**Author**: Juan Vallejo (with Claude Code + GPT-5 guidance)
+**Team**: GlobalFlavors CSC305 Development Team
+**Contributors**: Juan, Jack, Sophia, Maria, Alex
+**AI-Assisted**: Claude Code + GPT-5
 **Date**: November 5, 2025

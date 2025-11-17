@@ -1,5 +1,7 @@
 # FlutterFlow Automation Skill - Implementation Status
 
+[Home](../../README.md) > [Docs](../README.md) > [Guides](./README.md) > FlutterFlow Skill Implementation
+
 **Created**: 2025-11-06
 **Status**: Phase 1 Foundation Complete
 **Next**: Phase 2 Schema Learning & Validation
