@@ -1,0 +1,52 @@
+ M CLAUDE.md
+ D docs/archive/2025-11-04-flutterflow-api-work/add-collections-direct.sh
+ D docs/archive/2025-11-04-flutterflow-api-work/add-collections.sh
+ D docs/archive/2025-11-04-flutterflow-api-work/add-retention-variables.py
+ D docs/archive/2025-11-04-flutterflow-api-work/download-all-yamls.sh
+ D docs/archive/2025-11-04-flutterflow-api-work/find-broken-actions.sh
+ D docs/archive/2025-11-04-flutterflow-api-work/test-api.sh
+ D docs/archive/2025-11-04-flutterflow-api-work/test-field-name.sh
+ M metrics/size-before.txt
+ M scripts/firebase/deploy-d7-retention-complete.sh
+ M scripts/flutterflow/download-yaml.sh
+ M scripts/flutterflow/list-yaml-files.sh
+ M scripts/flutterflow/setup-vscode-deployment.sh
+ M scripts/flutterflow/update-yaml.sh
+ M scripts/flutterflow/validate-yaml.sh
+ M scripts/testing/create-test-users.sh
+ M scripts/testing/enable-analytics-debug.sh
+ M scripts/testing/run-apk-local.sh
+ M scripts/testing/seed-test-data.sh
+ M scripts/testing/simulate-analytics-events.sh
+ M scripts/testing/tail-analytics.sh
+ M scripts/testing/test-retention-function.sh
+ M scripts/testing/verify-metrics-flow.sh
+ M scripts/testing/verify-yaml-update.sh
+ M scripts/utilities/analyze-har.sh
+ M scripts/utilities/common-functions.sh
+ M scripts/utilities/load-secrets.sh
+ M scripts/utilities/redact-har.sh
+?? CLAUDE.md.old
+?? CLAUDE.md.pre-optimization
+?? FLUTTERFLOW_API_OPTIMIZATION_SUMMARY.md
+?? docs/FLUTTERFLOW_SKILL_IMPLEMENTATION.md
+?? docs/README.md
+?? docs/RECIPEVIEWPAGE_BUTTON_AUTOMATION_GUIDE.md
+?? docs/architecture/GCP_SECRETS.md
+?? docs/guides/TEMPLATES.md
+?? docs/guides/YAML_EDITING_GUIDE.md
+?? flutterflow-yamls-fresh/
+?? metrics/doc-lines-before.txt
+?? metrics/git-status-before.txt
+?? metrics/ref-fileKeyToContent.txt
+?? scripts/bulk-update-zip.sh
+?? scripts/bulk-update.sh
+?? scripts/ceiling-discovery.sh
+?? scripts/create-missing-collection.js
+?? scripts/download-all-yamls-bulk.sh
+?? scripts/flutterflow/learn-pattern.py
+?? scripts/flutterflow/sync-incremental.sh
+?? scripts/flutterflow/wire-action.py
+?? scripts/parallel-upload.sh
+?? scripts/parallel-validate.sh
+?? scripts/utilities/optimize-claude-md.sh

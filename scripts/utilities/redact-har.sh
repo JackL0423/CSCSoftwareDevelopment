@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # redact-har.sh
 # Redact sensitive information from HAR files before committing
 #
