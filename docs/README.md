@@ -24,6 +24,7 @@ Business and planning documents for the CSC305 capstone project:
 - user-research-2025-10-14.csv - User research data (October 2025)
 - ANNOUNCE.txt - Project announcements
 - CONDUCT.md - Team code of conduct
+- TESTCASES.md - Unit test cases
 
 ### docs/architecture/
 Technical architecture and deployment documentation:
