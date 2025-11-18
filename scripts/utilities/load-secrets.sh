@@ -18,6 +18,7 @@ declare -A REQUIRED_SECRETS=(
     ["FLUTTERFLOW_LEAD_API_TOKEN"]="FLUTTERFLOW_API_TOKEN"
     ["FIREBASE_PROJECT_ID"]="FIREBASE_PROJECT_ID"
     ["GEMINI_API_KEY"]="GEMINI_API_KEY"
+    ["GITHUB_PERSONAL_ACCESS_TOKEN"]="GITHUB_PERSONAL_ACCESS_TOKEN"
 )
 
 # Statistics
@@ -93,10 +94,12 @@ if [ $FAILED -eq 0 ]; then
     echo "  - \$FLUTTERFLOW_API_TOKEN (or \$LEAD_TOKEN)"
     echo "  - \$FIREBASE_PROJECT_ID"
     echo "  - \$GEMINI_API_KEY"
+    echo "  - \$GITHUB_PERSONAL_ACCESS_TOKEN"
     echo ""
     echo "Usage examples:"
     echo "  ./scripts/flutterflow.sh list"
     echo "  firebase deploy"
+    echo "  gh api repos/JackL0423/CSCSoftwareDevelopment"
     echo ""
 else
     echo "❌ Failed to load $FAILED/$((LOADED + FAILED)) secrets"

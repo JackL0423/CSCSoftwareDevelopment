@@ -84,6 +84,173 @@ GlobalFlavors is our CSC305 capstone project at the University of Rhode Island. 
 
 5. Open a pull request on GitHub
 
+## FlutterFlow Integration & GitHub Sync
+
+### Overview
+
+Our app is built with FlutterFlow, which provides a visual interface for building Flutter apps. We use the FlutterFlow API to sync code changes between FlutterFlow's UI and our GitHub repository.
+
+### Initial Setup (Required Once)
+
+#### 1. Generate GitHub Personal Access Token
+
+1. Go to [GitHub Settings → Developer Settings → Personal Access Tokens](https://github.com/settings/tokens)
+2. Click "Generate new token (classic)"
+3. Give it a descriptive name: "FlutterFlow CSC305 Integration"
+4. Select the following scopes:
+   - ✅ `repo` (Full control of private repositories)
+   - ✅ `workflow` (Update GitHub Action workflows)
+5. Set expiration: 90 days (recommended)
+6. Click "Generate token" and **copy it immediately** (you won't see it again!)
+7. Store the token securely:
+   ```bash
+   # Add to your local .env file (NEVER commit this!)
+   echo "GITHUB_PERSONAL_ACCESS_TOKEN=ghp_your_token_here" >> .env
+   ```
+
+#### 2. Get FlutterFlow API Token
+
+1. Log in to [FlutterFlow](https://app.flutterflow.io)
+2. Go to Account Settings → API
+3. Click "Generate New Token"
+4. Copy the token
+5. Add to your `.env` file:
+   ```bash
+   echo "FLUTTERFLOW_API_TOKEN=ff_api_your_token_here" >> .env
+   ```
+
+**Note**: FlutterFlow API access requires a Growth Plan subscription.
+
+#### 3. Link GitHub Repository in FlutterFlow
+
+1. Open your project in FlutterFlow
+2. Click the **Developer Menu** (right sidebar, code icon)
+3. Select **"Push to Repository"**
+4. Click **"Connect GitHub Account"**
+5. Authorize FlutterFlow to access your GitHub account
+6. Select repository: `JackL0423/CSCSoftwareDevelopment`
+7. Choose target branch:
+   - **Recommended**: `flutterflow-export` (for PR workflow)
+   - **Alternative**: `main` (direct push, less safe)
+8. Configure export settings:
+   - ✅ Auto-generate code on save
+   - ✅ Include custom code
+   - ✅ Export to GitHub on publish
+9. Click **"Save"**
+
+### Daily Workflow: FlutterFlow to GitHub
+
+#### Option A: Push from FlutterFlow UI (Recommended for Small Changes)
+
+1. Make changes in FlutterFlow visual editor
+2. Test in FlutterFlow preview
+3. Click **Developer Menu** → **Push to Repository**
+4. Add commit message
+5. Click **"Push"**
+6. Verify changes in GitHub (check the `flutterflow-export` branch)
+
+#### Option B: Programmatic YAML Editing (For Batch Changes)
+
+When you need to make repetitive changes or bulk updates:
+
+```bash
+# 1. Download all YAML files from FlutterFlow
+./scripts/flutterflow/download-all-yamls-bulk.sh
+
+# 2. Edit YAML files locally (e.g., update app state variables)
+nano flutterflow-yamls/app-state.yaml
+
+# 3. Validate changes
+./scripts/flutterflow/validate-yaml.sh app-state flutterflow-yamls/app-state.yaml
+
+# 4. Upload changes to FlutterFlow
+./scripts/flutterflow/update-yaml.sh app-state flutterflow-yamls/app-state.yaml
+
+# 5. Verify in FlutterFlow UI (always check!)
+# Open https://app.flutterflow.io and verify your changes
+
+# 6. Push to GitHub from FlutterFlow UI
+# (Use Developer Menu → Push to Repository)
+```
+
+**Important**: After YAML edits, always:
+- ✅ Verify changes in FlutterFlow UI
+- ✅ Test in FlutterFlow preview
+- ✅ Push to GitHub after verification
+
+### Branch Strategy for FlutterFlow
+
+We use a dedicated branch for FlutterFlow exports to maintain code review workflow:
+
+```
+main (protected)
+  ↑
+  └── flutterflow-export (auto-updated by FlutterFlow)
+       ↑
+       └── feature branches (manual development)
+```
+
+**Workflow**:
+1. FlutterFlow pushes to `flutterflow-export` branch
+2. GitHub Action creates PR to `main` automatically (see `.github/workflows/flutterflow-sync.yml`)
+3. Team reviews PR for:
+   - UI changes match FlutterFlow preview
+   - No breaking changes in dependencies
+   - Custom code integrations still work
+4. Merge PR to `main` after approval
+
+### Handling FlutterFlow + Manual Code Changes
+
+**FlutterFlow manages**:
+- Widget tree (UI structure)
+- Navigation routes
+- State management
+- Theme configuration
+- API integrations
+
+**We manage manually**:
+- Custom Dart actions (in `lib/custom_code/actions/`)
+- Custom widgets (in `lib/custom_code/widgets/`)
+- Firebase Cloud Functions (in `functions/`)
+- Scripts and tooling (in `scripts/`)
+
+**Conflict resolution**:
+- If FlutterFlow export overwrites custom code:
+  1. Check the PR diff carefully
+  2. Restore custom code from git history: `git checkout main -- lib/custom_code/`
+  3. Re-apply FlutterFlow changes selectively
+  4. Update FlutterFlow to reference custom code correctly
+
+### Troubleshooting FlutterFlow GitHub Integration
+
+#### "Push to Repository" Button Grayed Out
+- **Cause**: GitHub not linked in FlutterFlow settings
+- **Fix**: Follow "Link GitHub Repository in FlutterFlow" steps above
+
+#### Push Succeeds But Changes Don't Appear in GitHub
+- **Cause**: Silent failure due to wrong format or permissions
+- **Fix**:
+  1. Check GitHub token hasn't expired
+  2. Verify token has `repo` and `workflow` scopes
+  3. Re-link GitHub repository in FlutterFlow UI
+  4. Check branch exists in GitHub
+
+#### YAML Upload Returns Success But Changes Don't Persist
+- **Cause**: Known FlutterFlow API limitation for certain fields (e.g., DocumentReference collection targets)
+- **Fix**: Make these changes in FlutterFlow UI instead of via API
+- **Detection**: Use `~/.claude/skills/flutterflow-debugger/ffdbg verify` to detect silent failures
+
+#### Rate Limiting or Timeout Errors
+- **Cause**: Too many rapid API calls
+- **Fix**: Add delays between operations, use bulk download instead of individual files
+
+### FlutterFlow Resources
+
+- **API Documentation**: See `docs/CLAUDE.md` for comprehensive FlutterFlow API guide
+- **FlutterFlow Scripts**: `scripts/flutterflow/` directory
+- **YAML Files**: `flutterflow-yamls/` (gitignored, download as needed)
+- **GitHub Workflow**: `.github/workflows/flutterflow-sync.yml`
+
 ## Code Style (Keep It Clean!)
 
 ### Commit Messages
