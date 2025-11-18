@@ -7,3 +7,5 @@
 <https://docs.google.com/presentation/d/1Qvrw8HjbIklH7bpZ5i2Sj-g9vvsVk3_vfU3qSZqPSoE/edit?slide=id.g3a55582c446_0_0#slide=id.g3a55582c446_0_0> US3: Backend Management
 
 <https://docs.google.com/presentation/d/1Qvrw8HjbIklH7bpZ5i2Sj-g9vvsVk3_vfU3qSZqPSoE/edit?slide=id.g3a55582c446_1_21#slide=id.g3a55582c446_1_21> US4: Golden Path
+
+<https://docs.google.com/presentation/d/1u7R3ba49SFDGIVqiNJ9-CabsvcU_An2Nhxfhy09XVVU/edit?usp=sharing> US5: Profile Setup
