@@ -26,30 +26,55 @@ class UsersRecord extends FirestoreRecord {
   String get displayName => _displayName ?? '';
   bool hasDisplayName() => _displayName != null;
 
-  // "photo_url" field.
-  String? _photoUrl;
-  String get photoUrl => _photoUrl ?? '';
-  bool hasPhotoUrl() => _photoUrl != null;
-
   // "uid" field.
   String? _uid;
   String get uid => _uid ?? '';
   bool hasUid() => _uid != null;
 
-  // "created_time" field.
-  DateTime? _createdTime;
-  DateTime? get createdTime => _createdTime;
-  bool hasCreatedTime() => _createdTime != null;
+  // "d7_retention_eligible" field.
+  bool? _d7RetentionEligible;
+  bool get d7RetentionEligible => _d7RetentionEligible ?? false;
+  bool hasD7RetentionEligible() => _d7RetentionEligible != null;
+
+  // "photo_urlStr" field.
+  String? _photoUrlStr;
+  String get photoUrlStr => _photoUrlStr ?? '';
+  bool hasPhotoUrlStr() => _photoUrlStr != null;
+
+  // "temp_urlStr" field.
+  String? _tempUrlStr;
+  String get tempUrlStr => _tempUrlStr ?? '';
+  bool hasTempUrlStr() => _tempUrlStr != null;
+
+  // "completedRecipes" field.
+  List<DocumentReference>? _completedRecipes;
+  List<DocumentReference> get completedRecipes => _completedRecipes ?? const [];
+  bool hasCompletedRecipes() => _completedRecipes != null;
+
+  // "role" field.
+  String? _role;
+  String get role => _role ?? '';
+  bool hasRole() => _role != null;
+
+  // "photo_url" field.
+  String? _photoUrl;
+  String get photoUrl => _photoUrl ?? '';
+  bool hasPhotoUrl() => _photoUrl != null;
 
   // "phone_number" field.
   String? _phoneNumber;
   String get phoneNumber => _phoneNumber ?? '';
   bool hasPhoneNumber() => _phoneNumber != null;
 
-  // "prefTags" field.
-  List<String>? _prefTags;
-  List<String> get prefTags => _prefTags ?? const [];
-  bool hasPrefTags() => _prefTags != null;
+  // "uPref" field.
+  DocumentReference? _uPref;
+  DocumentReference? get uPref => _uPref;
+  bool hasUPref() => _uPref != null;
+
+  // "created_time" field.
+  DateTime? _createdTime;
+  DateTime? get createdTime => _createdTime;
+  bool hasCreatedTime() => _createdTime != null;
 
   // "dietTags" field.
   List<String>? _dietTags;
@@ -59,11 +84,16 @@ class UsersRecord extends FirestoreRecord {
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
-    _photoUrl = snapshotData['photo_url'] as String?;
     _uid = snapshotData['uid'] as String?;
-    _createdTime = snapshotData['created_time'] as DateTime?;
+    _d7RetentionEligible = snapshotData['d7_retention_eligible'] as bool?;
+    _photoUrlStr = snapshotData['photo_urlStr'] as String?;
+    _tempUrlStr = snapshotData['temp_urlStr'] as String?;
+    _completedRecipes = getDataList(snapshotData['completedRecipes']);
+    _role = snapshotData['role'] as String?;
+    _photoUrl = snapshotData['photo_url'] as String?;
     _phoneNumber = snapshotData['phone_number'] as String?;
-    _prefTags = getDataList(snapshotData['prefTags']);
+    _uPref = snapshotData['uPref'] as DocumentReference?;
+    _createdTime = snapshotData['created_time'] as DateTime?;
     _dietTags = getDataList(snapshotData['dietTags']);
   }
 
@@ -103,19 +133,29 @@ class UsersRecord extends FirestoreRecord {
 Map<String, dynamic> createUsersRecordData({
   String? email,
   String? displayName,
-  String? photoUrl,
   String? uid,
-  DateTime? createdTime,
+  bool? d7RetentionEligible,
+  String? photoUrlStr,
+  String? tempUrlStr,
+  String? role,
+  String? photoUrl,
   String? phoneNumber,
+  DocumentReference? uPref,
+  DateTime? createdTime,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'email': email,
       'display_name': displayName,
-      'photo_url': photoUrl,
       'uid': uid,
-      'created_time': createdTime,
+      'd7_retention_eligible': d7RetentionEligible,
+      'photo_urlStr': photoUrlStr,
+      'temp_urlStr': tempUrlStr,
+      'role': role,
+      'photo_url': photoUrl,
       'phone_number': phoneNumber,
+      'uPref': uPref,
+      'created_time': createdTime,
     }.withoutNulls,
   );
 
@@ -130,11 +170,16 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
     const listEquality = ListEquality();
     return e1?.email == e2?.email &&
         e1?.displayName == e2?.displayName &&
-        e1?.photoUrl == e2?.photoUrl &&
         e1?.uid == e2?.uid &&
-        e1?.createdTime == e2?.createdTime &&
+        e1?.d7RetentionEligible == e2?.d7RetentionEligible &&
+        e1?.photoUrlStr == e2?.photoUrlStr &&
+        e1?.tempUrlStr == e2?.tempUrlStr &&
+        listEquality.equals(e1?.completedRecipes, e2?.completedRecipes) &&
+        e1?.role == e2?.role &&
+        e1?.photoUrl == e2?.photoUrl &&
         e1?.phoneNumber == e2?.phoneNumber &&
-        listEquality.equals(e1?.prefTags, e2?.prefTags) &&
+        e1?.uPref == e2?.uPref &&
+        e1?.createdTime == e2?.createdTime &&
         listEquality.equals(e1?.dietTags, e2?.dietTags);
   }
 
@@ -142,11 +187,16 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
   int hash(UsersRecord? e) => const ListEquality().hash([
         e?.email,
         e?.displayName,
-        e?.photoUrl,
         e?.uid,
-        e?.createdTime,
+        e?.d7RetentionEligible,
+        e?.photoUrlStr,
+        e?.tempUrlStr,
+        e?.completedRecipes,
+        e?.role,
+        e?.photoUrl,
         e?.phoneNumber,
-        e?.prefTags,
+        e?.uPref,
+        e?.createdTime,
         e?.dietTags
       ]);
 

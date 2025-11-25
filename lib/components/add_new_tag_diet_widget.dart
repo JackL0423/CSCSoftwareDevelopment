@@ -45,15 +45,10 @@ class _AddNewTagDietWidgetState extends State<AddNewTagDietWidget> {
   Widget build(BuildContext context) {
     return Container(
       width: 300.0,
-      height: 450.0,
+      height: 500.0,
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).secondaryBackground,
-        borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(0.0),
-          bottomRight: Radius.circular(0.0),
-          topLeft: Radius.circular(24.0),
-          topRight: Radius.circular(24.0),
-        ),
+        borderRadius: BorderRadius.circular(22.0),
       ),
       child: Column(
         mainAxisSize: MainAxisSize.max,
@@ -66,12 +61,36 @@ class _AddNewTagDietWidgetState extends State<AddNewTagDietWidget> {
               children: [
                 FlutterFlowIconButton(
                   borderRadius: 8.0,
-                  buttonSize: 40.0,
+                  buttonSize: () {
+                    if (MediaQuery.sizeOf(context).width < kBreakpointSmall) {
+                      return 40.0;
+                    } else if (MediaQuery.sizeOf(context).width <
+                        kBreakpointMedium) {
+                      return 50.0;
+                    } else if (MediaQuery.sizeOf(context).width <
+                        kBreakpointLarge) {
+                      return 60.0;
+                    } else {
+                      return 70.0;
+                    }
+                  }(),
                   fillColor: Color(0xFFD81B60),
                   icon: Icon(
                     Icons.arrow_back,
                     color: FlutterFlowTheme.of(context).info,
-                    size: 24.0,
+                    size: () {
+                      if (MediaQuery.sizeOf(context).width < kBreakpointSmall) {
+                        return 24.0;
+                      } else if (MediaQuery.sizeOf(context).width <
+                          kBreakpointMedium) {
+                        return 30.0;
+                      } else if (MediaQuery.sizeOf(context).width <
+                          kBreakpointLarge) {
+                        return 30.0;
+                      } else {
+                        return 30.0;
+                      }
+                    }(),
                   ),
                   onPressed: () async {
                     logFirebaseEvent('ADD_NEW_TAG_DIET_arrow_back_ICN_ON_TAP');
@@ -90,7 +109,20 @@ class _AddNewTagDietWidgetState extends State<AddNewTagDietWidget> {
                     fontStyle:
                         FlutterFlowTheme.of(context).displaySmall.fontStyle,
                   ),
-                  fontSize: 32.0,
+                  color: Color(0xFF861043),
+                  fontSize: () {
+                    if (MediaQuery.sizeOf(context).width < kBreakpointSmall) {
+                      return 32.0;
+                    } else if (MediaQuery.sizeOf(context).width <
+                        kBreakpointMedium) {
+                      return 40.0;
+                    } else if (MediaQuery.sizeOf(context).width <
+                        kBreakpointLarge) {
+                      return 50.0;
+                    } else {
+                      return 50.0;
+                    }
+                  }(),
                   letterSpacing: 0.0,
                   fontWeight: FontWeight.w600,
                   fontStyle:
@@ -98,7 +130,17 @@ class _AddNewTagDietWidgetState extends State<AddNewTagDietWidget> {
                 ),
           ),
           Container(
-            width: 250.0,
+            width: () {
+              if (MediaQuery.sizeOf(context).width < kBreakpointSmall) {
+                return 240.0;
+              } else if (MediaQuery.sizeOf(context).width < kBreakpointMedium) {
+                return 500.0;
+              } else if (MediaQuery.sizeOf(context).width < kBreakpointLarge) {
+                return 500.0;
+              } else {
+                return 600.0;
+              }
+            }(),
             child: TextFormField(
               controller: _model.newTagFieldTextController,
               focusNode: _model.newTagFieldFocusNode,
@@ -115,6 +157,20 @@ class _AddNewTagDietWidgetState extends State<AddNewTagDietWidget> {
                             FlutterFlowTheme.of(context).bodyLarge.fontStyle,
                       ),
                       color: Color(0xFF1C1B1F),
+                      fontSize: () {
+                        if (MediaQuery.sizeOf(context).width <
+                            kBreakpointSmall) {
+                          return 16.0;
+                        } else if (MediaQuery.sizeOf(context).width <
+                            kBreakpointMedium) {
+                          return 24.0;
+                        } else if (MediaQuery.sizeOf(context).width <
+                            kBreakpointLarge) {
+                          return 30.0;
+                        } else {
+                          return 30.0;
+                        }
+                      }(),
                       letterSpacing: 0.0,
                       fontWeight:
                           FlutterFlowTheme.of(context).bodyLarge.fontWeight,
@@ -130,6 +186,20 @@ class _AddNewTagDietWidgetState extends State<AddNewTagDietWidget> {
                             FlutterFlowTheme.of(context).bodyLarge.fontStyle,
                       ),
                       color: Color(0xFF79747E),
+                      fontSize: () {
+                        if (MediaQuery.sizeOf(context).width <
+                            kBreakpointSmall) {
+                          return 16.0;
+                        } else if (MediaQuery.sizeOf(context).width <
+                            kBreakpointMedium) {
+                          return 24.0;
+                        } else if (MediaQuery.sizeOf(context).width <
+                            kBreakpointLarge) {
+                          return 30.0;
+                        } else {
+                          return 30.0;
+                        }
+                      }(),
                       letterSpacing: 0.0,
                       fontWeight:
                           FlutterFlowTheme.of(context).bodyLarge.fontWeight,
@@ -177,6 +247,19 @@ class _AddNewTagDietWidgetState extends State<AddNewTagDietWidget> {
                           FlutterFlowTheme.of(context).bodyLarge.fontStyle,
                     ),
                     color: Color(0xFF1C1B1F),
+                    fontSize: () {
+                      if (MediaQuery.sizeOf(context).width < kBreakpointSmall) {
+                        return 16.0;
+                      } else if (MediaQuery.sizeOf(context).width <
+                          kBreakpointMedium) {
+                        return 24.0;
+                      } else if (MediaQuery.sizeOf(context).width <
+                          kBreakpointLarge) {
+                        return 30.0;
+                      } else {
+                        return 30.0;
+                      }
+                    }(),
                     letterSpacing: 0.0,
                     fontWeight:
                         FlutterFlowTheme.of(context).bodyLarge.fontWeight,
@@ -195,13 +278,39 @@ class _AddNewTagDietWidgetState extends State<AddNewTagDietWidget> {
               FFAppState()
                   .addToDietaryTags(_model.newTagFieldTextController.text);
               safeSetState(() {});
+              logFirebaseEvent('confirm_google_analytics_event');
+              logFirebaseEvent('addDietTag');
               logFirebaseEvent('confirm_bottom_sheet');
               Navigator.pop(context);
             },
             text: 'Add tag',
             options: FFButtonOptions(
-              width: 240.0,
-              height: 47.0,
+              width: () {
+                if (MediaQuery.sizeOf(context).width < kBreakpointSmall) {
+                  return 240.0;
+                } else if (MediaQuery.sizeOf(context).width <
+                    kBreakpointMedium) {
+                  return 300.0;
+                } else if (MediaQuery.sizeOf(context).width <
+                    kBreakpointLarge) {
+                  return 300.0;
+                } else {
+                  return 400.0;
+                }
+              }(),
+              height: () {
+                if (MediaQuery.sizeOf(context).width < kBreakpointSmall) {
+                  return 47.0;
+                } else if (MediaQuery.sizeOf(context).width <
+                    kBreakpointMedium) {
+                  return 60.0;
+                } else if (MediaQuery.sizeOf(context).width <
+                    kBreakpointLarge) {
+                  return 60.0;
+                } else {
+                  return 60.0;
+                }
+              }(),
               padding: EdgeInsets.all(8.0),
               iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
               color: Color(0xFFD81B60),
@@ -213,6 +322,19 @@ class _AddNewTagDietWidgetState extends State<AddNewTagDietWidget> {
                           FlutterFlowTheme.of(context).titleMedium.fontStyle,
                     ),
                     color: Color(0xFFFFFBFF),
+                    fontSize: () {
+                      if (MediaQuery.sizeOf(context).width < kBreakpointSmall) {
+                        return 16.0;
+                      } else if (MediaQuery.sizeOf(context).width <
+                          kBreakpointMedium) {
+                        return 24.0;
+                      } else if (MediaQuery.sizeOf(context).width <
+                          kBreakpointLarge) {
+                        return 30.0;
+                      } else {
+                        return 30.0;
+                      }
+                    }(),
                     letterSpacing: 0.0,
                     fontWeight:
                         FlutterFlowTheme.of(context).titleMedium.fontWeight,

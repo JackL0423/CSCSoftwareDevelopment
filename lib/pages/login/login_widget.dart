@@ -3,30 +3,16 @@ import '/components/reset_password_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/index.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'login_model.dart';
 export 'login_model.dart';
 
-/// ```
-/// Build GlobalFlavors login page with Material 3.
-///
-/// Colors: Primary #D81B60, Surface #FFFBFF, use 28px card radius, 12px input
-/// radius. CENTER LAYOUT: Max-width 448px. HEADER: Pink chef icon (64px, 20px
-/// radius), "Welcome Back" h1, "Log in to continue your culinary adventure"
-/// subtitle. CARD: 28px rounded card with shadow. FORM: Email field with mail
-/// icon left, placeholder "you@example.com", 56px height, 12px radius, light
-/// bg #F1E3E9. Password field with lock icon, placeholder dots, same styling.
-/// "Remember me" checkbox left, "Forgot password?" link right (pink). "Log
-/// In" button full-width, 56px height, pink #D81B60, white text,
-/// rounded-full, shadow. DIVIDER: "Or continue with" text. SOCIAL: 2-column
-/// grid - Google button (with colorful G logo SVG), Apple button (black apple
-/// icon), both outlined, rounded-full, 48px height. FOOTER TEXT: "Don't have
-/// account? Sign up free" (pink link). BACK LINK: Arrow + "Back to home" at
-/// bottom. Enable form validation, loading states.
-/// ```
 class LoginWidget extends StatefulWidget {
   const LoginWidget({super.key});
 
@@ -48,6 +34,13 @@ class _LoginWidgetState extends State<LoginWidget> {
     _model = createModel(context, () => LoginModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'login'});
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('LOGIN_PAGE_login_ON_INIT_STATE');
+      logFirebaseEvent('login_custom_action');
+      await actions.initializeUserSession();
+    });
+
     _model.textFieldEmailTextController ??= TextEditingController();
     _model.textFieldEmailFocusNode ??= FocusNode();
 
@@ -95,20 +88,13 @@ class _LoginWidgetState extends State<LoginWidget> {
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Container(
-                              width: 64.0,
-                              height: 64.0,
-                              decoration: BoxDecoration(
-                                color: Color(0xFFD81B60),
-                                borderRadius: BorderRadius.circular(20.0),
-                              ),
-                              child: Align(
-                                alignment: AlignmentDirectional(0.0, 0.0),
-                                child: Icon(
-                                  Icons.restaurant_menu,
-                                  color: Color(0xFFFFFBFF),
-                                  size: 36.0,
-                                ),
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(8.0),
+                              child: Image.asset(
+                                'assets/images/Logotipo_de_GlobalFlavors-Picsart-BackgroundRemover.png',
+                                width: 290.81,
+                                height: 86.8,
+                                fit: BoxFit.contain,
                               ),
                             ),
                             Text(
@@ -524,7 +510,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                               FFButtonWidget(
                                 onPressed: () async {
                                   logFirebaseEvent(
-                                      'LOGIN_PAGE_LOG_IN_BTN_ON_TAP');
+                                      'LOGIN_PAGE_LOGIN_BTN_ON_TAP');
                                   logFirebaseEvent('Button_validate_form');
                                   if (_model.formKey.currentState == null ||
                                       !_model.formKey.currentState!
@@ -568,7 +554,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                     );
                                   }
                                 },
-                                text: 'Log In',
+                                text: 'Login',
                                 options: FFButtonOptions(
                                   width: double.infinity,
                                   height: 56.0,
@@ -677,9 +663,9 @@ class _LoginWidgetState extends State<LoginWidget> {
                                             context.mounted);
                                       },
                                       text: 'Google',
-                                      icon: Icon(
-                                        Icons.g_translate,
-                                        size: 20.0,
+                                      icon: FaIcon(
+                                        FontAwesomeIcons.google,
+                                        size: 18.0,
                                       ),
                                       options: FFButtonOptions(
                                         height: 48.0,
@@ -687,7 +673,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                                         iconPadding:
                                             EdgeInsetsDirectional.fromSTEB(
                                                 0.0, 0.0, 0.0, 0.0),
-                                        iconColor: Color(0xFF4285F4),
+                                        iconColor: FlutterFlowTheme.of(context)
+                                            .primaryText,
                                         color: Color(0xFFFFFBFF),
                                         textStyle: FlutterFlowTheme.of(context)
                                             .titleMedium
@@ -717,71 +704,6 @@ class _LoginWidgetState extends State<LoginWidget> {
                                       ),
                                     ),
                                   ),
-                                  isAndroid
-                                      ? Container()
-                                      : Expanded(
-                                          child: FFButtonWidget(
-                                            onPressed: () async {
-                                              logFirebaseEvent(
-                                                  'LOGIN_PAGE_APPLE_BTN_ON_TAP');
-                                              logFirebaseEvent('Button_auth');
-                                              GoRouter.of(context)
-                                                  .prepareAuthEvent();
-                                              final user = await authManager
-                                                  .signInWithApple(context);
-                                              if (user == null) {
-                                                return;
-                                              }
-
-                                              context.goNamedAuth(
-                                                  HomePageWidget.routeName,
-                                                  context.mounted);
-                                            },
-                                            text: 'Apple',
-                                            icon: Icon(
-                                              Icons.apple,
-                                              size: 20.0,
-                                            ),
-                                            options: FFButtonOptions(
-                                              height: 48.0,
-                                              padding: EdgeInsets.all(8.0),
-                                              iconPadding: EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              iconColor: Colors.black,
-                                              color: Color(0xFFFFFBFF),
-                                              textStyle: FlutterFlowTheme.of(
-                                                      context)
-                                                  .titleMedium
-                                                  .override(
-                                                    font:
-                                                        GoogleFonts.interTight(
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      fontStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .titleMedium
-                                                              .fontStyle,
-                                                    ),
-                                                    color: Color(0xFF1C1B1F),
-                                                    letterSpacing: 0.0,
-                                                    fontWeight: FontWeight.w500,
-                                                    fontStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .titleMedium
-                                                            .fontStyle,
-                                                  ),
-                                              elevation: 0.0,
-                                              borderSide: BorderSide(
-                                                color: Color(0xFFE7E0EC),
-                                                width: 1.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(24.0),
-                                            ),
-                                          ),
-                                        ),
                                 ].divide(SizedBox(width: 12.0)),
                               ),
                             ].divide(SizedBox(height: 24.0)),

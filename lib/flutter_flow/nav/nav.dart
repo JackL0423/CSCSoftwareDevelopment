@@ -70,34 +70,27 @@ class AppStateNotifier extends ChangeNotifier {
   }
 }
 
-GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
+GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
+    GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       navigatorKey: appNavigatorKey,
-      errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? HomePageWidget() : LoginWidget(),
+      errorBuilder: (context, state) => appStateNotifier.loggedIn
+          ? entryPage ?? HomePageWidget()
+          : LoginWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) =>
-              appStateNotifier.loggedIn ? HomePageWidget() : LoginWidget(),
-        ),
-        FFRoute(
-          name: ProfileWidget.routeName,
-          path: ProfileWidget.routePath,
-          builder: (context, params) => ProfileWidget(),
+          builder: (context, _) => appStateNotifier.loggedIn
+              ? entryPage ?? HomePageWidget()
+              : LoginWidget(),
         ),
         FFRoute(
           name: AdminWidget.routeName,
           path: AdminWidget.routePath,
           builder: (context, params) => AdminWidget(),
-        ),
-        FFRoute(
-          name: GoldenPathWidget.routeName,
-          path: GoldenPathWidget.routePath,
-          builder: (context, params) => GoldenPathWidget(),
         ),
         FFRoute(
           name: LoginWidget.routeName,
@@ -112,12 +105,65 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: RecipeViewPageWidget.routeName,
           path: RecipeViewPageWidget.routePath,
-          builder: (context, params) => RecipeViewPageWidget(),
+          builder: (context, params) => RecipeViewPageWidget(
+            difficulty: params.getParam(
+              'difficulty',
+              ParamType.String,
+            ),
+            recipeTitle: params.getParam(
+              'recipeTitle',
+              ParamType.String,
+            ),
+            region: params.getParam(
+              'region',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: NPSSurveyWidget.routeName,
+          path: NPSSurveyWidget.routePath,
+          builder: (context, params) => NPSSurveyWidget(),
+        ),
+        FFRoute(
+          name: ProfileSetup4Widget.routeName,
+          path: ProfileSetup4Widget.routePath,
+          builder: (context, params) => ProfileSetup4Widget(),
+        ),
+        FFRoute(
+          name: ProfileSetup2Widget.routeName,
+          path: ProfileSetup2Widget.routePath,
+          builder: (context, params) => ProfileSetup2Widget(
+            uploadedPhoto: params.getParam(
+              'uploadedPhoto',
+              ParamType.String,
+            ),
+          ),
         ),
         FFRoute(
           name: HomePageWidget.routeName,
           path: HomePageWidget.routePath,
           builder: (context, params) => HomePageWidget(),
+        ),
+        FFRoute(
+          name: ProfileSetup1Widget.routeName,
+          path: ProfileSetup1Widget.routePath,
+          builder: (context, params) => ProfileSetup1Widget(),
+        ),
+        FFRoute(
+          name: SearchPageWidget.routeName,
+          path: SearchPageWidget.routePath,
+          builder: (context, params) => SearchPageWidget(),
+        ),
+        FFRoute(
+          name: EditProfileWidget.routeName,
+          path: EditProfileWidget.routePath,
+          builder: (context, params) => EditProfileWidget(),
+        ),
+        FFRoute(
+          name: ProfileSetup3Widget.routeName,
+          path: ProfileSetup3Widget.routePath,
+          builder: (context, params) => ProfileSetup3Widget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

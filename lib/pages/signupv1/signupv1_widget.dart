@@ -6,43 +6,11 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/index.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'signupv1_model.dart';
 export 'signupv1_model.dart';
 
-/// US1 — Account Creation (Sign Up) — Global Favors
-///
-/// Build page signup.
-///
-/// Form (controllers, validators, autofill):
-///
-/// Full Name (required)
-///
-/// Email (required, email format)
-///
-/// Password (≥8, 1 number)
-///
-/// Confirm Password (must match)
-///
-/// Checkbox: “I agree to Terms & Privacy” (links open viewer)
-///
-/// UI: ListView (padding 24, spacing 16); password visibility toggles; 3-step
-/// strength meter; “OR” divider; Google/Apple sign-in (equal width); footer
-/// “Already have an account? Login” → /login.
-///
-/// Logic:
-///
-/// Create Account disabled until form valid + consent checked.
-///
-/// onTap: show loading → Firebase createUser → sendEmailVerification →
-/// create/merge users/{uid} {email, fullName, createdAt} → navigate Replace
-/// to /email_verify (pass email).
-///
-/// Show error snackbar on failure; keep inputs; focus first error; ≥44px
-/// targets.
-///
-/// (Covers US1: Account Creation.)
 class Signupv1Widget extends StatefulWidget {
   const Signupv1Widget({super.key});
 
@@ -64,17 +32,17 @@ class _Signupv1WidgetState extends State<Signupv1Widget> {
     _model = createModel(context, () => Signupv1Model());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'SIGNUPV1'});
-    _model.emailTextController ??= TextEditingController();
-    _model.textFieldFocusNode1 ??= FocusNode();
+    _model.signUpemailTextController ??= TextEditingController();
+    _model.signUpemailFocusNode ??= FocusNode();
 
-    _model.textController1 ??= TextEditingController();
-    _model.textFieldFocusNode2 ??= FocusNode();
+    _model.signUpConfirmemailTextController ??= TextEditingController();
+    _model.signUpConfirmemailFocusNode ??= FocusNode();
 
-    _model.passwordTextController ??= TextEditingController();
-    _model.textFieldFocusNode3 ??= FocusNode();
+    _model.signUpPasswordTextController ??= TextEditingController();
+    _model.signUpPasswordFocusNode ??= FocusNode();
 
-    _model.confirmPasswordTextController ??= TextEditingController();
-    _model.textFieldFocusNode4 ??= FocusNode();
+    _model.signUpConfirmPasswordTextController ??= TextEditingController();
+    _model.signUpConfirmPasswordFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -88,8 +56,6 @@ class _Signupv1WidgetState extends State<Signupv1Widget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -106,20 +72,13 @@ class _Signupv1WidgetState extends State<Signupv1Widget> {
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  Container(
-                    width: 64.0,
-                    height: 64.0,
-                    decoration: BoxDecoration(
-                      color: Color(0xFFD81B60),
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
-                    child: Align(
-                      alignment: AlignmentDirectional(0.0, 0.0),
-                      child: Icon(
-                        Icons.restaurant_menu,
-                        color: Color(0xFFFFFBFF),
-                        size: 36.0,
-                      ),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(8.0),
+                    child: Image.asset(
+                      'assets/images/Logotipo_de_GlobalFlavors-Picsart-BackgroundRemover.png',
+                      width: 290.8,
+                      height: 86.8,
+                      fit: BoxFit.contain,
                     ),
                   ),
                   Text(
@@ -165,10 +124,11 @@ class _Signupv1WidgetState extends State<Signupv1Widget> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         TextFormField(
-                          controller: _model.emailTextController,
-                          focusNode: _model.textFieldFocusNode1,
+                          key: ValueKey('SignUpemail_kaqw'),
+                          controller: _model.signUpemailTextController,
+                          focusNode: _model.signUpemailFocusNode,
                           onChanged: (_) => EasyDebounce.debounce(
-                            '_model.emailTextController',
+                            '_model.signUpemailTextController',
                             Duration(milliseconds: 2000),
                             () => safeSetState(() {}),
                           ),
@@ -255,14 +215,15 @@ class _Signupv1WidgetState extends State<Signupv1Widget> {
                                   ),
                           keyboardType: TextInputType.emailAddress,
                           cursorColor: Color(0xFFD81B60),
-                          validator: _model.emailTextControllerValidator
+                          validator: _model.signUpemailTextControllerValidator
                               .asValidator(context),
                         ),
                         TextFormField(
-                          controller: _model.textController1,
-                          focusNode: _model.textFieldFocusNode2,
+                          key: ValueKey('SignUpConfirmemail_uqdt'),
+                          controller: _model.signUpConfirmemailTextController,
+                          focusNode: _model.signUpConfirmemailFocusNode,
                           onChanged: (_) => EasyDebounce.debounce(
-                            '_model.textController1',
+                            '_model.signUpConfirmemailTextController',
                             Duration(milliseconds: 2000),
                             () => safeSetState(() {}),
                           ),
@@ -349,19 +310,21 @@ class _Signupv1WidgetState extends State<Signupv1Widget> {
                                   ),
                           keyboardType: TextInputType.emailAddress,
                           cursorColor: Color(0xFFD81B60),
-                          validator: _model.textController1Validator
+                          validator: _model
+                              .signUpConfirmemailTextControllerValidator
                               .asValidator(context),
                         ),
                         TextFormField(
-                          controller: _model.passwordTextController,
-                          focusNode: _model.textFieldFocusNode3,
+                          key: ValueKey('SignUpPassword_h7ic'),
+                          controller: _model.signUpPasswordTextController,
+                          focusNode: _model.signUpPasswordFocusNode,
                           onChanged: (_) => EasyDebounce.debounce(
-                            '_model.passwordTextController',
+                            '_model.signUpPasswordTextController',
                             Duration(milliseconds: 2000),
                             () => safeSetState(() {}),
                           ),
-                          textInputAction: TextInputAction.done,
-                          obscureText: !_model.passwordVisibility1,
+                          textInputAction: TextInputAction.next,
+                          obscureText: !_model.signUpPasswordVisibility,
                           decoration: InputDecoration(
                             hintText: '••••••••',
                             hintStyle:
@@ -422,12 +385,12 @@ class _Signupv1WidgetState extends State<Signupv1Widget> {
                             ),
                             suffixIcon: InkWell(
                               onTap: () => safeSetState(
-                                () => _model.passwordVisibility1 =
-                                    !_model.passwordVisibility1,
+                                () => _model.signUpPasswordVisibility =
+                                    !_model.signUpPasswordVisibility,
                               ),
                               focusNode: FocusNode(skipTraversal: true),
                               child: Icon(
-                                _model.passwordVisibility1
+                                _model.signUpPasswordVisibility
                                     ? Icons.visibility_outlined
                                     : Icons.visibility_off_outlined,
                                 size: 22,
@@ -454,19 +417,23 @@ class _Signupv1WidgetState extends State<Signupv1Widget> {
                                         .fontStyle,
                                   ),
                           cursorColor: Color(0xFFD81B60),
-                          validator: _model.passwordTextControllerValidator
+                          enableInteractiveSelection: true,
+                          validator: _model
+                              .signUpPasswordTextControllerValidator
                               .asValidator(context),
                         ),
                         TextFormField(
-                          controller: _model.confirmPasswordTextController,
-                          focusNode: _model.textFieldFocusNode4,
+                          key: ValueKey('SignUpConfirmPassword_mrlq'),
+                          controller:
+                              _model.signUpConfirmPasswordTextController,
+                          focusNode: _model.signUpConfirmPasswordFocusNode,
                           onChanged: (_) => EasyDebounce.debounce(
-                            '_model.confirmPasswordTextController',
+                            '_model.signUpConfirmPasswordTextController',
                             Duration(milliseconds: 2000),
                             () => safeSetState(() {}),
                           ),
                           textInputAction: TextInputAction.done,
-                          obscureText: !_model.passwordVisibility2,
+                          obscureText: !_model.signUpConfirmPasswordVisibility,
                           decoration: InputDecoration(
                             hintText: 'Confirm Password...',
                             hintStyle:
@@ -527,12 +494,12 @@ class _Signupv1WidgetState extends State<Signupv1Widget> {
                             ),
                             suffixIcon: InkWell(
                               onTap: () => safeSetState(
-                                () => _model.passwordVisibility2 =
-                                    !_model.passwordVisibility2,
+                                () => _model.signUpConfirmPasswordVisibility =
+                                    !_model.signUpConfirmPasswordVisibility,
                               ),
                               focusNode: FocusNode(skipTraversal: true),
                               child: Icon(
-                                _model.passwordVisibility2
+                                _model.signUpConfirmPasswordVisibility
                                     ? Icons.visibility_outlined
                                     : Icons.visibility_off_outlined,
                                 size: 22,
@@ -559,14 +526,16 @@ class _Signupv1WidgetState extends State<Signupv1Widget> {
                                         .fontStyle,
                                   ),
                           cursorColor: Color(0xFFD81B60),
+                          enableInteractiveSelection: true,
                           validator: _model
-                              .confirmPasswordTextControllerValidator
+                              .signUpConfirmPasswordTextControllerValidator
                               .asValidator(context),
                         ),
                       ].divide(SizedBox(height: 16.0)),
                     ),
                   ),
                   FFButtonWidget(
+                    key: ValueKey('Button_e9qg'),
                     onPressed: () async {
                       logFirebaseEvent(
                           'SIGNUPV1_PAGE_CREATE_ACCOUNT_BTN_ON_TAP');
@@ -575,14 +544,14 @@ class _Signupv1WidgetState extends State<Signupv1Widget> {
                           !_model.formKey.currentState!.validate()) {
                         return;
                       }
-                      if (FFAppState().emailField ==
-                          FFAppState().confirmEmailField) {
-                        if (FFAppState().passwordField ==
-                            FFAppState().confirmPassword) {
+                      if (_model.signUpemailTextController.text ==
+                          _model.signUpConfirmemailTextController.text) {
+                        if (_model.signUpPasswordTextController.text ==
+                            _model.signUpConfirmPasswordTextController.text) {
                           logFirebaseEvent('Button_auth');
                           GoRouter.of(context).prepareAuthEvent();
-                          if (_model.passwordTextController.text !=
-                              _model.confirmPasswordTextController.text) {
+                          if (_model.signUpPasswordTextController.text !=
+                              _model.signUpConfirmPasswordTextController.text) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(
@@ -595,26 +564,21 @@ class _Signupv1WidgetState extends State<Signupv1Widget> {
 
                           final user = await authManager.createAccountWithEmail(
                             context,
-                            _model.emailTextController.text,
-                            _model.passwordTextController.text,
+                            _model.signUpemailTextController.text,
+                            _model.signUpPasswordTextController.text,
                           );
                           if (user == null) {
                             return;
                           }
 
-                          await UsersRecord.collection.doc(user.uid).update({
-                            ...createUsersRecordData(
-                              email: FFAppState().emailField,
-                            ),
-                            ...mapToFirestore(
-                              {
-                                'created_time': FieldValue.serverTimestamp(),
-                              },
-                            ),
-                          });
+                          await UsersRecord.collection
+                              .doc(user.uid)
+                              .update(createUsersRecordData(
+                                email: _model.signUpemailTextController.text,
+                              ));
 
                           logFirebaseEvent('Button_auth');
-                          if (_model.emailTextController.text.isEmpty) {
+                          if (_model.signUpemailTextController.text.isEmpty) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(
@@ -626,7 +590,7 @@ class _Signupv1WidgetState extends State<Signupv1Widget> {
                           }
 
                           await authManager.updateEmail(
-                            email: _model.emailTextController.text,
+                            email: _model.signUpemailTextController.text,
                             context: context,
                           );
                           safeSetState(() {});
@@ -637,7 +601,7 @@ class _Signupv1WidgetState extends State<Signupv1Widget> {
                           logFirebaseEvent('Button_navigate_to');
 
                           context.pushNamedAuth(
-                              ProfileWidget.routeName, context.mounted);
+                              ProfileSetup1Widget.routeName, context.mounted);
                         } else {
                           logFirebaseEvent('Button_show_snack_bar');
                           ScaffoldMessenger.of(context).showSnackBar(
@@ -757,21 +721,22 @@ class _Signupv1WidgetState extends State<Signupv1Widget> {
                             if (user == null) {
                               return;
                             }
+                            logFirebaseEvent('Button_navigate_to');
 
-                            context.goNamedAuth(
-                                HomePageWidget.routeName, context.mounted);
+                            context.pushNamedAuth(
+                                ProfileSetup1Widget.routeName, context.mounted);
                           },
                           text: 'Google',
-                          icon: Icon(
-                            Icons.g_translate,
-                            size: 20.0,
+                          icon: FaIcon(
+                            FontAwesomeIcons.google,
+                            size: 18.0,
                           ),
                           options: FFButtonOptions(
                             height: 48.0,
                             padding: EdgeInsets.all(8.0),
                             iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            iconColor: Color(0xFF4285F4),
+                            iconColor: FlutterFlowTheme.of(context).primaryText,
                             color: Color(0xFFFFFBFF),
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleMedium
@@ -798,62 +763,6 @@ class _Signupv1WidgetState extends State<Signupv1Widget> {
                           ),
                         ),
                       ),
-                      isAndroid
-                          ? Container()
-                          : Expanded(
-                              child: FFButtonWidget(
-                                onPressed: () async {
-                                  logFirebaseEvent(
-                                      'SIGNUPV1_PAGE_APPLE_BTN_ON_TAP');
-                                  logFirebaseEvent('Button_auth');
-                                  GoRouter.of(context).prepareAuthEvent();
-                                  final user = await authManager
-                                      .signInWithApple(context);
-                                  if (user == null) {
-                                    return;
-                                  }
-
-                                  context.goNamedAuth(HomePageWidget.routeName,
-                                      context.mounted);
-                                },
-                                text: 'Apple',
-                                icon: Icon(
-                                  Icons.apple,
-                                  size: 20.0,
-                                ),
-                                options: FFButtonOptions(
-                                  height: 48.0,
-                                  padding: EdgeInsets.all(8.0),
-                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 0.0),
-                                  iconColor: Colors.black,
-                                  color: Color(0xFFFFFBFF),
-                                  textStyle: FlutterFlowTheme.of(context)
-                                      .titleMedium
-                                      .override(
-                                        font: GoogleFonts.interTight(
-                                          fontWeight: FontWeight.w500,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .titleMedium
-                                                  .fontStyle,
-                                        ),
-                                        color: Color(0xFF1C1B1F),
-                                        letterSpacing: 0.0,
-                                        fontWeight: FontWeight.w500,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .titleMedium
-                                            .fontStyle,
-                                      ),
-                                  elevation: 0.0,
-                                  borderSide: BorderSide(
-                                    color: Color(0xFFE7E0EC),
-                                    width: 1.0,
-                                  ),
-                                  borderRadius: BorderRadius.circular(24.0),
-                                ),
-                              ),
-                            ),
                     ].divide(SizedBox(width: 12.0)),
                   ),
                   Row(

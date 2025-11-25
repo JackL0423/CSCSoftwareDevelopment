@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class FFAppState extends ChangeNotifier {
   static FFAppState _instance = FFAppState._internal();
@@ -13,12 +14,37 @@ class FFAppState extends ChangeNotifier {
     _instance = FFAppState._internal();
   }
 
-  Future initializePersistedState() async {}
+  Future initializePersistedState() async {
+    prefs = await SharedPreferences.getInstance();
+    _safeInit(() {
+      _isUserFirstRecipe =
+          prefs.getBool('ff_isUserFirstRecipe') ?? _isUserFirstRecipe;
+    });
+    _safeInit(() {
+      _userCohortDate = prefs.containsKey('ff_userCohortDate')
+          ? DateTime.fromMillisecondsSinceEpoch(
+              prefs.getInt('ff_userCohortDate')!)
+          : _userCohortDate;
+    });
+    _safeInit(() {
+      _userTimezone = prefs.getString('ff_userTimezone') ?? _userTimezone;
+    });
+    _safeInit(() {
+      _SearchPageVisitCount =
+          prefs.getInt('ff_SearchPageVisitCount') ?? _SearchPageVisitCount;
+    });
+    _safeInit(() {
+      _surveyCompleted =
+          prefs.getBool('ff_surveyCompleted') ?? _surveyCompleted;
+    });
+  }
 
   void update(VoidCallback callback) {
     callback();
     notifyListeners();
   }
+
+  late SharedPreferences prefs;
 
   String _nameField = '';
   String get nameField => _nameField;
@@ -48,36 +74,6 @@ class FFAppState extends ChangeNotifier {
   String get confirmPassword => _confirmPassword;
   set confirmPassword(String value) {
     _confirmPassword = value;
-  }
-
-  /// store the food preferences of a user
-  List<String> _userTags = [];
-  List<String> get userTags => _userTags;
-  set userTags(List<String> value) {
-    _userTags = value;
-  }
-
-  void addToUserTags(String value) {
-    userTags.add(value);
-  }
-
-  void removeFromUserTags(String value) {
-    userTags.remove(value);
-  }
-
-  void removeAtIndexFromUserTags(int index) {
-    userTags.removeAt(index);
-  }
-
-  void updateUserTagsAtIndex(
-    int index,
-    String Function(String) updateFn,
-  ) {
-    userTags[index] = updateFn(_userTags[index]);
-  }
-
-  void insertAtIndexInUserTags(int index, String value) {
-    userTags.insert(index, value);
   }
 
   bool _editMode = false;
@@ -115,4 +111,112 @@ class FFAppState extends ChangeNotifier {
   void insertAtIndexInDietaryTags(int index, String value) {
     dietaryTags.insert(index, value);
   }
+
+  int _sliderValue = 0;
+  int get sliderValue => _sliderValue;
+  set sliderValue(int value) {
+    _sliderValue = value;
+  }
+
+  /// Current recipe being viewed/cooked
+  String _currentRecipeId = '';
+  String get currentRecipeId => _currentRecipeId;
+  set currentRecipeId(String value) {
+    _currentRecipeId = value;
+  }
+
+  /// Name of current recipe
+  String _currentRecipeName = '';
+  String get currentRecipeName => _currentRecipeName;
+  set currentRecipeName(String value) {
+    _currentRecipeName = value;
+  }
+
+  /// Cuisine type of current recipe
+  String _currentRecipeCuisine = '';
+  String get currentRecipeCuisine => _currentRecipeCuisine;
+  set currentRecipeCuisine(String value) {
+    _currentRecipeCuisine = value;
+  }
+
+  /// Prep time of current recipe (minutes)
+  int _currentRecipePrepTime = 0;
+  int get currentRecipePrepTime => _currentRecipePrepTime;
+  set currentRecipePrepTime(int value) {
+    _currentRecipePrepTime = value;
+  }
+
+  /// Unique ID for current app session
+  String _currentSessionId = '';
+  String get currentSessionId => _currentSessionId;
+  set currentSessionId(String value) {
+    _currentSessionId = value;
+  }
+
+  /// When current session started
+  DateTime? _sessionStartTime =
+      DateTime.fromMillisecondsSinceEpoch(1735715700000);
+  DateTime? get sessionStartTime => _sessionStartTime;
+  set sessionStartTime(DateTime? value) {
+    _sessionStartTime = value;
+  }
+
+  /// Track if user has completed first recipe
+  bool _isUserFirstRecipe = false;
+  bool get isUserFirstRecipe => _isUserFirstRecipe;
+  set isUserFirstRecipe(bool value) {
+    _isUserFirstRecipe = value;
+    prefs.setBool('ff_isUserFirstRecipe', value);
+  }
+
+  /// Date when user first signed up (for cohort analysis)
+  DateTime? _userCohortDate =
+      DateTime.fromMillisecondsSinceEpoch(1735715700000);
+  DateTime? get userCohortDate => _userCohortDate;
+  set userCohortDate(DateTime? value) {
+    _userCohortDate = value;
+    value != null
+        ? prefs.setInt('ff_userCohortDate', value.millisecondsSinceEpoch)
+        : prefs.remove('ff_userCohortDate');
+  }
+
+  /// User timezone for time-based analytics
+  String _userTimezone = '';
+  String get userTimezone => _userTimezone;
+  set userTimezone(String value) {
+    _userTimezone = value;
+    prefs.setString('ff_userTimezone', value);
+  }
+
+  String _localPhoto = '';
+  String get localPhoto => _localPhoto;
+  set localPhoto(String value) {
+    _localPhoto = value;
+  }
+
+  int _SearchPageVisitCount = 0;
+  int get SearchPageVisitCount => _SearchPageVisitCount;
+  set SearchPageVisitCount(int value) {
+    _SearchPageVisitCount = value;
+    prefs.setInt('ff_SearchPageVisitCount', value);
+  }
+
+  bool _surveyCompleted = false;
+  bool get surveyCompleted => _surveyCompleted;
+  set surveyCompleted(bool value) {
+    _surveyCompleted = value;
+    prefs.setBool('ff_surveyCompleted', value);
+  }
+}
+
+void _safeInit(Function() initializeField) {
+  try {
+    initializeField();
+  } catch (_) {}
+}
+
+Future _safeInitAsync(Function() initializeField) async {
+  try {
+    await initializeField();
+  } catch (_) {}
 }
