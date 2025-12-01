@@ -1,17 +1,31 @@
 #!/usr/bin/env bash
-# Update FlutterFlow project with modified YAML files
+# update-yaml.sh - Upload YAML changes to FlutterFlow project
+#
+# Usage: ./update-yaml.sh [options] <file-key> <yaml-file-path>
+# Example: ./update-yaml.sh app-state ./flutterflow-yamls/app-state.yaml
+#
+# NOTE: FlutterFlow API does NOT support branch selection.
+#       All operations target the main/default branch only.
+#       See docs/guides/FLUTTERFLOW_API_GUIDE.md for details.
 
-set -e
+set -euo pipefail
 
-# Load project configuration
-PROJECT_ID="c-s-c305-capstone-khj14l"
+# Configuration - use environment variables with fallbacks
+PROJECT_ID="${FLUTTERFLOW_PROJECT_ID:-c-s-c305-capstone-khj14l}"
 API_BASE="https://api.flutterflow.io/v2"
-BRANCH="JUAN-adding metric"  # Branch name
+GCP_SECRETS_PROJECT="csc305project-475802"
+
+# Color output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
 
 # Parse command line arguments
 SKIP_VALIDATION=false
-USE_MAIN=false
 NO_CONFIRM=false
+FILE_KEY=""
+YAML_FILE=""
 
 while [[ $# -gt 0 ]]; do
     case $1 in
@@ -19,12 +33,36 @@ while [[ $# -gt 0 ]]; do
             SKIP_VALIDATION=true
             shift
             ;;
-        --main)
-            USE_MAIN=true
-            shift
-            ;;
         --no-confirm)
             NO_CONFIRM=true
+            shift
+            ;;
+        --help|-h)
+            echo "Usage: $0 [options] <file-key> <yaml-file-path>"
+            echo ""
+            echo "Upload YAML changes to FlutterFlow project."
+            echo ""
+            echo "Arguments:"
+            echo "  file-key        FlutterFlow file identifier (e.g., app-state, api-endpoint/id-5esga)"
+            echo "  yaml-file-path  Path to the YAML file to upload"
+            echo ""
+            echo "Options:"
+            echo "  --skip-validation  Skip validation step (not recommended)"
+            echo "  --no-confirm       Skip confirmation prompt (for automation)"
+            echo "  --help, -h         Show this help message"
+            echo ""
+            echo "Environment variables:"
+            echo "  FLUTTERFLOW_PROJECT_ID   Project ID (default: c-s-c305-capstone-khj14l)"
+            echo "  FLUTTERFLOW_API_TOKEN    API token (or loaded from GCP Secrets)"
+            echo ""
+            echo "Examples:"
+            echo "  $0 app-state ./flutterflow-yamls/app-state.yaml"
+            echo "  $0 --no-confirm api-endpoint/id-5esga ./flutterflow-yamls/api-endpoint/id-5esga.yaml"
+            exit 0
+            ;;
+        --main)
+            # Deprecated flag - API doesn't support branches
+            echo -e "${YELLOW}Warning: --main flag is deprecated. FlutterFlow API always targets main branch.${NC}"
             shift
             ;;
         *)
@@ -38,126 +76,111 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
+# Validate arguments
 if [ -z "$FILE_KEY" ] || [ -z "$YAML_FILE" ]; then
-    echo "Usage: $0 [--skip-validation] [--main] [--no-confirm] <file-key> <yaml-file-path>"
+    echo -e "${RED}Error: Missing required arguments${NC}"
     echo ""
-    echo "Example: $0 app-details ./flutterflow-yamls/app-details.yaml"
-    echo ""
-    echo "Options:"
-    echo "  --skip-validation  Skip validation step (not recommended)"
-    echo "  --main            Update main branch instead of JUAN-adding metric"
-    echo "  --no-confirm      Skip confirmation prompt (for automation)"
+    echo "Usage: $0 [options] <file-key> <yaml-file-path>"
+    echo "Run '$0 --help' for more information."
     exit 1
 fi
 
-# Set branch
-if [ "$USE_MAIN" = true ]; then
-    echo "Using main branch"
-else
-    echo "Using JUAN-adding metric branch"
-fi
-
-# Check if file exists
+# Check file exists
 if [ ! -f "$YAML_FILE" ]; then
-    echo "Error: File not found: $YAML_FILE"
+    echo -e "${RED}Error: File not found: $YAML_FILE${NC}"
     exit 1
 fi
 
-# Get LEAD API token from Secret Manager
-echo "Retrieving API token from Secret Manager..."
-LEAD_TOKEN=$(gcloud secrets versions access latest --secret="FLUTTERFLOW_LEAD_API_TOKEN" --project=csc305project-475802 2>/dev/null)
-
-if [ -z "$LEAD_TOKEN" ]; then
-    echo "Error: Failed to retrieve LEAD API token"
-    exit 1
-fi
-
-# Encode YAML file to base64
-YAML_BASE64=$(base64 -w 0 "$YAML_FILE")
-
-# Create JSON payload
-if [ "$USE_MAIN" = true ]; then
-    PAYLOAD=$(jq -n \
-        --arg pid "$PROJECT_ID" \
-        --arg fkey "$FILE_KEY" \
-        --arg yaml "$YAML_BASE64" \
-        '{
-            projectId: $pid,
-            fileKey: $fkey,
-            projectYamlBytes: $yaml
-        }')
+# Get API token - try environment variable first, then GCP Secret Manager
+if [ -n "${FLUTTERFLOW_API_TOKEN:-}" ]; then
+    TOKEN="$FLUTTERFLOW_API_TOKEN"
+    echo -e "${GREEN}Using FLUTTERFLOW_API_TOKEN from environment${NC}"
+elif [ -n "${LEAD_TOKEN:-}" ]; then
+    TOKEN="$LEAD_TOKEN"
+    echo -e "${GREEN}Using LEAD_TOKEN from environment${NC}"
 else
-    PAYLOAD=$(jq -n \
-        --arg pid "$PROJECT_ID" \
-        --arg fkey "$FILE_KEY" \
-        --arg yaml "$YAML_BASE64" \
-        --arg branch "$BRANCH" \
-        '{
-            projectId: $pid,
-            fileKey: $fkey,
-            projectYamlBytes: $yaml,
-            branch: $branch
-        }')
-fi
-
-# Validate first unless skipped
-if [ "$SKIP_VALIDATION" = false ]; then
-    echo "Step 1: Validating YAML..."
-    VALIDATE_RESPONSE=$(curl -s -X POST "${API_BASE}/validateProjectYaml" \
-        -H "Authorization: Bearer ${LEAD_TOKEN}" \
-        -H "Content-Type: application/json" \
-        -d "$PAYLOAD")
-
-    if ! echo "$VALIDATE_RESPONSE" | grep -q '"success":true'; then
-        echo "❌ Validation failed! Aborting update."
-        echo ""
-        echo "Error details:"
-        echo "$VALIDATE_RESPONSE" | jq '.'
+    echo "Retrieving API token from GCP Secret Manager..."
+    TOKEN=$(gcloud secrets versions access latest \
+        --secret="FLUTTERFLOW_LEAD_API_TOKEN" \
+        --project="$GCP_SECRETS_PROJECT" 2>/dev/null) || {
+        echo -e "${RED}Error: Failed to retrieve API token${NC}"
+        echo "Make sure you're authenticated: gcloud auth login"
         exit 1
-    fi
-    echo "✅ Validation passed"
-    echo ""
+    }
 fi
 
-# Update the project
-echo "Step 2: Updating FlutterFlow project..."
-echo "File key: $FILE_KEY"
-echo "YAML file: $YAML_FILE"
+echo ""
+echo -e "${YELLOW}FlutterFlow YAML Update${NC}"
+echo "  Project ID: $PROJECT_ID"
+echo "  File Key:   $FILE_KEY"
+echo "  YAML File:  $YAML_FILE"
 echo ""
 
+# Convert YAML to JSON-escaped string (NOT base64!)
+# Per docs/guides/FLUTTERFLOW_API_GUIDE.md: uploads require plain YAML string
+YAML_STRING=$(jq -Rs . "$YAML_FILE")
+
+# Step 1: Validate (unless skipped)
+if [ "$SKIP_VALIDATION" = false ]; then
+    echo "Step 1: Validating YAML with FlutterFlow API..."
+
+    VALIDATE_RESPONSE=$(curl -sS -X POST "${API_BASE}/validateProjectYaml" \
+        -H "Authorization: Bearer ${TOKEN}" \
+        -H "Content-Type: application/json" \
+        -d "{\"projectId\":\"${PROJECT_ID}\",\"fileKey\":\"${FILE_KEY}\",\"fileContent\":${YAML_STRING}}")
+
+    VALIDATE_SUCCESS=$(echo "$VALIDATE_RESPONSE" | jq -r '.success // false')
+    if [ "$VALIDATE_SUCCESS" != "true" ]; then
+        echo -e "${RED}Validation FAILED${NC}"
+        echo ""
+        echo "Error details:"
+        echo "$VALIDATE_RESPONSE" | jq .
+        exit 1
+    fi
+    echo -e "${GREEN}Validation passed${NC}"
+    echo ""
+else
+    echo -e "${YELLOW}Step 1: Skipping validation (--skip-validation)${NC}"
+    echo ""
+fi
+
+# Step 2: Confirmation
 if [ "$NO_CONFIRM" = false ]; then
+    echo "Step 2: Confirmation"
     read -p "Are you sure you want to update the FlutterFlow project? (yes/no): " CONFIRM
 
     if [ "$CONFIRM" != "yes" ]; then
         echo "Update cancelled."
         exit 0
     fi
+    echo ""
 else
-    echo "Auto-confirming update (--no-confirm flag set)..."
+    echo "Step 2: Auto-confirming update (--no-confirm)"
+    echo ""
 fi
 
-echo "Applying update..."
-UPDATE_RESPONSE=$(curl -s -X POST "${API_BASE}/updateProjectByYaml" \
-    -H "Authorization: Bearer ${LEAD_TOKEN}" \
+# Step 3: Upload using fileKeyToContent format
+echo "Step 3: Uploading to FlutterFlow..."
+
+UPLOAD_RESPONSE=$(curl -sS -X POST "${API_BASE}/updateProjectByYaml" \
+    -H "Authorization: Bearer ${TOKEN}" \
     -H "Content-Type: application/json" \
-    -d "$PAYLOAD")
+    -d "{\"projectId\":\"${PROJECT_ID}\",\"fileKeyToContent\":{\"${FILE_KEY}\":${YAML_STRING}}}")
 
-# Check response
-if echo "$UPDATE_RESPONSE" | grep -q '"success":true'; then
-    echo "✅ Update successful!"
-    echo ""
-    echo "Response:"
-    echo "$UPDATE_RESPONSE" | jq '.'
-
-    echo ""
-    echo "⚠️  Remember to:"
-    echo "1. Verify changes in FlutterFlow UI"
-    echo "2. Test your app thoroughly"
-    echo "3. Commit your local YAML changes to git"
-else
-    echo "❌ Update failed!"
+UPLOAD_SUCCESS=$(echo "$UPLOAD_RESPONSE" | jq -r '.success // false')
+if [ "$UPLOAD_SUCCESS" != "true" ]; then
+    echo -e "${RED}Upload FAILED${NC}"
     echo ""
     echo "Error details:"
-    echo "$UPDATE_RESPONSE" | jq '.'
+    echo "$UPLOAD_RESPONSE" | jq .
     exit 1
 fi
+
+echo ""
+echo -e "${GREEN}SUCCESS: YAML uploaded to FlutterFlow${NC}"
+echo ""
+echo "Next steps:"
+echo "  1. Verify changes in FlutterFlow UI"
+echo "  2. Test your app thoroughly"
+echo "  3. Push to GitHub from FlutterFlow (if connected)"
+echo "  4. Commit your local YAML changes to git"
