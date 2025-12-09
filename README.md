@@ -1,129 +1,103 @@
-# GlobalFlavors - CSC305 Software Development Capstone
+# GlobalFlavors - CSC305 Capstone Project
 
-**Institution**: University of Rhode Island
-**Course**: CSC305 Software Development
-**Team Lead**: Jack Light ([REDACTED]@example.edu)
+**Course**: CSC305 Software Development Capstone  
+**Institution**: University of Rhode Island  
+**Semester**: Fall 2025
+
+---
 
 ## Project Overview
 
-GlobalFlavors is a mobile application built with FlutterFlow for discovering and exploring international cuisines. Features include recipe browsing, user authentication, personalized recommendations, and comprehensive retention tracking.
+GlobalFlavors is a FlutterFlow web application that also works on mobile, designed to solve the cooking dinner problem. The app helps users discover recipes based on ingredients available in their area and items they already have on hand.
 
-**Tech Stack**: FlutterFlow (frontend), Firebase (backend), Cloud Functions (Node.js 20)
+**Team Members**:
+- Juan Vallejo
+- Jack Light
+- Maria de la Soledad Millington
+- Sophia Della Selva
+- Alexander Hang
+
+---
+
+## Key Features
+
+- **Recipe Search by Available Ingredients**: Search for recipes using ingredients you already have
+- **Location-Based Ingredient Availability**: Find recipes based on ingredients available in your local area
+- **Cross-Platform**: Works as both web app and mobile application
+
+---
+
+## Repository Contents
+
+This repository contains **all project deliverables and documentation** for the CSC305 capstone course:
+
+- **Backend Infrastructure**: Firebase Cloud Functions for D7 retention tracking and user management
+- **Project Documentation**: Business plan, user research, personas, test cases, and changelog
+- **Configuration**: Firebase rules, environment configs, and deployment settings
+- **Project Assets**: Images, diagrams, and visual materials
+
+---
+
+## Repository Structure
+
+```
+CSCSoftwareDevelopment/
+├── functions/          # D7 Retention Tracking Cloud Functions
+├── firebase/           # Firebase configuration and FlutterFlow functions
+├── config/             # Environment and Firebase configurations
+├── docs/               # All project documentation and deliverables
+└── images/             # Project images and assets
+```
 
 ---
 
 ## Quick Start
 
-### 1. Setup Environment
+### Deploy Cloud Functions
 
 ```bash
-# Load secrets from GCP Secret Manager
-source scripts/utilities/load-secrets.sh
+cd functions
+npm install
+firebase deploy --only functions
 ```
 
-### 2. FlutterFlow YAML Operations
+### Deploy Firebase Configuration
 
 ```bash
-# List all YAML files
-scripts/flutterflow/list-yaml-files.sh
-
-# Download specific file
-scripts/flutterflow/download-yaml.sh --file app-state
-
-# Upload changes
-scripts/flutterflow/update-yaml.sh app-state flutterflow-yamls/app-state.yaml
-```
-
-### 3. Deploy Firebase Functions
-
-```bash
-# Deploy backend
-scripts/firebase/deploy-firebase-with-serviceaccount.sh
-
-# Test D7 retention
-scripts/testing/test-retention-function.sh
-```
-
----
-
-## Project Structure
-
-```
-CSCSoftwareDevelopment/
-├── functions/          # Firebase Cloud Functions (Node.js 20)
-├── lib/custom_code/    # Custom Dart actions for FlutterFlow
-├── flutterflow-yamls/  # FlutterFlow project YAML files
-├── scripts/            # Automation scripts
-│   ├── flutterflow/    # YAML operations (8 scripts)
-│   ├── firebase/       # Backend deployment (2 scripts)
-│   ├── testing/        # Test & verification (9 scripts)
-│   └── utilities/      # Shared utilities (4 scripts)
-├── docs/               # Documentation
-│   ├── project/        # Business docs (BUSINESSPLAN, PERSONAS, etc.)
-│   ├── architecture/   # Technical specs (D7_RETENTION, GCP_SECRETS)
-│   ├── guides/         # How-to guides (YAML_EDITING, TEMPLATES)
-│   └── implementation/ # Implementation notes
-└── archive/            # Historical/experimental work
+firebase deploy --only firestore:rules,firestore:indexes,storage
 ```
 
 ---
 
 ## Documentation
 
-### Essential Docs
-- [Detailed Setup Guide](docs/guides/DETAILED_SETUP.md) - Complete setup instructions
-- [CLAUDE.md](docs/CLAUDE.md) - AI assistant context and standards
-- [CONTRIBUTING.md](CONTRIBUTING.md) - Team communication standards
-- [CHANGELOG.md](docs/CHANGELOG.md) - Version history and changes
-- [docs/README.md](docs/README.md) - Complete documentation index
+All project documentation is in the `docs/` directory:
 
-### Key Guides
-- [YAML Editing](docs/guides/YAML_EDITING_GUIDE.md) - FlutterFlow YAML workflows
-- [Templates](docs/guides/TEMPLATES.md) - Commit, PR, and meeting templates
-- [D7 Retention Deployment](docs/architecture/D7_RETENTION_DEPLOYMENT.md) - Metrics system
-- [GCP Secrets](docs/architecture/GCP_SECRETS.md) - Secret management
+- **BUSINESSPLAN.md** - Business plan and strategy
+- **PERSONAS.md** - User personas
+- **UserResearch.md** - User research findings
+- **TESTCASES.md** - Test cases
+- **CHANGELOG.md** - Project version history
+- **METRICS.md** - Success metrics
+
+See `docs/README.md` for complete documentation index.
 
 ---
 
-## Key Features
+## Tech Stack
 
-### Implemented
-- ✅ User Authentication (Firebase Auth)
-- ✅ Recipe Database (Firestore)
-- ✅ Search & Browse
-- ✅ Personalized Recommendations
-- ✅ D7 Retention Metrics (complete cohort tracking)
-
-### In Development
-- 🚧 Enhanced personalization algorithms
-- 🚧 Social sharing features
-- 🚧 Recipe ratings and reviews
-
----
-
-## Team Communication
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for:
-- Communication standards
-- Commit message format
-- Pull request process
-- Team workflows
+- **Frontend**: FlutterFlow (Flutter)
+- **Backend**: Firebase Cloud Functions (Node.js 20)
+- **Database**: Firestore
+- **Authentication**: Firebase Auth
 
 ---
 
 ## Resources
 
-- **FlutterFlow**: https://app.flutterflow.io/project/[FLUTTERFLOW_PROJECT_ID]
-- **Firebase Console**: https://console.firebase.google.com/project/[FIREBASE_PROJECT_ID]
+- **Firebase Console**: https://console.firebase.google.com/project/[PROJECT_ID]
 - **GCP Console**: https://console.cloud.google.com
-- **Repository**: https://github.com/[ORG]/CSCSoftwareDevelopment
 
 ---
 
-## License
-
-MIT License - See [LICENSE](LICENSE) for details
-
----
-
-**For detailed setup instructions, see [docs/guides/DETAILED_SETUP.md](docs/guides/DETAILED_SETUP.md)**
+**Note**: The frontend Flutter application code is maintained in a separate repository. This repository focuses on backend infrastructure, configuration, and all project deliverables.
